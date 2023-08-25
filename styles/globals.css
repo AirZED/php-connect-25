@@ -43,6 +43,9 @@ background-color: #FFAA22;
 outline: none;
 }
 
+::selection{
+  @apply bg-primary text-secondary;
+}
 .hero-1 {
   background: linear-gradient(
       181deg,
