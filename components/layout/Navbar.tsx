@@ -15,12 +15,17 @@ export default function Navbar() {
           />
         </Link>
         <div className="flex justify-between gap-x-[50px]">
-          <NavLink href={"/speakers"}>Speakers</NavLink>
-          <NavLink href={"/speakers"}>Speakers</NavLink>
-          <NavLink href={"/speakers"}>Speakers</NavLink>
-          <NavLink href={"/speakers"}>Speakers</NavLink>
+          <NavLink href={"/speakers"}>ABOUT</NavLink>
+          <NavLink href={"/speakers"}>SPEAKERS</NavLink>
+          <NavLink href={"/speakers"}>SPONSORS</NavLink>
+          <NavLink href={"/speakers"}>AGENDA</NavLink>
         </div>
-        <Link className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-10 py-3 rounded-3xl" href={"/"}>Register</Link>
+        <Link
+          className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-10 py-3 rounded-3xl"
+          href={"/"}
+        >
+          Register
+        </Link>
       </div>
     </nav>
   );
@@ -30,7 +35,10 @@ const NavLink = (
   props: LinkProps & { children: string | JSX.Element | JSX.Element[] }
 ) => (
   <Link
-    className="text-lg leading-6 font-medium font-heading text-white uppercase"
+    className="text-lg leading-6  font-medium font-heading text-white uppercase    flex flex-col group"
     {...props}
-  />
+  >
+    <span>{props.children}</span>
+    <span className="group-hover:w-full transition-all w-0 h-1 bg-white"></span>
+  </Link>
 );

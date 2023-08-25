@@ -15,7 +15,7 @@ export default function Hero() {
             </Typography>
             <Image src={"/images/date-ring.png"} width={175} height={175} className="absolute right-0 bottom-0" alt="Date"/>
           </div>
-          <div className="my-9">
+          <div className="my-10">
             <Link
               className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-12 py-4 rounded-full"
               href={"/"}
