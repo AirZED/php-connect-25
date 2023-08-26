@@ -18,7 +18,7 @@ export default function Hero() {
       >
         <SplideSlide>
           <div className="h-full w-full relative  min-h-screen hero-1 flex justify-center items-center">
-            <Container className=" max-h-[413px] md:mt-40 flex flex-col items-center md:items-start">
+            <Container className="max-h-[413px] md:mt-40 flex flex-col items-center md:items-start">
               <div className="flex justify-center lg:justify-start relative text-center md:text-left">
                 <Typography variant={"h2"} className="[line-height:normal] ">
                   Inspiring the PHP Renaissance: Building Tomorrow’s Web
@@ -47,7 +47,7 @@ export default function Hero() {
             <Container className=" max-h-[413px] md:mt-[24px] flex flex-col items-center md:items-start w-full">
               <div className="flex justify-center lg:justify-between relative text-center w-full md:text-left">
                 <div>
-                  <span  className=" text-xl bg-tertiary text-primary max-w-max px-3 py-2 my-3 inline-block rounded-full">
+                  <span className=" text-xl bg-tertiary text-primary max-w-max px-3 py-2 my-3 inline-block rounded-full">
                     We’ve been online
                   </span>
                   <Typography variant={"h2"} className=" max-w-[995px] ">

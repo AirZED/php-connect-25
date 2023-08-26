@@ -5,6 +5,7 @@ import Container from "@/components/layout/Container";
 import Typography from "@/components/ui/Typography";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function Home() {
       <main>
         <Navbar/>
          <Hero/>
+         <About/>
         <Container>
         </Container>
       </main>

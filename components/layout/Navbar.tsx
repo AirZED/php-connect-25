@@ -1,11 +1,27 @@
 import Image from "next/image";
 import Link, { LinkProps } from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { Bars3 } from "../ui/Icons";
 
 export default function Navbar() {
+  const navScroll = () => {
+    const navbar = window.document.querySelector("#navbar");
+
+    if (
+      document.body.scrollTop > 30 ||
+      document.documentElement.scrollTop > 30
+    ) {
+      navbar?.classList.add("nav-scrolled");
+    } else {
+      navbar?.classList.remove("nav-scrolled");
+    }
+  };
+  useEffect(() => {
+    window.onscroll = () => navScroll();
+  }, []);
   return (
-    <nav className="fixed z-20 w-full left-0 top-0  md:px-[27px]">
-      <div className="max-w-[1440px] md:px-10 xl:px-16 mx-auto flex justify-between items-center my-7 md:my-10 p-6 md:bg-black py-5 rounded-full">
+    <nav id="navbar" className="fixed z-20 w-full left-0 top-0  md:px-[27px] py-6 px-6 transition-[padding,backdrop-blur]">
+      <div className="max-w-[1440px] md:px-10 xl:px-16 mx-auto flex justify-between items-center  md:my-10 md:p-6 md:bg-black py-5 rounded-full">
         <Link href={"/"}>
           <Image
             src={"/images/logo-white.svg"}
@@ -28,20 +44,7 @@ export default function Navbar() {
           Register
         </Link>
         <button className="md:hidden text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
-            />
-          </svg>
+          <Bars3 />
         </button>
       </div>
     </nav>

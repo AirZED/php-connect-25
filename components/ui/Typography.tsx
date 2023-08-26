@@ -3,15 +3,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const typographyVariants = cva("", {
+const typographyVariants = cva("[line-height:normal] text-white font-heading", {
   variants: {
     variant: {
-      h1: "text-[52.33px] [line-height:normal] lg:text-[95px] font-medium font-heading text-white",
-      h2: "text-[52.33px] [line-height:normal] lg:text-[95px] font-medium font-heading text-white",
-      h3: "text-[48px] leading-normal font-medium font-heading text-white",
-      h4: "text-[48px] leading-normal font-medium font-heading text-white",
-      h6: "text-lg leading-7 font-normal font-heading text-white tracking-[0.54px]",
-      p: "text-lg leading-normal font-medium font-heading text-white ",
+      h1: "text-[52.33px]  lg:text-[95px] font-medium",
+      h2: "text-[52.33px] lg:text-[95px] font-medium",
+      h3: "text-[48px] font-medium",
+      h4: "text-[48px] font-medium",
+      h6: "text-lg leading-7 font-normal tracking-[0.54px]",
+      p: "font-base md:text-lg font-medium",
     },
   },
   defaultVariants: {

@@ -27,7 +27,7 @@
 } */
 
 body {
-  color: rgb(var(--foreground-rgb));
+  @apply bg-black text-white;
 }
 body::-webkit-scrollbar {
   width: 0.2em;
@@ -46,6 +46,11 @@ outline: none;
 ::selection{
   @apply bg-primary text-secondary;
 }
+
+.nav-scrolled {
+  @apply bg-[rgba(0,0,0,0.53)] md:bg-transparent backdrop-blur-[21px] md:backdrop-blur-0 py-3  transition-[padding,backdrop-blur];
+}
+
 .hero-1 {
   background: linear-gradient(
       181deg,
