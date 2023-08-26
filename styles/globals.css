@@ -62,7 +62,7 @@ outline: none;
 }
 
 .splide__pagination{
-  @apply -translate-y-20 md:!flex md:!justify-end max-w-[1440px] !mx-auto !px-[27px] md:!px-10 xl:!px-16;
+  @apply -translate-y-10  md:-translate-y-20 md:!flex md:!justify-end max-w-[1440px] !mx-auto !px-[27px] md:!px-10 xl:!px-16;
 }
 .splide__pagination li {
   @apply !mx-1;
