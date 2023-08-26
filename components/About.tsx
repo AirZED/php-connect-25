@@ -36,7 +36,7 @@ export default function About() {
           </div>
         </Container>
       </div>
-      <Splide options={{
+      <Splide className="md:my-12" options={{
             arrows: false,
             autoplay: false,
             perPage: 4.2,
