@@ -17,3 +17,13 @@
   font-style: normal;
 }
 
+
+@font-face {
+  font-family: "PHP Connect Pro";
+  src: local("SF Pro Display Regular"), local("SFProDisplay-Regular"),
+    url("/fonts/SFProDisplay-Regular.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-Regular.woff") format("woff"),
+    url("/fonts/SFProDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}

@@ -20,12 +20,13 @@ const config: Config = {
         secondary: "#FFAA22",
         "not-white": "#E9F7FF",
       },
-      fontFamily:{
-        "heading":["Bagoss Standard"]
+      fontFamily: {
+        heading: ["Bagoss Standard"],
+        sans: ["PHP Connect Pro", "sans-serif"],
       },
-      screens:{
-        '3xl':'1366px'
-      }
+      screens: {
+        "3xl": "1366px",
+      },
     },
   },
   plugins: [],

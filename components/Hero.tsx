@@ -8,12 +8,14 @@ import { Splide, SplideSlide } from "./Splide";
 export default function Hero() {
   return (
     <div className="bg-black ">
-      <Splide options={{
-        type:"fade",
-        rewind:true,
-        // autoplay: true,
-        arrows:false
-      }}>
+      <Splide
+        options={{
+          type: "fade",
+          rewind: true,
+          autoplay: true,
+          arrows: false,
+        }}
+      >
         <SplideSlide>
           <div className="h-full w-full relative  md:min-h-[832px] hero-1 flex justify-center items-center">
             <Container className=" max-h-[413px] md:mt-40 flex flex-col items-center md:items-start">
@@ -42,11 +44,16 @@ export default function Hero() {
         </SplideSlide>
         <SplideSlide>
           <div className="h-full w-full relative min-h-[832px] hero-2 flex justify-center items-center">
-            <Container className=" max-h-[413px] md:mt-40 flex flex-col items-center md:items-start w-full">
+            <Container className=" max-h-[413px] md:mt-[104px] flex flex-col items-center md:items-start w-full">
               <div className="flex justify-center lg:justify-between relative text-center w-full md:text-left">
-                <Typography variant={"h2"} className=" max-w-[995px]">
-                  Now We Want To Connect Physically With You
-                </Typography>
+                <div>
+                  <span  className=" text-xl bg-tertiary text-primary max-w-max px-3 py-2 rounded-full">
+                    We’ve been online
+                  </span>
+                  <Typography variant={"h2"} className=" max-w-[995px] ">
+                    Now We Want To Connect Physically With You.
+                  </Typography>
+                </div>
                 <Image
                   src={"/images/date-ring.png"}
                   width={175}
