@@ -3,7 +3,7 @@ import Container from "./layout/Container";
 import Typography from "./ui/Typography";
 import Link from "next/link";
 import { WhatsappIcon } from "./ui/Icons";
-import { Splide, SplideSlide } from './Splide';
+import { Splide, SplideSlide } from "./Splide";
 import Image from "next/image";
 
 export default function About() {
@@ -46,8 +46,7 @@ export default function About() {
           perPage: 5,
           gap: 8,
           trimspace: false,
-          rewind: true,
-          // height     : '9rem',
+          rewind: true,          
           drag: false,
           trimSpace: false,
           snap: true,
@@ -59,7 +58,7 @@ export default function About() {
               perMove: 1,
             },
             480: {
-              perPage: 1,
+              perPage: 1.3,
               gap: "12px",
               drag: true,
               perMove: 1,
