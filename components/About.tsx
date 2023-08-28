@@ -3,7 +3,7 @@ import Container from "./layout/Container";
 import Typography from "./ui/Typography";
 import Link from "next/link";
 import { WhatsappIcon } from "./ui/Icons";
-import { Splide, SplideSlide } from "./Splide";
+import { Splide, SplideSlide } from './Splide';
 import Image from "next/image";
 
 export default function About() {
@@ -36,51 +36,86 @@ export default function About() {
           </div>
         </Container>
       </div>
-      <Splide className="md:my-12" options={{
-            arrows: false,
-            autoplay: false,
-            perPage: 4.2,
-            trimspace: false,
-            padding: 27,
-            drag: "free",
-            snap: true,
-            focus: "center",
-            pagination:false,
-            breakpoints: {
-                360: {
-                    padding: 5,
-                    perPage: 1.02,
-                    gap:3
-                },
-                390: {
-                    padding: 27,
-                    perPage: 1.05,
-                },
-                320: {
-                    padding: 27,
-                    perPage: 0.9,
-                    // gap:1
-                }
-            }
-        }}>
-            <SplideSlide>
-                <Image src={"/images/slides/image-1.png"} width={290} height={290} alt=""/>
-            </SplideSlide>
-            <SplideSlide>
-                <Image src={"/images/slides/image-2.png"} width={290} height={290} alt=""/>
-            </SplideSlide>
-            <SplideSlide>
-                <Image src={"/images/slides/image-3.png"} width={290} height={290} alt=""/>
-            </SplideSlide>
-            <SplideSlide>
-                <Image src={"/images/slides/image-4.png"} width={290} height={290} alt=""/>
-            </SplideSlide>
-            <SplideSlide>
-                <Image src={"/images/slides/image-5.png"} width={290} height={290} alt=""/>
-            </SplideSlide>
-            <SplideSlide>
-                <Image src={"/images/slides/image-6.png"} width={290} height={290} alt=""/>
-            </SplideSlide>
+      <Splide
+        className="my-8 md:my-12"
+        options={{
+          arrows: false,
+          autoplay: true,
+          type: "loop",
+          perMove: 1,
+          perPage: 5,
+          gap: 8,
+          trimspace: false,
+          rewind: true,
+          // height     : '9rem',
+          drag: false,
+          trimSpace: false,
+          snap: true,
+          pagination: false,
+          breakpoints: {
+            640: {
+              perPage: 2,
+              drag: true,
+              perMove: 1,
+            },
+            480: {
+              perPage: 1,
+              gap: "12px",
+              drag: true,
+              perMove: 1,
+              focus: "center",
+            },
+          },
+        }}
+      >
+        <SplideSlide>
+          <Image
+            src={"/images/slides/image-1.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src={"/images/slides/image-2.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src={"/images/slides/image-3.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src={"/images/slides/image-4.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src={"/images/slides/image-5.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src={"/images/slides/image-6.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+        </SplideSlide>
       </Splide>
     </div>
   );
