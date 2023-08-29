@@ -35,15 +35,15 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
   /* -webkit-box-shadow: inset 0 0 6px rgba(238, 222, 0, 0.3); */
-  background: #170F36;
+  background: #170f36;
 }
 
 body::-webkit-scrollbar-thumb {
-background-color: #FFAA22;
-outline: none;
+  background-color: #ffaa22;
+  outline: none;
 }
 
-::selection{
+::selection {
   @apply bg-primary text-secondary;
 }
 
@@ -60,26 +60,33 @@ outline: none;
     url("/images/backgrounds/hero-1.jpg"), lightgray 50% / cover no-repeat;
 }
 
-
 .hero-2 {
-  background: 
-    url("/images/backgrounds/hero-2.png"), black;
+  background: url("/images/backgrounds/hero-2.png"), black;
 }
 
-.splide__pagination{
+.splide__pagination {
   @apply -translate-y-10  md:-translate-y-20 md:!flex md:!justify-end max-w-[1440px] !mx-auto !px-[27px] md:!px-10 xl:!px-16;
 }
 .splide__pagination li {
   @apply !mx-1;
 }
-.splide__pagination li button{
+.splide__pagination li button {
   @apply !h-[10px] !w-[70px]  bg-[#1C1C1C] !bg-opacity-100 rounded-full !outline-primary !outline-2  focus:!outline-primary hover:bg-primary;
 }
 
-.splide__pagination li button.is-active{
-  @apply !h-[10px] !w-[70px] !outline-primary scale-100 !outline-0 p-0 bg-secondary focus:!outline-secondary ;
+.splide__pagination li button.is-active {
+  @apply !h-[10px] !w-[70px] !outline-primary scale-100 !outline-0 p-0 bg-secondary focus:!outline-secondary;
 }
 
 /* .splide__pagination__page li button:before {
   @apply bg-red-500 p-0 h-[10px] !w-[70px];
 } */
+
+.speaker-card {
+  /* border-radius: 10px; */
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.068) 0%,
+      rgba(0, 0, 0, 0.959) 100%
+    ), rgba(211, 211, 211, 0.089) 2.642px -166.618px / 100% 187.677% no-repeat;
+}

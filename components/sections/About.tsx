@@ -1,9 +1,9 @@
 import React from "react";
-import Container from "./layout/Container";
-import Typography from "./ui/Typography";
+import Container from "../layout/Container";
+import Typography from "../ui/Typography";
 import Link from "next/link";
-import { WhatsappIcon } from "./ui/Icons";
-import { Splide, SplideSlide } from "./Splide";
+import { WhatsappIcon } from "../ui/Icons";
+import { Splide, SplideSlide } from "../Splide";
 import Image from "next/image";
 
 export default function About() {
@@ -43,8 +43,8 @@ export default function About() {
           autoplay: true,
           type: "loop",
           perMove: 1,
-          perPage: 5,
-          gap: 8,
+          perPage: 5.2,
+          gap: "10px",
           trimspace: false,
           rewind: true,          
           drag: false,

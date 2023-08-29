@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import Typography from "./ui/Typography";
-import Container from "./layout/Container";
+import Typography from "../ui/Typography";
+import Container from "../layout/Container";
 import Link from "next/link";
-import { Splide, SplideSlide } from "./Splide";
+import { Splide, SplideSlide } from "../Splide";
 
 export default function Hero() {
   return (
