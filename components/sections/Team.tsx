@@ -18,7 +18,7 @@ export default function Team() {
         </div>
       </Container>
 
-      <Container className="grid grid-cols-2 md:hidden">
+      <Container className="grid grid-cols-2 gap-y-4 md:hidden">
         <TeamMemberCard
           name="Mr. David"
           designation="Software Engineer"
@@ -51,7 +51,7 @@ export default function Team() {
         options={{
           arrows: false,
           autoplay: false,
-          perPage: 3.9,
+          perPage: 3.4,
           trimspace: false,
           padding: 97,
           gap: "30px",
