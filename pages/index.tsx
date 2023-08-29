@@ -9,6 +9,7 @@ import About from "@/components/sections/About";
 import Countdown from "@/components/sections/Countdown";
 import Speakers from "@/components/sections/Speakers";
 import Team from "@/components/sections/Team";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,7 @@ export default function Home() {
         <Countdown />
         <Speakers/>
         <Team/>
-        <Container></Container>
+        <Footer/>
       </main>
     </>
   );

@@ -32,7 +32,6 @@ export default function Navbar() {
           />
         </Link>
         <div className="hidden md:flex justify-between gap-x-[50px]">
-          <NavLink href={"/speakers"}>ABOUT</NavLink>
           <NavLink href={"/speakers"}>SPEAKERS</NavLink>
           <NavLink href={"/speakers"}>SPONSORS</NavLink>
           <NavLink href={"/speakers"}>AGENDA</NavLink>
