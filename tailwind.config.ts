@@ -13,6 +13,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "home-hero-spiral": 'url("/images/backgrounds/home-hero-spiral.png")',
+        "connect-pattern": 'url("/images/backgrounds/connect-pattern.png")',
+        "connect-pattern-2": 'url("/images/backgrounds/connect-pattern-2.png")',
+        "connect-pattern-3": 'url("/images/backgrounds/connect-pattern-3.png")',
       },
       colors: {
         primary: "#170F36",
