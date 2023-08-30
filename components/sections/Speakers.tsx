@@ -3,116 +3,124 @@ import { Splide, SplideSlide } from "../Splide";
 import Image from "next/image";
 import Typography from "../ui/Typography";
 import Container from "../layout/Container";
+import Reveal from "../animation/Reveal";
 
 export default function Speakers() {
   return (
     <div className="my-9 space-y-7 md:space-y-12">
       <Container className="space-y-6 md:space-y-14">
         <div className="lg:max-w-[895px] flex flex-col gap-y-6">
-          <Typography variant={"h2"}>Meet Our Speakers</Typography>
-          <Typography variant={"h6"} className="font-sans">
-            PHP Connect is an annual event that is organised by PHPTALKS, with
-            the sole purpose of engaging techies through physical connections,
-            and fostering learning.
-          </Typography>
+          <Reveal>
+            <Typography variant={"h2"}>Meet Our Speakers</Typography>
+          </Reveal>
+          <Reveal>
+            <Typography variant={"h6"} className="font-sans">
+              PHP Connect is an annual event that is organised by PHPTALKS, with
+              the sole purpose of engaging techies through physical connections,
+              and fostering learning.
+            </Typography>
+          </Reveal>
         </div>
       </Container>
 
-      <Container className="grid grid-cols-2 gap-y-4  md:hidden ">
-        <SpeakerCard
-          name="Mr. David"
-          designation="Software Engineer"
-          image="speaker-1.jpeg"
-        />
-        <SpeakerCard
-          name="Mr. David"
-          designation="Software Engineer"
-          image="speaker-1.jpeg"
-        />
-        <SpeakerCard
-          name="Mr. David"
-          designation="Software Engineer"
-          image="speaker-1.jpeg"
-        />
-        <SpeakerCard
-          name="Mr. David"
-          designation="Software Engineer"
-          image="speaker-1.jpeg"
-        />
-        <SpeakerCard
-          name="Mr. David"
-          designation="Software Engineer"
-          image="speaker-1.jpeg"
-        />
-      </Container>
-
-      <Splide
-        className="my-4 hidden md:block"
-        options={{
-          arrows: false,
-          autoplay: false,
-          perPage: 3.4,
-          trimspace: false,
-          padding: 97,
-          gap: "30px",
-          drag: "free",
-          snap: true,
-          focus: "center",
-          pagination: false,
-          breakpoints: {
-            360: {
-              padding: 5,
-              perPage: 1.02,
-              gap: 3,
+      <Reveal width="100%">
+        <Container className="grid grid-cols-2 gap-y-4  md:hidden ">
+          <SpeakerCard
+            name="Mr. David"
+            designation="Software Engineer"
+            image="speaker-1.jpeg"
+          />
+          <SpeakerCard
+            name="Mr. David"
+            designation="Software Engineer"
+            image="speaker-1.jpeg"
+          />
+          <SpeakerCard
+            name="Mr. David"
+            designation="Software Engineer"
+            image="speaker-1.jpeg"
+          />
+          <SpeakerCard
+            name="Mr. David"
+            designation="Software Engineer"
+            image="speaker-1.jpeg"
+          />
+          <SpeakerCard
+            name="Mr. David"
+            designation="Software Engineer"
+            image="speaker-1.jpeg"
+          />
+        </Container>
+      </Reveal>
+      <Reveal width="100%">
+        <Splide
+          className="my-4 hidden md:block"
+          options={{
+            arrows: false,
+            autoplay: false,
+            perPage: 3.4,
+            trimspace: false,
+            padding: 97,
+            gap: "30px",
+            drag: "free",
+            snap: true,
+            focus: "center",
+            pagination: false,
+            breakpoints: {
+              360: {
+                padding: 5,
+                perPage: 1.02,
+                gap: 3,
+              },
+              390: {
+                padding: 27,
+                perPage: 1.05,
+              },
+              320: {
+                padding: 27,
+                perPage: 0.9,
+                // gap:1
+              },
             },
-            390: {
-              padding: 27,
-              perPage: 1.05,
-            },
-            320: {
-              padding: 27,
-              perPage: 0.9,
-              // gap:1
-            },
-          },
-        }}
-      >
-        <SplideSlide>
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-        </SplideSlide>
-        <SplideSlide>
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-        </SplideSlide>
-        <SplideSlide>
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-        </SplideSlide>
-        <SplideSlide>
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-        </SplideSlide>
-        <SplideSlide>
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-        </SplideSlide>
-      </Splide>
+          }}
+        >
+          <SplideSlide>
+            <SpeakerCard
+              name="Mr. David"
+              designation="Software Engineer"
+              image="speaker-1.jpeg"
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <SpeakerCard
+              name="Mr. David"
+              designation="Software Engineer"
+              image="speaker-1.jpeg"
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <SpeakerCard
+              name="Mr. David"
+              designation="Software Engineer"
+              image="speaker-1.jpeg"
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <SpeakerCard
+              name="Mr. David"
+              designation="Software Engineer"
+              image="speaker-1.jpeg"
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <SpeakerCard
+              name="Mr. David"
+              designation="Software Engineer"
+              image="speaker-1.jpeg"
+            />
+          </SplideSlide>
+        </Splide>
+      </Reveal>
     </div>
   );
 }

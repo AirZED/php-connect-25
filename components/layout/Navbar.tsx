@@ -32,13 +32,14 @@ export default function Navbar() {
           />
         </Link>
         <div className="hidden md:flex justify-between gap-x-[50px]">
-          <NavLink href={"/speakers"}>SPEAKERS</NavLink>
-          <NavLink href={"/speakers"}>SPONSORS</NavLink>
-          <NavLink href={"/speakers"}>AGENDA</NavLink>
+          <NavLink href={"/team#speakers"}>SPEAKERS</NavLink>
+          <NavLink href={"/sponsor"}>SPONSORS</NavLink>
+          <NavLink href={"/agenda"}>AGENDA</NavLink>
         </div>
         <Link
           className="hidden md:inline text-lg leading-6 font-medium font-heading text-black bg-secondary px-10 py-3 rounded-3xl"
-          href={"/"}
+          href={"https://docs.google.com/forms/d/e/1FAIpQLSeC2iB6tyhRkuBFmn56cR9nd9S27L7U66qCiK_R9G9VR6IDKw/viewform"}
+          target="_blank"
         >
           Register
         </Link>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { WhatsappIcon } from "../ui/Icons";
 import { Splide, SplideSlide } from "../Splide";
 import Image from "next/image";
+import Reveal from "../animation/Reveal";
 
 export default function About() {
   return (
@@ -12,27 +13,34 @@ export default function About() {
       <div className=" md:w-[68%] max-w-[1080px] md:px-[27px]">
         <Container>
           <div className="md:px-[27px] flex flex-col gap-y-6">
-            <Typography variant={"h2"}>About us</Typography>
-            <Typography
-              variant={"p"}
-              className="text-lg font-sans tracking-[0.54px] !leading-[30px]"
-            >
-              PHP Connect is an annual event that is organised by PHPTALKS, with
-              the sole purpose of engaging techies through physical connections,
-              and fostering learning. It is primarily organised for, but not
-              exclusive to PHP developers. Our carefully curated sessions give
-              us the opportunity to explore the latest technology trends and
-              advancements. Whether you&rsquo;re an entrepreneur, developer,
-              designer, or simply someone enthusiastic about technology,
-              you&rsquo;ll enjoy valuable insights and chances for networking.
-              Join us as we exchange knowledge and celebrate innovation.
-            </Typography>
-            <Link href={"/"} className="flex items-center gap-x-3">
-              <WhatsappIcon />
-              <Typography variant={"h6"} className="text-lg font-medium">
-                Join PHPTalks today
+            <Reveal>
+              <Typography variant={"h2"}>About us</Typography>
+            </Reveal>
+            <Reveal>
+              <Typography
+                variant={"p"}
+                className="text-lg font-sans tracking-[0.54px] !leading-[30px]"
+              >
+                PHP Connect is an annual event that is organised by PHPTALKS,
+                with the sole purpose of engaging techies through physical
+                connections, and fostering learning. It is primarily organised
+                for, but not exclusive to PHP developers. Our carefully curated
+                sessions give us the opportunity to explore the latest
+                technology trends and advancements. Whether you&rsquo;re an
+                entrepreneur, developer, designer, or simply someone
+                enthusiastic about technology, you&rsquo;ll enjoy valuable
+                insights and chances for networking. Join us as we exchange
+                knowledge and celebrate innovation.
               </Typography>
-            </Link>
+            </Reveal>
+            <Reveal>
+              <Link href={"/"} className="flex items-center gap-x-3">
+                <WhatsappIcon />
+                <Typography variant={"h6"} className="text-lg font-medium">
+                  Join PHPTalks today
+                </Typography>
+              </Link>
+            </Reveal>
           </div>
         </Container>
       </div>
@@ -46,7 +54,7 @@ export default function About() {
           perPage: 5.2,
           gap: "10px",
           trimspace: false,
-          rewind: true,          
+          rewind: true,
           drag: false,
           trimSpace: false,
           snap: true,

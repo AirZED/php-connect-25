@@ -6,10 +6,10 @@ import Container from "../layout/Container";
 
 export default function Team() {
   return (
-    <div className="my-9 space-y-7 md:space-y-12">
+    <div className="my-9 md:my-16 space-y-7 md:space-y-12">
       <Container className="space-y-6 md:space-y-14">
         <div className="lg:max-w-[895px] flex flex-col gap-y-6">
-          <Typography variant={"h2"}>Meet Our Speakers</Typography>
+          <Typography variant={"h2"}>Core Team Members</Typography>
           <Typography variant={"h6"} className="font-sans">
             PHP Connect is an annual event that is organised by PHPTALKS, with
             the sole purpose of engaging techies through physical connections,

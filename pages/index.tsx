@@ -34,8 +34,7 @@ export default function Home() {
         </div>
         <Countdown />
         <Speakers/>
-        <Team/>
-        <Footer/>
+        {/* <Team/> */}
       </main>
     </Page>
   );

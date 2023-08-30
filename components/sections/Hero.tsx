@@ -4,6 +4,7 @@ import Typography from "../ui/Typography";
 import Container from "../layout/Container";
 import Link from "next/link";
 import { Splide, SplideSlide } from "../Splide";
+import Reveal from "../animation/Reveal";
 
 export default function Hero() {
   return (
@@ -18,11 +19,14 @@ export default function Hero() {
       >
         <SplideSlide>
           <div className="h-full w-full relative  min-h-screen hero-1 flex justify-center items-center">
-            <Container className="max-h-[413px] md:mt-40 flex flex-col items-center md:items-start">
+            <Container className="max-h-[413px] w-full md:mt-40 flex flex-col items-center md:items-start">
               <div className="flex justify-center lg:justify-start relative text-center md:text-left">
-                <Typography variant={"h2"} className="[line-height:normal] ">
-                  Inspiring the PHP Renaissance: Building Tomorrow’s Web
-                </Typography>
+                <Reveal width="100%">
+                  <Typography variant={"h2"} className="[line-height:normal] ">
+                    Inspiring the PHP Renaissance: Building Tomorrow’s Web
+                  </Typography>
+                </Reveal>
+
                 <Image
                   src={"/images/date-ring.png"}
                   width={175}
@@ -31,14 +35,17 @@ export default function Hero() {
                   alt="Date"
                 />
               </div>
-              <div className="my-10">
-                <Link
-                  className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-12 py-4 rounded-full"
-                  href={"/"}
-                >
-                  Register
-                </Link>
-              </div>
+
+              <Reveal>
+                <div className="my-10">
+                  <Link
+                    className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-12 py-4 rounded-full"
+                    href={"/"}
+                  >
+                    Register
+                  </Link>
+                </div>
+              </Reveal>
             </Container>
           </div>
         </SplideSlide>
