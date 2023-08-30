@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Countdown() {
   return (
-    <div className="md:py-[75px]">
+    <div className="md:pt-[75px]">
       <Container className="hidden lg:block space-y-14">
         <div className="lg:max-w-[687px] flex flex-col gap-y-6">
           <Typography variant={"h2"}>Decide To Join The Event.</Typography>
@@ -26,6 +26,22 @@ export default function Countdown() {
           />
         </Container>
       </div>
+      <Container >
+        <div className="flex flex-col gap-y-16 md:flex-row justify-between px-10 py-24 lg:py-28">
+            <div className="flex flex-col items-center gap-y-4 text-center">
+              <Typography variant={"h3"}>200+</Typography>
+              <Typography variant={"p"} className="md:text-2xl font-normal">Attendees 👦👩🏿‍</Typography>
+            </div>
+            <div className="flex flex-col items-center gap-y-4 text-center">
+              <Typography variant={"h3"}>20</Typography>
+              <Typography variant={"p"} className="md:text-2xl font-normal">Speakers</Typography>
+            </div>
+            <div className="flex flex-col items-center gap-y-4 text-center">
+              <Typography variant={"h3"}>3</Typography>
+              <Typography variant={"p"} className="md:text-2xl font-normal">Sessions</Typography>
+            </div>
+        </div>
+      </Container>
     </div>
   );
 }
