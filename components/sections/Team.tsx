@@ -117,7 +117,7 @@ export default function Team() {
   );
 }
 
-const TeamMemberCard = ({
+export const TeamMemberCard = ({
   name,
   designation,
   image,
