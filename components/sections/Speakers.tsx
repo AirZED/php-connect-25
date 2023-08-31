@@ -86,7 +86,7 @@ const SpeakerCard = ({
   return (
     <div className="w-[154.58px] h-[193px] md:w-[351px] md:h-[417px] relative rounded-[30px] overflow-hidden border-2 border-black/50">
       <Image
-        src={`/images/speakers/${image}`}
+        src={`/images/${image}`}
         fill
         alt=""
         className="-z-10 h-fit rounded-[30px]"
