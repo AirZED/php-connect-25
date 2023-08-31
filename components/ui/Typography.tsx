@@ -8,7 +8,7 @@ const typographyVariants = cva("[line-height:normal] text-white font-heading", {
     variant: {
       h1: "text-[52.33px]  lg:text-[95px] font-medium",
       h2: "text-[52.33px] lg:text-[95px] font-medium",
-      h3: "text-[48px] font-medium",
+      h3: "text-[28px] [line-height:normal] lg:text-[48px] font-medium",
       h4: "text-lg md:text-[48px] font-medium",
       h6: "text-lg leading-7 font-normal tracking-[0.54px]",
       p: "font-base md:text-lg font-medium",

@@ -21,7 +21,7 @@ export default function Countdown() {
           </Reveal>
         </div>
       </Container>
-      <Reveal>
+      <Reveal width="100%">
         <div className="bg-[url('/images/backgrounds/connect-pattern.png')] bg-left-bottom bg-no-repeat py-24 hidden lg:block ">
           <Container>
             <Image
