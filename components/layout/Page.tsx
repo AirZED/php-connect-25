@@ -18,14 +18,14 @@ export default function Page({ children }: { children: ReactNode }) {
           <meta name="twitter:creator" content="@PHPTalks" />
           <meta
             property="twitter:image"
-            content="https://event.phptalks.community/images/og.png"
+            content="https://events.phptalks.community/images/og.png"
           />
           <meta
             property="og:image"
-            content="https://event.phptalks.community/images/og.png"
+            content="https://events.phptalks.community/images/og.png"
           />
           <meta property="og:site_name" content="PHP Connect" />
-          <meta property="og:url" content="https://event.phptalks.community" />
+          <meta property="og:url" content="https://events.phptalks.community" />
           <meta
             property="og:description"
             content="PHP Connect is an annual event that is organised by PHPTALKS, with the sole purpose of engaging techies through physical connections, and fostering learning."
