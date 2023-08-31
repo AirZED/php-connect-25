@@ -4,6 +4,7 @@ import Image from "next/image";
 import Typography from "../ui/Typography";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
+import { speakers } from "@/data";
 
 export default function Speakers() {
   return (
@@ -25,31 +26,9 @@ export default function Speakers() {
 
       <Reveal width="100%">
         <Container className="grid grid-cols-2 gap-y-4  md:hidden ">
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
-          <SpeakerCard
-            name="Mr. David"
-            designation="Software Engineer"
-            image="speaker-1.jpeg"
-          />
+          {speakers.map((speaker, k) => (
+            <SpeakerCard key={k} {...speaker} />
+          ))}
         </Container>
       </Reveal>
       <Reveal width="100%">
@@ -84,41 +63,11 @@ export default function Speakers() {
             },
           }}
         >
-          <SplideSlide>
-            <SpeakerCard
-              name="Mr. David"
-              designation="Software Engineer"
-              image="speaker-1.jpeg"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <SpeakerCard
-              name="Mr. David"
-              designation="Software Engineer"
-              image="speaker-1.jpeg"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <SpeakerCard
-              name="Mr. David"
-              designation="Software Engineer"
-              image="speaker-1.jpeg"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <SpeakerCard
-              name="Mr. David"
-              designation="Software Engineer"
-              image="speaker-1.jpeg"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <SpeakerCard
-              name="Mr. David"
-              designation="Software Engineer"
-              image="speaker-1.jpeg"
-            />
-          </SplideSlide>
+          {speakers.map((speaker, k) => (
+            <SplideSlide key={k}>
+              <SpeakerCard {...speaker} />
+            </SplideSlide>
+          ))}
         </Splide>
       </Reveal>
     </div>
@@ -141,6 +90,8 @@ const SpeakerCard = ({
         fill
         alt=""
         className="-z-10 h-fit rounded-[30px]"
+        objectFit="cover"
+        quality={50}
       />
       <div className="speaker-card w-full h-full z-10 bg-opacity-25 px-3 py-4 md:px-7 md:py-9  flex justify-start items-end">
         <div className="flex flex-col gap-y-[5px] space-y-0">
