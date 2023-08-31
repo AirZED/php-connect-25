@@ -15,7 +15,7 @@ function Team() {
           Conference 2023{" "}
         </title>
       </Head>
-      <main className="my-40">
+      <main className="my-20 md:my-40">
         <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Speakers</Typography>
           <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-8 my-12">
