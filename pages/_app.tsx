@@ -3,6 +3,7 @@ import '@splidejs/react-splide/css';
 import { motion, AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <AnimatePresence mode="wait">
       <motion.div key={router.pathname}>
         <Component {...pageProps} />
-
+        <Analytics />
         <motion.div
           className="slide-in"
           initial={{ scaleY: 0 }}

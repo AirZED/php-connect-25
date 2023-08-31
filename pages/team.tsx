@@ -72,7 +72,7 @@ export const SpeakerCard = ({
           >
             {name}
           </Typography>
-          <Typography className="text-white [line-height:0;] font-heading text-[9px] md:text-base font-normal">
+          <Typography className="text-white [line-height:normal;] font-heading text-[9px] md:text-base font-normal">
             {designation}
           </Typography>
         </div>

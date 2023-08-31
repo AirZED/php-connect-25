@@ -51,14 +51,14 @@ export const coreTeamMembers: {
     image: "team/miracle.jpeg",
   },
   {
+    name: "Saviour Inyang",
+    designation: "Visual Designer Lead",
+    image: "team/saviour.jpeg",
+  },
+  {
     name: "Victor Nkereuwem",
     designation: "Visual Designer",
     image: "team/victor.jpeg",
-  },
-  {
-    name: "Saviour Inyang",
-    designation: "Visual Designer",
-    image: "team/saviour.jpeg",
   },
 ];
 

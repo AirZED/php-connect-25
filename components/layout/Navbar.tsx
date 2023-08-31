@@ -20,6 +20,7 @@ export default function Navbar() {
     window.onscroll = () => navScroll();
   }, []);
   return (
+    <>
     <nav id="navbar" className="fixed z-20 w-full left-0 top-0  md:px-[27px] py-6 px-6 transition-[padding,backdrop-blur]">
       <div className="max-w-[1440px] md:px-10 xl:px-16 mx-auto flex justify-between items-center  md:my-10 md:p-6 md:bg-black py-5 rounded-full">
         <Link href={"/"}>
@@ -48,6 +49,11 @@ export default function Navbar() {
         </button>
       </div>
     </nav>
+    {/* <div className="bg-black">
+
+
+    </div> */}
+    </>
   );
 }
 
