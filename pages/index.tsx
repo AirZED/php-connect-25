@@ -21,7 +21,6 @@ export default function Home() {
         <title>PHPConnect - A PHP Talks Conference 2023 </title>
       </Head>
      <main>
-        <Navbar />
         <Hero />
         <About />
         <div className="relative w-full h-[284px] hidden lg:block">
