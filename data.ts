@@ -70,7 +70,7 @@ export const volunteers: {
   {
     name: "Regina Ekwere",
     designation: "Content Creator",
-    image: "team/daniel.jpeg",
+    image: "volunteers/regina_ekwere.jpeg",
   },
   {
     name: "Ekikere-abasi Michael",

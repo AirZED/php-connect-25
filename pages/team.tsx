@@ -18,7 +18,7 @@ function Team() {
       <main className="my-40">
         <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Speakers</Typography>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 my-12">
+          <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-8 my-12">
             {speakers.map((speaker, k) => (
               <SpeakerCard key={k} {...speaker} />
             ))}
@@ -26,7 +26,7 @@ function Team() {
         </Container>
         <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Core Team Members</Typography>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 my-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-8 my-8">
           {coreTeamMembers.map((team, k) => (
               <SpeakerCard key={k} {...team} />
             ))}
@@ -34,7 +34,7 @@ function Team() {
         </Container>
         <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Volunteers</Typography>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 my-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 my-8">
           {volunteers.map((team, k) => (
               <SpeakerCard key={k} {...team} />
             ))}
@@ -55,12 +55,12 @@ export const SpeakerCard = ({
   image: string;
 }) => {
   return (
-    <div className="max-w-[164.58px] h-[193px]  md:max-w-[408px] md:h-[417px] relative rounded-[30px] overflow-hidden border-2 border-black/50">
+    <div className="max-w-[184.58px] h-[193px]  md:max-w-[408px] md:h-[417px] relative rounded-[18px] lg:rounded-[30px] overflow-hidden border-2 border-black/50">
       <Image
         src={`/images/${image}`}
         fill
         alt=""
-        className="-z-10 h-fit rounded-[30px] scale-95"
+        className="-z-10 h-fit rounded-[18px] lg:rounded-[30px] scale-95"
         objectFit="cover"
         quality={100}
       />
