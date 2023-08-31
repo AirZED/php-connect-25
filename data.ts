@@ -104,7 +104,7 @@ export const volunteers: {
   },
   {
     name: "Godsproof Kindness",
-    designation: "--",
+    designation: "Protocol/Ushering",
     image: "volunteers/godsproof-kindness.png",
   },
   {
