@@ -119,7 +119,7 @@ export const volunteers: {
   },
   {
     name: "Jewel Omon",
-    designation: "--",
+    designation: "Content Team",
     image: "volunteers/jewel-omon.jpeg",
   },
 ];
