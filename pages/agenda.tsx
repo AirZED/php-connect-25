@@ -1,10 +1,12 @@
+import Agenda from "@/components/Agenda";
+import { agendalist } from "@/components/Agenda/agenda";
 import Container from "@/components/layout/Container";
 import Page from "@/components/layout/Page";
 import Typography from "@/components/ui/Typography";
 import Head from "next/head";
 import React from "react";
 
-export default function Agenda() {
+export default function AgendaPage() {
   return (
     <Page>
       <Head>
@@ -20,6 +22,9 @@ export default function Agenda() {
             that there are more talks to tune in to—no matter where you are in
             the world.
           </Typography>
+        </Container>
+        <Container>
+          <Agenda event={agendalist}/>
         </Container>
       </main>
     </Page>

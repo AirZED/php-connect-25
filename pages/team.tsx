@@ -60,7 +60,7 @@ export const SpeakerCard = ({
         src={`/images/${image}`}
         fill
         alt=""
-        className="-z-10 h-fit rounded-[18px] lg:rounded-[30px] scale-95"
+        className="-z-10 h-fit rounded-[18px] lg:rounded-[30px] "
         objectFit="cover"
         quality={100}
       />

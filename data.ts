@@ -60,6 +60,7 @@ export const coreTeamMembers: {
     designation: "Visual Designer",
     image: "team/victor.jpeg",
   },
+ 
 ];
 
 export const volunteers: {
@@ -114,12 +115,21 @@ export const volunteers: {
   },
   {
     name: "Akpan Daniel",
-    designation: "--",
+    designation: "Software Developer",
     image: "volunteers/akpan-daniel.jpeg",
   },
   {
     name: "Jewel Omon",
     designation: "Content Team",
     image: "volunteers/jewel-omon.jpeg",
+  },
+  {
+    name: "Favour Gabriel",
+    designation: "Software Developer",
+    image: "volunteers/favour-gabriel.jpeg",
+  }, {
+    name: "Loveday Richman",
+    designation: "Backend Developer",
+    image: "volunteers/loveday-richman.jpg",
   },
 ];
