@@ -15,13 +15,13 @@ export default function AgendaPage() {
       <main className="my-20 lg:my-40">
         <Container className="py-10 flex flex-col gap-y-[15px]">
           <Typography variant={"h1"}>Agenda</Typography>
-          <Typography className="inline-block lg:max-w-[699px]">
+          {/* <Typography className="inline-block lg:max-w-[699px]">
             We believe that PHP Connect should be available to everyone, anywhere.
             That’s why this year, it’s 24 hours long. Don’t let the lengthy
             agenda trick you into guzzling energy drinks, though—it just means
             that there are more talks to tune in to—no matter where you are in
             the world.
-          </Typography>
+          </Typography> */}
         </Container>
         <Container>
           <Agenda event={agendalist}/>
