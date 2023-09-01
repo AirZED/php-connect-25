@@ -1,38 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PHPConnect Website
+
+Welcome to the PHPConnect website repository! This website is built using Next.js, TailwindCSS, and TypeScript and is designed to provide information and resources for the annual PHP Connect event organized by PHPTALKS.
+
+## About PHPConnect
+
+**PHP Connect** is an annual event organized by **PHPTALKS** with the sole purpose of engaging tech enthusiasts through physical connections and fostering learning. While it is primarily organized for PHP developers, it is open to anyone enthusiastic about technology. The event features carefully curated sessions that provide opportunities to explore the latest technology trends and advancements.
+
+### Key Features
+
+- Event information and schedule
+- Speaker profiles and session details
+<!-- - Registration and ticketing options -->
+<!-- - Networking opportunities
+- Resources and presentations -->
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
+1. Clone this repository:
+git clone https://github.com/PHPTalks/php-connect.git
+
+
+2. Navigate to the project directory:
+cd php-connect
+
+
+3. Install the dependencies:
+npm install
+
+
+4. Start the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to view the website.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Technologies Used
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Next.js](https://nextjs.org/): A React framework for building fast, static, and server-rendered applications.
+- [TailwindCSS](https://tailwindcss.com/): A utility-first CSS framework for rapidly building custom designs.
+- [TypeScript](https://www.typescriptlang.org/): A statically typed superset of JavaScript that helps catch errors early in development.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<!-- ## Project Structure
 
-## Learn More
+The project structure is organized as follows: -->
 
-To learn more about Next.js, take a look at the following resources:
+<!-- php-connect/
+│
+├── components/ # React components used throughout the site
+├── lib/ # Libraries and Utilities
+├── pages/ # Next.js pages
+├── public/ # Static assets
+├── styles/ # CSS styles and TailwindCSS configuration
+├── tsconfig.json # TypeScript configuration
+├── README.md # Project documentation (you're reading it)
+├── package.json # Node.js dependencies and scripts
+└── .gitignore # Git ignore rules -->
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+We welcome contributions! If you'd like to contribute to the PHPConnect website, please follow our [contribution guidelines](CONTRIBUTING.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+If you have any questions or need further information, feel free to contact us at [contact@phptalks.community](mailto:contact@phptalks.community).
+
+Thank you for your interest in PHPConnect! We look forward to your involvement and hope you enjoy building and using this website.
