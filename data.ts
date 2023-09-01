@@ -23,11 +23,11 @@ export const speakers: {
     designation: "Software Engineer",
     image: "speakers/alexandar-garuba.jpeg",
   },
-  // {
-  //   name: "Elisha Ukpong",
-  //   designation: "Software Engineer",
-  //   image: "speakers/speaker-1.jpeg",
-  // },
+  {
+    name: "David Inyang-Etoh",
+    designation: "Senior Software Engineer, Receeve GmBH, Germany",
+    image: "speakers/david-inyangetoh.jpeg",
+  },
 ];
 
 export const coreTeamMembers: {
@@ -60,6 +60,7 @@ export const coreTeamMembers: {
     designation: "Visual Designer",
     image: "team/victor.jpeg",
   },
+ 
  
 ];
 
