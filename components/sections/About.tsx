@@ -62,13 +62,11 @@ export default function About() {
           breakpoints: {
             640: {
               perPage: 2,
-              drag: true,
               perMove: 1,
             },
             480: {
               perPage: 1.3,
               gap: "12px",
-              drag: true,
               perMove: 1,
               focus: "center",
             },

@@ -43,13 +43,13 @@ export default function Countdown() {
               </Typography>
             </div>
             <div className="flex flex-col items-center gap-y-4 text-center">
-              <Typography variant={"h3"}>20</Typography>
+              <Typography variant={"h3"}>5</Typography>
               <Typography variant={"p"} className="md:text-2xl font-normal">
                 Speakers
               </Typography>
             </div>
             <div className="flex flex-col items-center gap-y-4 text-center">
-              <Typography variant={"h3"}>3</Typography>
+              <Typography variant={"h3"}>4</Typography>
               <Typography variant={"p"} className="md:text-2xl font-normal">
                 Sessions
               </Typography>

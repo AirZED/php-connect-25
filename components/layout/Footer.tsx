@@ -58,10 +58,10 @@ const NavLink = (
   props: LinkProps & { children: string | JSX.Element | JSX.Element[] }
 ) => (
   <Link
-    className="text-lg leading-6  font-medium font-heading text-white uppercase    flex flex-col group"
+    className="text-lg leading-6 max-w-max font-medium font-heading text-white uppercase    flex flex-col group"
     {...props}
   >
     <span>{props.children}</span>
-    <span className="group-hover:w-full transition-all w-0 h-1 bg-white"></span>
+    <span className="group-hover:w-full md:group-hover:w-full transition-all w-0 h-1 bg-white"></span>
   </Link>
 );

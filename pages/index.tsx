@@ -11,6 +11,7 @@ import Speakers from "@/components/sections/Speakers";
 import Team from "@/components/sections/Team";
 import Footer from "@/components/layout/Footer";
 import Page from "@/components/layout/Page";
+import Sponsors from "@/components/sections/Sponsors";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function Home() {
         </div>
         <Countdown />
         <Speakers/>
+        <Sponsors/>
         {/* <Team/> */}
       </main>
     </Page>
