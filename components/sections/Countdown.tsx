@@ -21,7 +21,7 @@ export default function Countdown() {
           </Reveal>
         </div>
       </Container>
-      <Reveal width="100%">
+      {/* <Reveal width="100%">
         <div className="bg-[url('/images/backgrounds/connect-pattern.png')] bg-left-bottom bg-no-repeat py-24 hidden lg:block ">
           <Container>
             <Image
@@ -32,7 +32,7 @@ export default function Countdown() {
             />
           </Container>
         </div>
-      </Reveal>
+      </Reveal> */}
       <Container>
         <Reveal width="100%">
           <div className="flex flex-col gap-y-16 md:flex-row justify-between px-10 py-24 lg:py-28">
