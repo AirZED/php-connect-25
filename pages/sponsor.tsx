@@ -14,13 +14,17 @@ function Sponsor() {
       </Head>
       <main className="my-20 lg:my-40">
         <Container className="py-10 flex flex-col gap-y-[15px]">
-          <Typography variant={"h1"}>Become a Sponsors</Typography>
+          <Typography variant={"h1"}>Become a Sponsor</Typography>
           <Typography className="inline-block lg:max-w-[699px]">
             Our goal is to make sure everyone goes home satisfied and to this
             effect, we are excited to have speakers for all levels of expertise.
             Get ready to be hooked at their incredible display of intelligence.
           </Typography>
-          <Link href={"/"} className="flex items-center gap-x-3">
+          <Link
+            download={"Sponsorship_For_PHPConnnect.pdf"}
+            href={"/docs/Sponsorship_For_PHPConnnect.pdf"}
+            className="flex items-center gap-x-3"
+          >
             <Typography
               variant={"h6"}
               className="text-lg text-secondary font-medium"
@@ -56,7 +60,7 @@ function Sponsor() {
               </Typography>
             </Link>
           </div>
-          <div className="w-full md:w-1/2 flex flex-col gap-y-[9.66px] bg-secondary py-8 md:py-14 md:px-12 rounded-[18px] lg:rounded-[30px]">
+          <div className="w-full md:w-1/2 flex flex-col gap-y-[9.66px] bg-secondary py-8 md:py-14 px-[30px] md:px-12 rounded-[18px] lg:rounded-[30px]">
             <Typography variant={"h3"} className="text-primary">
               Register for Event
             </Typography>
@@ -64,12 +68,15 @@ function Sponsor() {
               We are excited to have you in-person for the PHP Connect Event.
               Register and secure a seat.
             </Typography>
-            <Link href={"/"} className="flex items-center gap-x-3">
+            <Link
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeC2iB6tyhRkuBFmn56cR9nd9S27L7U66qCiK_R9G9VR6IDKw/viewform"
+              className="flex items-center gap-x-3"
+            >
               <Typography
                 variant={"p"}
                 className="text-sm lg:text-lg font-heading  text-primary font-medium"
               >
-               Register Here
+                Register Here
               </Typography>
             </Link>
           </div>

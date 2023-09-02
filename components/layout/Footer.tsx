@@ -18,7 +18,7 @@ export default function Footer() {
             Join our PHP Talks Community and meet creative and passionate
             developers.
           </Typography>
-          <Link href={"/"} className="flex items-center gap-x-3">
+          <Link target="blank" href={"https://chat.whatsapp.com/BygvFuDVOCO3zEtfNRbkuc"} className="flex items-center gap-x-3">
             <WhatsappIcon />
             <Typography variant={"h6"} className="text-lg font-medium">
               Join on WhatsApp
@@ -39,9 +39,9 @@ export default function Footer() {
               />
             </Link>
             <div className="flex flex-col md:flex-row justify-between gap-x-[50px] gap-y-10">
-              <NavLink href={"/speakers"}>SPEAKERS</NavLink>
-              <NavLink href={"/speakers"}>SPONSORS</NavLink>
-              <NavLink href={"/speakers"}>AGENDA</NavLink>
+              <NavLink href={"/team#speakers"}>SPEAKERS</NavLink>
+              <NavLink href={"/sponsor"}>SPONSORS</NavLink>
+              <NavLink href={"/agenda"}>AGENDA</NavLink>
             </div>
 
             <span className="text-gray-400 font-heading">

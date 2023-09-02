@@ -65,7 +65,7 @@ export const agendalist: Event[] = [
   },
   {
     meta: {
-      title: "Showcase: There is a gun to your head, you are giving this code, you have 15 minutes to solve it or get shot.",
+      title: "Showcase: There is a gun to your head, you are given this code, you have 15 minutes to solve it or get shot.",
       details:
         "What is your fate?  Award the first and correct answer!",
     },

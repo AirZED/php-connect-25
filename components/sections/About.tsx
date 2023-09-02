@@ -34,7 +34,7 @@ export default function About() {
               </Typography>
             </Reveal>
             <Reveal>
-              <Link href={"/"} className="flex items-center gap-x-3">
+              <Link target="blank" href={"https://chat.whatsapp.com/BygvFuDVOCO3zEtfNRbkuc"} className="flex items-center gap-x-3">
                 <WhatsappIcon />
                 <Typography variant={"h6"} className="text-lg font-medium">
                   Join PHPTalks today

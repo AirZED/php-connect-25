@@ -3,7 +3,7 @@ import Link, { LinkProps } from "next/link";
 import React, { useEffect, useState } from "react";
 import { Bars3 } from "../ui/Icons";
 
-const navigation: { href: string; text: string }[] = [
+export const navigation: { href: string; text: string }[] = [
   {
     text: "SPEAKERS",
     href: "/team#speakers",
