@@ -9,40 +9,119 @@ export default function Sponsors() {
     <div className="my-9 md:my-24 space-y-7 md:space-y-12">
       <Container className="space-y-6 md:space-y-14">
         <Typography variant={"h3"}>Our Sponsors </Typography>
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-8 gap-x-5 items-center">
-          <Image
-            src={"/images/sponsors/lite-host.jpeg"}
-            width={290}
-            height={290}
-            alt=""
-          />
-
-          <Image
-            src={"/images/sponsors/irun.png"}
-            width={290}
-            height={290}
-            alt=""
-          />
-          <Image
-            src={"/images/sponsors/pay4me-app.jpeg"}
-            width={290}
-            height={290}
-            alt=""
-          />
-          <Image
-            src={"/images/sponsors/open-table-mentorship.png"}
-            width={290}
-            height={290}
-            alt=""
-          />
-          <Image
-            src={"/images/sponsors/vsual-talk.png"}
-            width={290}
-            height={290}
-            alt=""
-          />
-        </div>
+        <SponsorType
+          name="Gold"
+          children={
+            <>
+              <Image
+                src={"/images/sponsors/lite-host.jpeg"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/irun.png"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/pay4me-app.jpeg"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/open-table-mentorship.png"}
+                width={290}
+                height={290}
+                alt=""
+              />
+            </>
+          }
+        />
+        <SponsorType
+          name="Diamond"
+          children={
+            <>
+              <Image
+                src={"/images/sponsors/lite-host.jpeg"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/irun.png"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/pay4me-app.jpeg"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/open-table-mentorship.png"}
+                width={290}
+                height={290}
+                alt=""
+              />
+            </>
+          }
+        />
+        <SponsorType
+          name="Silver"
+          children={
+            <>
+              <Image
+                src={"/images/sponsors/lite-host.jpeg"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/irun.png"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/pay4me-app.jpeg"}
+                width={290}
+                height={290}
+                alt=""
+              />
+              <Image
+                src={"/images/sponsors/open-table-mentorship.png"}
+                width={290}
+                height={290}
+                alt=""
+              />
+            </>
+          }
+        />
       </Container>
     </div>
   );
 }
+
+const SponsorType = ({
+  name,
+  children,
+}: {
+  name: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <>
+      <Typography variant={"h4"} className="text-xl md:text-2xl font-medium">
+        {name}
+      </Typography>
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-8 gap-x-5 items-center border-b border-b-gray-500/70 pb-10">
+        {children}
+      </div>
+    </>
+  );
+};

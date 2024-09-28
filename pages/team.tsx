@@ -1,7 +1,7 @@
 import Container from "@/components/layout/Container";
 import Page from "@/components/layout/Page";
 import Typography from "@/components/ui/Typography";
-import { coreTeamMembers, speakers, volunteers } from "@/data";
+import { coreTeamMembers, speakers, volunteers, hosts } from "@/data";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
@@ -17,6 +17,14 @@ function Team() {
       </Head>
       <main className="my-20 md:my-40">
         <Container id="#speakers" className="py-10">
+          <Typography variant={"h2"}>Hosts</Typography>
+          <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-8 my-12">
+            {hosts.map((host, k) => (
+              <SpeakerCard key={k} {...host} />
+            ))}
+          </div>
+        </Container>
+        <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Speakers</Typography>
           <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-8 my-12">
             {speakers.map((speaker, k) => (
@@ -27,7 +35,7 @@ function Team() {
         <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Core Team Members</Typography>
           <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-8 my-8">
-          {coreTeamMembers.map((team, k) => (
+            {coreTeamMembers.map((team, k) => (
               <SpeakerCard key={k} {...team} />
             ))}
           </div>
@@ -35,7 +43,7 @@ function Team() {
         <Container id="#speakers" className="py-10">
           <Typography variant={"h2"}>Volunteers</Typography>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 my-8">
-          {volunteers.map((team, k) => (
+            {volunteers.map((team, k) => (
               <SpeakerCard key={k} {...team} />
             ))}
           </div>

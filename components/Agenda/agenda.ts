@@ -3,88 +3,110 @@ import { Event } from "@/types";
 export const agendalist: Event[] = [
   {
     meta: {
-      title: "Registration",
-      details:
-        "Get fueled up with fellow PHP enthusiasts. Collect your event badge and tags!",
+      title: "Opening",
+      details: "Registrations and Arrival of guests",
     },
-    time: "10:00 AM - 11:00 AM",
+    time: "10:00 AM",
   },
-
   {
     meta: {
-      title: "Opening Ceremony and Icebreaker",
-      details:
-        "Kick off the day with a warm welcome and a fun icebreaker activity to get to know your fellow developers",
+      title: "Introduction of the host",
     },
     time: "11:00 AM - 11:15 AM",
   },
   {
     meta: {
-      title: "Keynote Session: Welcome to PHP",
+      title: "Organizer's Welcome Speech",
       details:
-        "Join us for an inspiring talk that delves into the latest trends and innovations in the world of PHP development.",
+        "Brief introduction to the event. Overview of the day's program, goals, and expectations. Welcoming attendees and speakers.",
     },
-    time: "11:15 AM - 12:00 PM",
+    time: "11:15 AM - 11:30 AM",
   },
   {
     meta: {
-      title: "2nd Key Note:  Why PHP?",
+      title: "Keynote Address",
+      details: "Keynote Speaker: Bosun Egbrinde. Topic: Mastering your Craft",
     },
-    time: "12:00 PM - 12:30 PM",
+    time: "11:30 AM - 12:00 PM",
   },
   {
     meta: {
-      title: "Interactive Kahoot Challenge: PHP Trivia Showdown",
+      title: "Session 1",
       details:
-        "Test your PHP knowledge in a high-energy Kahoot trivia game with exciting giveaways for the top participants.",
+        "Speaker: James John. Topic: PHP - The unsung Hero of the modern web.",
     },
-    time: "12:30 PM - 1:00 PM",
+    time: "12:00 PM - 12:25 PM",
   },
   {
     meta: {
-      title:
-        "Third Keynote: Securing your PHP Applications: Best practices and strategies",
+      title: "Session 2",
       details:
-        "Join us for an inspiring talk that delves into the latest trends and innovations in the world of PHP development.",
+        "Speaker: Solomon Eseme. Topic: Test-driven Development (TDD) in PHP: Writing Cleaner, More Reliable Code.",
     },
-    time: "1:00 PM - 1:15 PM",
+    time: "12:30 PM - 12:55 PM",
   },
   {
     meta: {
-      title: "Fourth Keynote: You won't live long enough to see PHP die",
+      title: "Session 3",
       details:
-        "Join us for an inspiring talk that delves into the latest trends and innovations in the world of PHP development.",
+        "Speaker: Utibe Etim. Topic: Building Cross-Platform Mobile Apps with Flutter and PHP Backend.",
     },
-    time: "1:15 PM - 1:45 PM",
+    time: "1:00 PM - 1:25 PM",
   },
   {
     meta: {
-      title: "15 Minutes Buffer Time",
-    },
-    time: "1:45 PM - 2:00 PM",
-  },
-  {
-    meta: {
-      title: "Showcase: There is a gun to your head, you are given this code, you have 15 minutes to solve it or get shot.",
+      title: "Session 4",
       details:
-        "What is your fate?  Award the first and correct answer!",
+        "Speaker: Rufai Mustapha. Topic: Integration with Testing with Docker.",
     },
-    time: "2:00 PM - 2:30 PM",
+    time: "1:30 PM - 1:55 PM",
   },
   {
     meta: {
-      title: "Refreshment and Networking",
+      title: "Session 5",
       details:
-        "Enjoy a delectable lunch while networking with fellow attendees, speakers, and sponsors.",
+        "Speaker: Harry Zahavi. Topic: Mastering PHP: Deliberate Practice in Rapidly Evolving Landscape.",
+    },
+    time: "2:00 PM - 2:25 PM",
+  },
+  {
+    meta: {
+      title: "Session 6",
+      details:
+        "Speaker: David Inyangetoh. Topic: Becoming a lifelong Apprentice of Bugs.",
+    },
+    time: "2:30 PM - 2:55 PM",
+  },
+  {
+    meta: {
+      title: "Games! Games!! Games!!!",
     },
     time: "2:30 PM - 2:45 PM",
   },
   {
     meta: {
-      title: "Closing Ceremony and Giveaways",
-      details:
-        "Wrap up the day with a recap of the highlights, announce contest winners, and distribute exciting giveaways.",
+      title: "Showcase",
     },
     time: "2:45 PM - 3:00 PM",
+  },
+  {
+    meta: {
+      title: "Breakout Session",
+      details:
+        "Introduction to PHP - Favour Akpan (Beginner). Developing APIs for Mobile Apps with PHP and Laravel - Editiong Udoh. Building a Robust CI/CD Pipeline for Zero downtime development of PHP Apps - Anifowose Tobi.",
+    },
+    time: "3:00 PM - 3:45 PM",
+  },
+  {
+    meta: {
+      title: "Sponsors Session",
+    },
+    time: "3:45 PM - 4:15 PM",
+  },
+  {
+    meta: {
+      title: "Photo Session, Connect and Network - Closing",
+    },
+    time: "4:15 PM",
   },
 ];

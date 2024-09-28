@@ -4,29 +4,77 @@ export const speakers: {
   image: string;
 }[] = [
   {
-    name: "Elisha Ukpong",
+    name: "Bosun Egberinde",
     designation: "Software Engineer",
-    image: "team/elisha.jpeg",
+    image: "speakers/Bosun.jpeg",
   },
   {
-    name: "Daniel Mabadeje",
-    designation: "Co-Founder PHP Talks, Software Engineer",
-    image: "team/daniel.jpeg",
+    name: "Stephen Jude",
+    designation: "CT0, Pay4Me",
+    image: "speakers/Stephen.jpeg",
   },
-  {
-    name: "Precious Tom",
-    designation: "Software Engineer",
-    image: "speakers/precious-tom.jpeg",
-  },
-  {
-    name: "Alexandar Garuba",
-    designation: "Software Engineer",
-    image: "speakers/alexandar-garuba.jpeg",
-  },
+  // {
+  //   name: "Daniel Mabadeje",
+  //   designation: "Co-Founder PHP Talks, Software Engineer",
+  //   image: "hosts/Cleophas.jpg",
+  // },
   {
     name: "David Inyang-Etoh",
     designation: "Senior Software Engineer, Receeve GmBH, Germany",
-    image: "speakers/david-inyangetoh.jpeg",
+    image: "speakers/David2.jpeg",
+  },
+
+  {
+    name: "Edidiong Udoh",
+    designation: "Fullstack Developer, Tuzapay",
+    image: "speakers/Edidiong.jpeg",
+  },
+  {
+    name: "Favour Akpan",
+    designation: "Software Engineer",
+    image: "speakers/Favour.jpg",
+  },
+  {
+    name: "Solomon Eseme",
+    designation: "Software Engineer",
+    image: "speakers/Solomon.jpeg",
+  },
+  {
+    name: "Kyrian Obikwelu",
+    designation: "Software Engineer, Transformers PHP",
+    image: "speakers/Kyrian.jpeg",
+  },
+  {
+    name: "Joseph Chimezie",
+    designation: "Senior Software, Startease",
+    image: "speakers/Joseph.jpeg",
+  },
+  {
+    name: "Harry Zahavi",
+    designation: "CEO, Coderigi",
+    image: "speakers/Zahavi.jpg",
+  },
+  {
+    name: "Tobi Anifowose",
+    designation: "Senior Software, Internet Brand",
+    image: "speakers/tobi.png",
+  },
+];
+
+export const hosts: {
+  name: string;
+  designation: string;
+  image: string;
+}[] = [
+  {
+    name: "Cleophas Success",
+    designation: "",
+    image: "hosts/Cleophas.jpg",
+  },
+  {
+    name: "Chris Eminence",
+    designation: "",
+    image: "hosts/ChrisEminence.jpg",
   },
 ];
 
@@ -60,8 +108,6 @@ export const coreTeamMembers: {
     designation: "Visual Designer",
     image: "team/victor.jpeg",
   },
- 
- 
 ];
 
 export const volunteers: {
@@ -123,14 +169,5 @@ export const volunteers: {
     name: "Jewel Omon",
     designation: "Content Team",
     image: "volunteers/jewel-omon.jpeg",
-  },
-  {
-    name: "Favour Gabriel",
-    designation: "Software Developer",
-    image: "volunteers/favour-gabriel.jpeg",
-  }, {
-    name: "Loveday Richman",
-    designation: "Backend Developer",
-    image: "volunteers/loveday-richman.jpg",
   },
 ];
