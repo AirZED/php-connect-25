@@ -36,8 +36,7 @@ export default function Hero() {
                 <div className="py-10 lg:my-10">
                   <Link
                     className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-12 py-4 rounded-full"
-                    href={"/"}
-                  >
+                    href={"https://youtube.com/live/V1vs1tCdc_k?feature=share"}
                     Join Live
                   </Link>
                 </div>
