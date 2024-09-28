@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <Page>
       <Head>
-        <title>PHPConnect - A PHP Talks Conference 2023 </title>
+        <title>PHPConnect - A PHP Talks Conference 2024 </title>
       </Head>
       <main>
         <Hero />
