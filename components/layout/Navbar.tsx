@@ -66,9 +66,7 @@ export default function Navbar() {
         </div>
         <Link
           className="hidden md:inline text-lg leading-6 font-medium font-heading text-black bg-secondary px-10 py-3 rounded-3xl"
-          href={
-            "https://docs.google.com/forms/d/e/1FAIpQLSeC2iB6tyhRkuBFmn56cR9nd9S27L7U66qCiK_R9G9VR6IDKw/viewform"
-          }
+          href={"https://youtube.com/live/V1vs1tCdc_k?feature=share"}
           target="_blank"
         >
           Join Live
