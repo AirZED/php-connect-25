@@ -37,21 +37,28 @@ export default function Countdown() {
         <Reveal width="100%">
           <div className="flex flex-col gap-y-16 md:flex-row justify-between px-10 py-24 lg:py-28">
             <div className="flex flex-col items-center gap-y-4 text-center">
-              <Typography variant={"h3"}>200+</Typography>
+              <Typography variant={"h3"}>700+</Typography>
               <Typography variant={"p"} className="md:text-2xl font-normal">
                 Attendees 👦👩🏿‍
               </Typography>
             </div>
             <div className="flex flex-col items-center gap-y-4 text-center">
-              <Typography variant={"h3"}>5</Typography>
+              <Typography variant={"h3"}>12</Typography>
               <Typography variant={"p"} className="md:text-2xl font-normal">
                 Speakers
               </Typography>
             </div>
             <div className="flex flex-col items-center gap-y-4 text-center">
-              <Typography variant={"h3"}>4</Typography>
+              <Typography variant={"h3"}>5</Typography>
               <Typography variant={"p"} className="md:text-2xl font-normal">
-                Sessions
+                Breakout Sessions
+              </Typography>
+            </div>
+
+            <div className="flex flex-col items-center gap-y-4 text-center">
+              <Typography variant={"h3"}>22</Typography>
+              <Typography variant={"p"} className="md:text-2xl font-normal">
+                Sponsors
               </Typography>
             </div>
           </div>

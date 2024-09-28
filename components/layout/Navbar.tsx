@@ -8,10 +8,7 @@ export const navigation: { href: string; text: string }[] = [
     text: "SPEAKERS",
     href: "/team#speakers",
   },
-  {
-    text: "SPONSORS",
-    href: "/sponsor",
-  },
+
   {
     text: "AGENDA",
     href: "/agenda",
@@ -65,7 +62,6 @@ export default function Navbar() {
         </Link>
         <div className="hidden md:flex justify-between gap-x-[50px]">
           <NavLink href={"/team#speakers"}>SPEAKERS</NavLink>
-          <NavLink href={"/sponsor"}>SPONSORS</NavLink>
           <NavLink href={"/agenda"}>AGENDA</NavLink>
         </div>
         <Link
@@ -75,9 +71,12 @@ export default function Navbar() {
           }
           target="_blank"
         >
-          Register
+          Join Live
         </Link>
-        <button onClick={() => toggleNav(true)}  className="md:hidden text-white">
+        <button
+          onClick={() => toggleNav(true)}
+          className="md:hidden text-white"
+        >
           <Bars3 />
         </button>
       </div>

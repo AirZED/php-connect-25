@@ -14,25 +14,13 @@ export default function Sponsors() {
           children={
             <>
               <Image
-                src={"/images/sponsors/lite-host.jpeg"}
+                src={"/images/sponsors/Gold/notion.png"}
                 width={290}
                 height={290}
                 alt=""
               />
               <Image
-                src={"/images/sponsors/irun.png"}
-                width={290}
-                height={290}
-                alt=""
-              />
-              <Image
-                src={"/images/sponsors/pay4me-app.jpeg"}
-                width={290}
-                height={290}
-                alt=""
-              />
-              <Image
-                src={"/images/sponsors/open-table-mentorship.png"}
+                src={"/images/sponsors/Gold/marvy.png"}
                 width={290}
                 height={290}
                 alt=""

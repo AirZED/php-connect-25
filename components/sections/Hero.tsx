@@ -22,18 +22,14 @@ export default function Hero() {
             <Container className="max-h-[463px] w-full md:mt-40 flex flex-col items-center md:items-start">
               <div className="flex justify-center lg:justify-start relative text-center md:text-left">
                 <Reveal width="100%">
-                  <Typography variant={"h2"} className="[line-height:normal] ">
-                    Inspiring the PHP Renaissance: Building Tomorrow’s Web
+                  <Typography
+                    variant={"h2"}
+                    className="[line-height:normal] md:leading-[125%]"
+                  >
+                    PHPConnect' 24 <br />
+                    Mastering the Craft
                   </Typography>
                 </Reveal>
-
-                <Image
-                  src={"/images/date-ring.png"}
-                  width={175}
-                  height={175}
-                  className="hidden md:block absolute right-0 bottom-0"
-                  alt="Date"
-                />
               </div>
 
               <Reveal>
@@ -42,7 +38,7 @@ export default function Hero() {
                     className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-12 py-4 rounded-full"
                     href={"/"}
                   >
-                    Register
+                    Join Live
                   </Link>
                 </div>
               </Reveal>
@@ -61,20 +57,13 @@ export default function Hero() {
                     Now We Want To Connect Physically With You.
                   </Typography>
                 </div>
-                <Image
-                  src={"/images/date-ring.png"}
-                  width={175}
-                  height={175}
-                  className="hidden md:block absolute right-0 bottom-0"
-                  alt="Date"
-                />
               </div>
               <div className="my-10">
                 <Link
                   className="text-lg leading-6 font-medium font-heading text-black bg-secondary px-12 py-4 rounded-full"
                   href={"/"}
                 >
-                  Register
+                  Join Live
                 </Link>
               </div>
             </Container>
