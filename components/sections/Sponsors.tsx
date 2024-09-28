@@ -26,25 +26,25 @@ export default function Sponsors() {
 
         <SponsorType name="Diamond">
           <Image
-            src={"/images/sponsors/lite-host.jpeg"}
+            src={"/images/sponsors/Diamond/wkd.png"}
             width={290}
             height={290}
             alt=""
           />
           <Image
-            src={"/images/sponsors/irun.png"}
+            src={"/images/sponsors/Diamond/AGNimble.png"}
             width={290}
             height={290}
             alt=""
           />
           <Image
-            src={"/images/sponsors/pay4me-app.jpeg"}
+            src={"/images/sponsors/Diamond/reggie.png"}
             width={290}
             height={290}
             alt=""
           />
           <Image
-            src={"/images/sponsors/open-table-mentorship.png"}
+            src={"/images/sponsors/Diamond/Venhoot.png"}
             width={290}
             height={290}
             alt=""
@@ -53,25 +53,49 @@ export default function Sponsors() {
 
         <SponsorType name="Silver">
           <Image
-            src={"/images/sponsors/lite-host.jpeg"}
+            src={"/images/sponsors/Silver/Middey.png"}
             width={290}
             height={290}
             alt=""
           />
           <Image
-            src={"/images/sponsors/irun.png"}
+            src={"/images/sponsors/Silver/Litehost.png"}
             width={290}
             height={290}
             alt=""
           />
           <Image
-            src={"/images/sponsors/pay4me-app.jpeg"}
+            src={"/images/sponsors/Silver/teller.png"}
             width={290}
             height={290}
             alt=""
           />
           <Image
-            src={"/images/sponsors/open-table-mentorship.png"}
+            src={"/images/sponsors/Silver/Viction.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+          <Image
+            src={"/images/sponsors/Silver/phpsandbox.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+          <Image
+            src={"/images/sponsors/Silver/Frontier.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+          <Image
+            src={"/images/sponsors/Silver/DigitalNERD.png"}
+            width={290}
+            height={290}
+            alt=""
+          />
+          <Image
+            src={"/images/sponsors/Silver/coderigi.png"}
             width={290}
             height={290}
             alt=""
