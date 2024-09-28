@@ -3,29 +3,29 @@ import React, { ComponentProps, useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
-  children: JSX.Element|JSX.Element[]|string;
+  children: JSX.Element | JSX.Element[] | string;
   width?: "fit-content" | "100%";
   className?: string;
-  delay?:number,
-  overflow?:string
+  delay?: number;
+  overflow?: string;
 }
 export default function Reveal({
   children,
   width = "fit-content",
   className,
-  delay=0.25,
-  overflow="hidden"
+  delay = 0.25,
+  overflow = "hidden",
 }: Props) {
   const ref = useRef(null);
-  const isInview = useInView(ref,{once:false});
+  const isInview = useInView(ref, { once: false });
 
   const mainControls = useAnimation();
 
-  useEffect(()=>{
-    if(isInview){
-        mainControls.start("visible")
+  useEffect(() => {
+    if (isInview) {
+      mainControls.start("visible");
     }
-  },[isInview])
+  }, [isInview, mainControls]);
   return (
     <div
       ref={ref}

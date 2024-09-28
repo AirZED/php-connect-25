@@ -26,7 +26,7 @@ export default function Hero() {
                     variant={"h2"}
                     className="[line-height:normal] md:leading-[125%]"
                   >
-                    PHPConnect' 24 <br />
+                    {`PHPConnect' 24`} <br />
                     Mastering the Craft
                   </Typography>
                 </Reveal>

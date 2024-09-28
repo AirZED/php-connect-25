@@ -12,7 +12,7 @@ function Team() {
       <Head>
         <title>
           Speakers | Team Members | Volunteers - PHPConnect - A PHP Talks
-          Conference 2023{" "}
+          Conference 2024{" "}
         </title>
       </Head>
       <main className="my-20 md:my-40">

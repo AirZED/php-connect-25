@@ -10,7 +10,7 @@ export default function AgendaPage() {
   return (
     <Page>
       <Head>
-        <title>Agenda - PHPConnect - A PHP Talks Conference 2023 </title>
+        <title>Agenda - PHPConnect - A PHP Talks Conference 2024 </title>
       </Head>
       <main className="my-20 lg:my-40">
         <Container className="py-10 flex flex-col gap-y-[15px]">
@@ -24,7 +24,7 @@ export default function AgendaPage() {
           </Typography> */}
         </Container>
         <Container>
-          <Agenda event={agendalist}/>
+          <Agenda event={agendalist} />
         </Container>
       </main>
     </Page>
