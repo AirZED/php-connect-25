@@ -19,7 +19,7 @@ Welcome to the PHPConnect website repository! This website is built using Next.j
 To run this project locally, follow these steps:
 
 1. Clone this repository:
-git clone https://github.com/PHPTalks/php-connect.git
+git clone https://github.com/PHPTalks/php-connect-24.git
 
 
 2. Navigate to the project directory:
