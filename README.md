@@ -71,4 +71,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have any questions or need further information, feel free to contact us at [contact@phptalks.community](mailto:contact@phptalks.community).
 
-Thank you for your interest in PHPConnect! We look forward to your involvement and hope you enjoy building and using this website.
+Thank you for your interest in PHPConnect! We look forward to your involvement and hope you enjoy building and using this website.   
