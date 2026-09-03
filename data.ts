@@ -179,6 +179,113 @@ export const faqs: {
   },
 ];
 
+export type ScheduleSpeaker = {
+  name: string;
+  affiliation?: string;
+  image?: string;
+};
+
+export type ScheduleSession = {
+  title: string;
+  description?: string;
+  time: string;
+  speakers?: ScheduleSpeaker[];
+};
+
+export const schedule: ScheduleSession[] = [
+  {
+    title: "Opening",
+    description: "Registrations and arrival of guests.",
+    time: "10:00 AM",
+  },
+  {
+    title: "Introduction of the Host",
+    time: "11:00 AM",
+    speakers: [
+      { name: "Cleophas Success", image: "hosts/Cleophas.jpg" },
+      { name: "Chris Eminence", image: "hosts/ChrisEminence.jpg" },
+    ],
+  },
+  {
+    title: "Organizer's Welcome Speech",
+    description:
+      "Brief introduction to the event, overview of the day's program, goals, and expectations.",
+    time: "11:15 AM",
+  },
+  {
+    title: "Keynote Address",
+    description: "Mastering your Craft.",
+    time: "11:30 AM",
+    speakers: [{ name: "Bosun Egberinde", affiliation: "Software Engineer", image: "speakers/Bosun.jpeg" }],
+  },
+  {
+    title: "PHP, the Unsung Hero of the Modern Web",
+    time: "12:00 PM",
+    speakers: [{ name: "James John" }],
+  },
+  {
+    title: "Test-Driven Development in PHP",
+    description: "Writing cleaner, more reliable code.",
+    time: "12:30 PM",
+    speakers: [{ name: "Solomon Eseme", affiliation: "Software Engineer", image: "speakers/Solomon.jpeg" }],
+  },
+  {
+    title: "Building Cross-Platform Mobile Apps",
+    description: "Flutter with a PHP backend.",
+    time: "1:00 PM",
+    speakers: [{ name: "Utibe Etim" }],
+  },
+  {
+    title: "Integration Testing with Docker",
+    time: "1:30 PM",
+    speakers: [{ name: "Rufai Mustapha" }],
+  },
+  {
+    title: "Mastering PHP",
+    description: "Deliberate practice in a rapidly evolving landscape.",
+    time: "2:00 PM",
+    speakers: [{ name: "Harry Zahavi", affiliation: "CEO, Coderigi", image: "speakers/Zahavi.jpg" }],
+  },
+  {
+    title: "Becoming a Lifelong Apprentice of Bugs",
+    time: "2:30 PM",
+    speakers: [
+      {
+        name: "David Inyang-Etoh",
+        affiliation: "Senior Software Engineer, Receeve GmBH",
+        image: "speakers/David2.jpeg",
+      },
+    ],
+  },
+  {
+    title: "Games! Games!! Games!!!",
+    time: "2:30 PM",
+  },
+  {
+    title: "Showcase",
+    time: "2:45 PM",
+  },
+  {
+    title: "Breakout Sessions",
+    description: "Three parallel tracks running side by side.",
+    time: "3:00 PM",
+    speakers: [
+      { name: "Favour Akpan", affiliation: "Introduction to PHP (Beginner)", image: "speakers/Favour.jpg" },
+      { name: "Edidiong Udoh", affiliation: "Building APIs with Laravel", image: "speakers/Edidiong.jpeg" },
+      { name: "Tobi Anifowose", affiliation: "CI/CD for Zero-Downtime PHP", image: "speakers/tobi.png" },
+    ],
+  },
+  {
+    title: "Sponsors Session",
+    time: "3:45 PM",
+  },
+  {
+    title: "Closing",
+    description: "Photo session, connect and network.",
+    time: "4:15 PM",
+  },
+];
+
 export const volunteers: {
   name: string;
   designation: string;

@@ -16,6 +16,7 @@ const config: Config = {
         "connect-pattern": 'url("/images/backgrounds/connect-pattern.png")',
         "connect-pattern-2": 'url("/images/backgrounds/connect-pattern-2.png")',
         "connect-pattern-3": 'url("/images/backgrounds/connect-pattern-3.png")',
+        "hero-photo": 'url("/images/backgrounds/hero-3.png")',
       },
       colors: {
         primary: "#170F36",

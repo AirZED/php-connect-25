@@ -7,6 +7,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Countdown from "@/components/sections/Countdown";
 import Speakers from "@/components/sections/Speakers";
+import Schedule from "@/components/sections/Schedule";
 import Team from "@/components/sections/Team";
 import Page from "@/components/layout/Page";
 import SponsorsPartners from "@/components/sections/SponsorsPartners";
@@ -21,7 +22,7 @@ export default function Home() {
         <title>PHPConnect - A PHP Talks Conference 2024 </title>
       </Head>
       <main>
-        {/* <Hero /> */}
+        <Hero />
         {/* <About /> */}
         {/* <div className="relative w-
         full h-[284px] hidden lg:block">
@@ -34,6 +35,7 @@ export default function Home() {
         </div> */}
         {/* <Countdown /> */}
         <Speakers />
+        <Schedule />
         <SponsorsPartners />
         <Gallery />
         <FAQ />

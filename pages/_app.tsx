@@ -4,12 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
+import { almarai } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={router.pathname}>
+      <motion.div key={router.pathname} className={cn(almarai.variable)}>
         <Component {...pageProps} />
         <Analytics />
         <motion.div
