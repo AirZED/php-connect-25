@@ -1,76 +1,36 @@
 import React from "react";
-import { Splide, SplideSlide } from "../Splide";
 import Image from "next/image";
-import Typography from "../ui/Typography";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { speakers } from "@/data";
 
 export default function Speakers() {
   return (
-    <div className="my-9 space-y-7 md:space-y-12">
-      <Container className="space-y-6 md:space-y-14">
-        <div className="lg:max-w-[895px] flex flex-col gap-y-6">
+    <section className="bg-paper py-16 md:py-24">
+      <Container className="space-y-10 md:space-y-16">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr] md:gap-10">
           <Reveal>
-            <Typography variant={"h2"}>Meet Our Speakers</Typography>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
+              Speakers
+            </span>
           </Reveal>
           <Reveal>
-            <Typography variant={"h6"} className="font-sans">
-              PHP Connect is an annual event that is organised by PHPTALKS, with
-              the sole purpose of engaging techies through physical connections,
-              and fostering learning.
-            </Typography>
+            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-4xl lg:text-[42px]">
+              From core contributors to industry innovators, showcasing the
+              best of the PHP ecosystem.
+            </h2>
           </Reveal>
         </div>
-      </Container>
 
-      <Reveal width="100%">
-        <Container className="grid grid-cols-2 gap-y-4  md:hidden ">
-          {speakers.map((speaker, k) => (
-            <SpeakerCard key={k} {...speaker} />
-          ))}
-        </Container>
-      </Reveal>
-      <Reveal width="100%">
-        <Splide
-          className="my-4 hidden md:block"
-          options={{
-            arrows: false,
-            autoplay: false,
-            perPage: 3.4,
-            trimspace: false,
-            padding: 97,
-            gap: "30px",
-            drag: "free",
-            snap: true,
-            focus: "center",
-            pagination: false,
-            breakpoints: {
-              360: {
-                padding: 5,
-                perPage: 1.02,
-                gap: 3,
-              },
-              390: {
-                padding: 27,
-                perPage: 1.05,
-              },
-              320: {
-                padding: 27,
-                perPage: 0.9,
-                // gap:1
-              },
-            },
-          }}
-        >
-          {speakers.map((speaker, k) => (
-            <SplideSlide key={k}>
-              <SpeakerCard {...speaker} />
-            </SplideSlide>
-          ))}
-        </Splide>
-      </Reveal>
-    </div>
+        <Reveal width="100%">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8 md:gap-y-14">
+            {speakers.map((speaker, k) => (
+              <SpeakerCard key={k} {...speaker} />
+            ))}
+          </div>
+        </Reveal>
+      </Container>
+    </section>
   );
 }
 
@@ -84,27 +44,22 @@ const SpeakerCard = ({
   image: string;
 }) => {
   return (
-    <div className="w-[154.58px] h-[193px] md:w-[351px] md:h-[417px] relative rounded-[30px] overflow-hidden border-2 border-black/50">
-      <Image
-        src={`/images/${image}`}
-        fill
-        alt=""
-        className="-z-10 h-fit rounded-[30px]"
-        objectFit="cover"
-        quality={50}
-      />
-      <div className="speaker-card w-full h-full z-10 bg-opacity-25 px-3 py-4 md:px-7 md:py-9  flex justify-start items-end">
-        <div className="flex flex-col gap-y-[5px] space-y-0">
-          <Typography
-            variant={"h6"}
-            className="text-tertiary font-heading text-sm md:text-2xl font-medium my-0"
-          >
-            {name}
-          </Typography>
-          <Typography className="text-white [line-height:0;] font-heading text-[9px] md:text-base font-normal">
-            {designation}
-          </Typography>
-        </div>
+    <div className="flex flex-col gap-4">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-ink/5">
+        <Image
+          src={`/images/${image}`}
+          fill
+          alt={name}
+          className="duotone-photo object-cover"
+          sizes="(min-width: 768px) 25vw, 50vw"
+          quality={70}
+        />
+      </div>
+      <div className="flex flex-col gap-1">
+        <span className="font-heading text-lg font-medium text-ink md:text-xl">
+          {name}
+        </span>
+        <span className="text-sm text-ink/50">{designation}</span>
       </div>
     </div>
   );

@@ -3,7 +3,13 @@ import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-export default function Page({ children }: { children: ReactNode }) {
+export default function Page({
+  children,
+  hideNav = false,
+}: {
+  children: ReactNode;
+  hideNav?: boolean;
+}) {
   return (
     <>
       <main className="relative">
@@ -32,9 +38,9 @@ export default function Page({ children }: { children: ReactNode }) {
           />
           <meta property="og:type" content="website" />
         </Head>
-        <Navbar />
+        {/* {!hideNav && <Navbar />} */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   );

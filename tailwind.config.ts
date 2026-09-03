@@ -22,10 +22,17 @@ const config: Config = {
         tertiary: "#61CE70",
         secondary: "#FFAA22",
         "not-white": "#E9F7FF",
+        accent: "#6C4CF4",
+        "accent-dark": "#5636D6",
+        ink: "#0A0A0D",
+        paper: "#F3F0FA",
       },
       fontFamily: {
         heading: ["Bagoss Standard"],
-        sans: ["PHP Connect Pro", "sans-serif"],
+        display: ["ClashDisplay", "sans-serif"],
+        sans: ["var(--font-almarai)", "sans-serif"],
+        primary: ["var(--font-almarai)", "sans-serif"],
+        secondary: ["ClashDisplay", "sans-serif"],
       },
       screens: {
         "3xl": "1366px",

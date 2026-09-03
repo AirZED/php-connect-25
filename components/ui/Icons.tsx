@@ -13,6 +13,63 @@ export const WhatsappIcon = () => (
   </svg>
 );
 
+export const Bolt = ({ className }: { className?: string }) => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M8.9 1 3 9.2h3.5L6.1 15 13 6.4H9.3L8.9 1Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const CalendarIcon = ({ className }: { className?: string }) => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <rect
+      x="2"
+      y="3"
+      width="12"
+      height="11"
+      rx="2"
+      stroke="currentColor"
+      strokeWidth="1.4"
+    />
+    <path d="M2 6.5H14" stroke="currentColor" strokeWidth="1.4" />
+    <path d="M5 1.5V4M11 1.5V4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+  </svg>
+);
+
+export const PlusIcon = ({ className }: { className?: string }) => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M9 2V16M2 9H16"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 export const Bars3 = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
