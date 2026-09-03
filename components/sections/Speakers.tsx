@@ -10,7 +10,7 @@ export default function Speakers() {
       <Container className="space-y-10 md:space-y-16">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr] md:gap-10">
           <Reveal>
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
+            <span className="font-secondary text-xs font-normal uppercase leading-none tracking-[1px] text-ink/50">
               Speakers
             </span>
           </Reveal>

@@ -9,6 +9,7 @@
 } */
 @import url("./style.css");
 @import url("./css/clash-display.css");
+@import url("./css/geist-mono.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

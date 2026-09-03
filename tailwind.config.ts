@@ -33,6 +33,7 @@ const config: Config = {
         sans: ["var(--font-almarai)", "sans-serif"],
         primary: ["var(--font-almarai)", "sans-serif"],
         secondary: ["ClashDisplay", "sans-serif"],
+        mono: ["Geist Mono", "monospace"],
       },
       screens: {
         "3xl": "1366px",

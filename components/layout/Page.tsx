@@ -40,7 +40,7 @@ export default function Page({
         </Head>
         {/* {!hideNav && <Navbar />} */}
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </main>
     </>
   );

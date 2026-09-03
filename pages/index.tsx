@@ -8,11 +8,11 @@ import About from "@/components/sections/About";
 import Countdown from "@/components/sections/Countdown";
 import Speakers from "@/components/sections/Speakers";
 import Team from "@/components/sections/Team";
-import Footer from "@/components/layout/Footer";
 import Page from "@/components/layout/Page";
 import SponsorsPartners from "@/components/sections/SponsorsPartners";
 import FAQ from "@/components/sections/FAQ";
 import YearBanner from "@/components/sections/YearBanner";
+import Gallery from "@/components/sections/Gallery";
 
 export default function Home() {
   return (
@@ -35,6 +35,7 @@ export default function Home() {
         {/* <Countdown /> */}
         <Speakers />
         <SponsorsPartners />
+        <Gallery />
         <FAQ />
         <YearBanner />
 

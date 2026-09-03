@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Container from "../layout/Container";
-import { Bars3, Bolt, CalendarIcon } from "../ui/Icons";
+import { Bars3, CalendarIcon } from "../ui/Icons";
 
 // TODO: confirm the real PHP Connect '26 date and swap it in here.
 const EVENT_DATE = "2026-11-20T09:00:00";
@@ -115,12 +115,12 @@ const LogoMark = () => (
   </Link>
 );
 
-const RegisterButton = ({ className = "" }: { className?: string }) => (
+export const RegisterButton = ({ className = "" }: { className?: string }) => (
   <Link
     href="/#register"
     className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-accent-dark ${className}`}
   >
-    <Bolt />
+    <Image src="/images/icons/register.png" alt="" width={16} height={16} />
     Register Now
   </Link>
 );

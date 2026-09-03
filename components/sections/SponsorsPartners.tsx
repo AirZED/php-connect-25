@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Container from "../layout/Container";
 import { cn } from "@/lib/utils";
-import { Bolt } from "../ui/Icons";
 
 type Tab = "sponsors" | "partners";
 
@@ -25,7 +24,7 @@ export default function SponsorsPartners() {
             href="/sponsor"
             className="flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-dark"
           >
-            <Bolt />
+            <Image src="/images/icons/register.png" alt="" width={16} height={16} />
             Become a Sponsor
           </a>
         </div>

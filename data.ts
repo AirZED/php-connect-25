@@ -78,6 +78,49 @@ export const hosts: {
   },
 ];
 
+export const galleryGroups: {
+  edition: string;
+  caption: string;
+  images: string[];
+}[] = [
+  {
+    edition: "PHP Connect '23",
+    caption:
+      "Where it all started — a first look at the talks, demos, and the community that showed up for it.",
+    images: [
+      "speakers/Bosun.jpeg",
+      "speakers/Stephen.jpeg",
+      "speakers/David2.jpeg",
+      "speakers/Solomon.jpeg",
+      "backgrounds/hero-3.png",
+    ],
+  },
+  {
+    edition: "PHP Connect '24",
+    caption:
+      "A bigger crowd and bolder talks — recapping a weekend that pushed the PHP community forward.",
+    images: [
+      "speakers/Kyrian.jpeg",
+      "speakers/Joseph.jpeg",
+      "speakers/Zahavi.jpg",
+      "speakers/Edidiong.jpeg",
+      "backgrounds/hero-3.png",
+    ],
+  },
+  {
+    edition: "PHP Connect '25",
+    caption:
+      "The community keeps growing — another year of new faces, deeper conversations, and PHP done right.",
+    images: [
+      "speakers/Rufai.jpeg",
+      "speakers/Utibe.jpeg",
+      "speakers/James.jpg",
+      "speakers/David1.jpeg",
+      "backgrounds/hero-3.png",
+    ],
+  },
+];
+
 export const coreTeamMembers: {
   name: string;
   designation: string;
