@@ -1,67 +1,42 @@
-import Image from "next/image";
-import Link, { LinkProps } from "next/link";
-import React from "react";
-import Typography from "../ui/Typography";
-import { WhatsappIcon } from "../ui/Icons";
+import Link from "next/link";
 import Container from "./Container";
-import Reveal from "../animation/Reveal";
+
+const SOCIAL_LINKS: { href: string; text: string }[] = [
+  { href: "https://twitter.com/PHPTalks", text: "Twitter" },
+  { href: "#", text: "LinkedIn" },
+  { href: "#", text: "Facebook" },
+  { href: "https://chat.whatsapp.com/BygvFuDVOCO3zEtfNRbkuc", text: "Whatsapp" },
+];
 
 export default function Footer() {
   return (
-    <Container className="mt-9 md:mt-12 lg:mt-16">
-      <Reveal width="100%">
-        <div className="flex text-center flex-col justify-center items-center gap-y-2 gap-x-3 py-12 md:py-20 bg-connect-pattern-2 md:bg-connect-pattern-3 bg-contain bg-[#6549F51A] rounded-[30px] bg-opacity-50">
-          <Typography variant={"h4"} className="">
-            Become a World Class PHP Developer
-          </Typography>
-          <Typography>
-            Join our PHP Talks Community and meet creative and passionate
-            developers.
-          </Typography>
-          <Link target="blank" href={"https://chat.whatsapp.com/BygvFuDVOCO3zEtfNRbkuc"} className="flex items-center gap-x-3">
-            <WhatsappIcon />
-            <Typography variant={"h6"} className="text-lg font-medium">
-              Join on WhatsApp
-            </Typography>
-          </Link>
-        </div>
-      </Reveal>
-      <footer className=" z-20 w-full py-6">
-        <Reveal width="100%">
-          <div className="max-w-[1440px] md:px-10 xl:px-16 mx-auto flex flex-col md:flex-row justify-start md:justify-between md:items-center gap-y-12 md:my-10 md:p-6 md:bg-black py-5 rounded-full">
-            <Link href={"/"}>
-              <Image
-                src={"/images/logo-white.svg"}
-                width={77.48}
-                height={55}
-                alt="PHP connect"
-                className="w-[50.7px] h-[36px] md:w-[77.48px] md:h-[55px]"
-              />
+    <footer className="bg-paper">
+      <Container className="flex flex-wrap items-center justify-between gap-4 py-8">
+        <nav className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[14px] font-normal leading-none tracking-normal text-ink">
+          {SOCIAL_LINKS.map((link) => (
+            <Link
+              key={link.text}
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              className="hover:text-ink/60"
+            >
+              {link.text}
             </Link>
-            <div className="flex flex-col md:flex-row justify-between gap-x-[50px] gap-y-10">
-              <NavLink href={"/team#speakers"}>SPEAKERS</NavLink>
-              <NavLink href={"/sponsor"}>SPONSORS</NavLink>
-              <NavLink href={"/agenda"}>AGENDA</NavLink>
-            </div>
+          ))}
+        </nav>
+        <span className="font-mono text-sm text-ink/70">
+          &copy; {new Date().getFullYear()} PHPConnect Association. All rights
+          reserved.
+        </span>
+      </Container>
 
-            <span className="text-gray-400 font-heading">
-              &copy; {new Date().getFullYear()} PHP Talks
-            </span>
-          </div>
-        </Reveal>
-      </footer>
-    </Container>
+      <Container>
+        <h2 className="font-secondary text-[15vw] font-bold uppercase leading-none tracking-normal text-ink md:text-[9vw] lg:text-[130px]">
+          PHPConnect &lsquo;26
+        </h2>
+      </Container>
+
+      <div className="h-[12.5vw] max-h-[180px] w-full bg-[#EF8510]" />
+    </footer>
   );
 }
-
-const NavLink = (
-  props: LinkProps & { children: string | JSX.Element | JSX.Element[] }
-) => (
-  <Link
-    className="text-lg leading-6 max-w-max font-medium font-heading text-white uppercase    flex flex-col group"
-    {...props}
-  >
-    <span>{props.children}</span>
-    <span className="group-hover:w-full md:group-hover:w-full transition-all w-0 h-1 bg-white"></span>
-  </Link>
-);

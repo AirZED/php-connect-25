@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import Head from "next/head";
 import Container from "@/components/layout/Container";
 import Typography from "@/components/ui/Typography";
@@ -9,12 +8,11 @@ import About from "@/components/sections/About";
 import Countdown from "@/components/sections/Countdown";
 import Speakers from "@/components/sections/Speakers";
 import Team from "@/components/sections/Team";
-import Footer from "@/components/layout/Footer";
 import Page from "@/components/layout/Page";
-import Sponsors from "@/components/sections/Sponsors";
-import Partners from "@/components/sections/Partners";
-
-const inter = Inter({ subsets: ["latin"] });
+import SponsorsPartners from "@/components/sections/SponsorsPartners";
+import FAQ from "@/components/sections/FAQ";
+import YearBanner from "@/components/sections/YearBanner";
+import Gallery from "@/components/sections/Gallery";
 
 export default function Home() {
   return (
@@ -23,20 +21,23 @@ export default function Home() {
         <title>PHPConnect - A PHP Talks Conference 2024 </title>
       </Head>
       <main>
-        <Hero />
-        <About />
-        <div className="relative w-full h-[284px] hidden lg:block">
+        {/* <Hero /> */}
+        {/* <About /> */}
+        {/* <div className="relative w-
+        full h-[284px] hidden lg:block">
           <Image
             src="/images/speakers-sessions-mix.png"
             alt="speakers-sessions-mix."
             fill
             className="h-full w-full"
           />
-        </div>
-        <Countdown />
+        </div> */}
+        {/* <Countdown /> */}
         <Speakers />
-        <Sponsors />
-        <Partners />
+        <SponsorsPartners />
+        <Gallery />
+        <FAQ />
+        <YearBanner />
 
         {/* <Team/> */}
       </main>
