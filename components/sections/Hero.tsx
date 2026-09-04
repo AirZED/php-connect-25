@@ -50,8 +50,8 @@ export default function Hero() {
                     className={cn(
                       "text-sm font-medium tracking-wide transition-colors",
                       isOverDark
-                        ? "text-white/80 hover:text-white"
-                        : "text-ink/70 hover:text-ink"
+                        ? "text-white hover:text-white"
+                        : "text-ink hover:text-ink",
                     )}
                   >
                     {text}
@@ -66,7 +66,7 @@ export default function Hero() {
                   aria-label="Open menu"
                   className={cn(
                     "lg:hidden transition-colors",
-                    isOverDark ? "text-white" : "text-ink"
+                    isOverDark ? "text-white" : "text-ink",
                   )}
                 >
                   <Bars3 />
@@ -95,7 +95,6 @@ export default function Hero() {
                   PHPConnect &apos;26
                 </h1>
                 <div className="flex items-center justify-between mt-[.3rem]">
-               
                   <p className="mt-4 max-w-md text-[1.3rem] text-white">
                     Join 1,500+ developers, engineers, and tech leaders from
                     around the globe for three days of learning, networking, and
@@ -136,7 +135,7 @@ const LogoMark = ({
       height={55}
       className={cn(
         "h-10 w-auto transition-[filter] md:h-[55px]",
-        invert && "[filter:brightness(0)]"
+        invert && "[filter:brightness(0)]",
       )}
       priority
     />
@@ -193,9 +192,7 @@ const CountdownWidget = () => {
           <div className="flex h-11 w-11 items-center justify-center rounded-full font-display text-sm font-semibold text-white md:h-14 md:w-14 md:text-[2rem]">
             {pad(value)}
           </div>
-          <span className="text-[1rem] tracking-wide text-white">
-            {label}
-          </span>
+          <span className="text-[1rem] tracking-wide text-white">{label}</span>
         </div>
       ))}
     </div>
