@@ -111,6 +111,15 @@ body::-webkit-scrollbar-thumb {
   filter: grayscale(1) contrast(1.15) brightness(0.85);
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .schedule-tab::after {
   content: "";
   position: absolute;

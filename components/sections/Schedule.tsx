@@ -7,29 +7,29 @@ export default function Schedule() {
   return (
     <section className="bg-paper py-16 md:py-24">
       <Container className="space-y-2 md:space-y-3">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr] md:gap-10">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <Reveal>
-            <span className="font-secondary text-xs font-normal uppercase leading-none tracking-[1px] text-ink/50">
+            <span className="font-secondary text-[1.5rem] font-normal uppercase leading-none tracking-[1px] text-ink/50">
               Event Schedule
             </span>
           </Reveal>
-          <Reveal>
+          <Reveal className="md:max-w-4xl">
             <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-4xl lg:text-[42px]">
-              From core contributors to industry innovators, showcasing the
-              best of the PHP ecosystem.
+              From core contributors to industry innovators, showcasing the best
+              of the PHP ecosystem.
             </h2>
           </Reveal>
         </div>
 
         <Reveal width="100%">
           <div className="relative pt-10 md:pt-12">
-            <div className="schedule-tab absolute left-1 top-0 z-10 flex items-center gap-2 rounded-[18px] bg-[#C7BFEF] px-4 py-3">
+            <div className="absolute left-0 top-0 z-10 flex h-10 w-[10rem] items-center gap-2 bg-[#C7BFEF] px-[1rem] md:h-12">
               <span className="h-2.5 w-2.5 rounded-full bg-[#22C55E]" />
               <span className="h-2.5 w-2.5 rounded-full bg-secondary" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#EF4444]" />
             </div>
 
-            <div className="rounded-[32px] bg-[#C7BFEF] p-3 md:rounded-[40px] md:p-4">
+            <div className="rounded-tr-[32px] rounded-br-[32px] rounded-bl-[32px] rounded-tl-none bg-[#C7BFEF] p-3 md:rounded-tr-[40px] md:rounded-br-[40px] md:rounded-bl-[40px] md:rounded-tl-none md:p-4">
               <div className="rounded-[24px] bg-white/90 px-5 py-2 shadow-[0_20px_60px_-30px_rgba(23,15,54,0.35)] md:rounded-[28px] md:px-8">
                 {schedule.map((session, index) => (
                   <ScheduleRow
