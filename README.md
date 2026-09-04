@@ -1,5 +1,7 @@
 # PHPConnect Website
 
+[PHPConnect](https://connect.phptalks.org)
+
 Welcome to the PHPConnect website repository! This website is built using Next.js, TailwindCSS, and TypeScript and is designed to provide information and resources for the annual PHP Connect event organized by PHPTALKS.
 
 ## About PHPConnect
