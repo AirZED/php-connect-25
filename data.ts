@@ -200,6 +200,7 @@ export const schedule: ScheduleSession[] = [
   },
   {
     title: "Introduction of the Host",
+    description: "Meet the voices guiding you through the day.",
     time: "11:00 AM",
     speakers: [
       { name: "Cleophas Success", image: "hosts/Cleophas.jpg" },
@@ -220,6 +221,7 @@ export const schedule: ScheduleSession[] = [
   },
   {
     title: "PHP, the Unsung Hero of the Modern Web",
+    description: "Why PHP still powers a huge share of the modern internet.",
     time: "12:00 PM",
     speakers: [{ name: "James John" }],
   },
@@ -237,6 +239,7 @@ export const schedule: ScheduleSession[] = [
   },
   {
     title: "Integration Testing with Docker",
+    description: "Containerized workflows for reliable, repeatable test runs.",
     time: "1:30 PM",
     speakers: [{ name: "Rufai Mustapha" }],
   },
@@ -248,6 +251,7 @@ export const schedule: ScheduleSession[] = [
   },
   {
     title: "Becoming a Lifelong Apprentice of Bugs",
+    description: "Why the best engineers never stop learning from what breaks.",
     time: "2:30 PM",
     speakers: [
       {
@@ -259,10 +263,12 @@ export const schedule: ScheduleSession[] = [
   },
   {
     title: "Games! Games!! Games!!!",
+    description: "A short, high-energy break before the breakout sessions.",
     time: "2:30 PM",
   },
   {
     title: "Showcase",
+    description: "Attendees and sponsors demo what they've been building.",
     time: "2:45 PM",
   },
   {
@@ -277,6 +283,7 @@ export const schedule: ScheduleSession[] = [
   },
   {
     title: "Sponsors Session",
+    description: "A word from the sponsors making PHP Connect possible.",
     time: "3:45 PM",
   },
   {

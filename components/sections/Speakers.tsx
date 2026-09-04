@@ -15,9 +15,9 @@ export default function Speakers() {
             </span>
           </Reveal>
           <Reveal className="md:max-w-4xl">
-            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-3xl lg:text-[40px]">
-              From core contributors to industry innovators, showcasing the
-              best of the PHP ecosystem.
+            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-[32px]">
+              From core contributors to industry innovators, showcasing the best
+              of the PHP ecosystem.
             </h2>
           </Reveal>
         </div>

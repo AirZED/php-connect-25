@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "../layout/Container";
 import { Bars3, CalendarIcon } from "../ui/Icons";
+import { cn } from "@/lib/utils";
 
 // TODO: confirm the real PHP Connect '26 date and swap it in here.
 const EVENT_DATE = "2026-11-20T09:00:00";
@@ -16,13 +17,29 @@ const NAV_LINKS: { href: string; text: string }[] = [
 
 export default function Hero() {
   const [isNavOpen, setNavOpen] = useState(false);
+  const [isOverDark, setIsOverDark] = useState(true);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!cardRef.current) return;
+      const cardBottom = cardRef.current.getBoundingClientRect().bottom;
+      setIsOverDark(cardBottom > 120);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section className="ticket-pattern-bg pb-10 md:pb-16">
       <Container className="!px-3 md:!px-8">
-        <div className="relative transform overflow-hidden rounded-t-[32px] md:rounded-t-[56px]">
-          <div className="fixed w-full z-30 w-full flex justify-between gap-4 mt-[30px] px-[2rem] h-[7.5rem]">
-            <LogoMark className="self-center" />
+        <div
+          ref={cardRef}
+          className="relative overflow-hidden rounded-t-[32px] md:rounded-t-[56px]"
+        >
+          <div className="fixed left-0 right-0 top-[30px] z-30 mx-auto flex h-[7.5rem] w-full max-w-[1440px] justify-between gap-4 px-3 md:px-8 xl:px-16">
+            <LogoMark className="self-center" invert={!isOverDark} />
 
             <div className="flex gap-[2rem] item-buttom self-start">
               <nav className="hidden lg:flex items-center gap-x-10">
@@ -30,7 +47,12 @@ export default function Hero() {
                   <Link
                     key={text}
                     href={href}
-                    className="text-sm font-medium tracking-wide text-[#2c2c2c] transition-colors "
+                    className={cn(
+                      "text-sm font-medium tracking-wide transition-colors",
+                      isOverDark
+                        ? "text-white/80 hover:text-white"
+                        : "text-ink/70 hover:text-ink"
+                    )}
                   >
                     {text}
                   </Link>
@@ -42,7 +64,10 @@ export default function Hero() {
                 <button
                   onClick={() => setNavOpen(true)}
                   aria-label="Open menu"
-                  className="text-white lg:hidden"
+                  className={cn(
+                    "lg:hidden transition-colors",
+                    isOverDark ? "text-white" : "text-ink"
+                  )}
                 >
                   <Bars3 />
                 </button>
@@ -96,14 +121,23 @@ export default function Hero() {
   );
 }
 
-const LogoMark = ({ className = "" }: { className?: string }) => (
+const LogoMark = ({
+  className = "",
+  invert = false,
+}: {
+  className?: string;
+  invert?: boolean;
+}) => (
   <Link href="/" className={`block ${className}`}>
     <Image
       src="/images/logo-white.svg"
       alt="PHP Connect"
       width={78}
       height={55}
-      className="h-10 w-auto md:h-[55px]"
+      className={cn(
+        "h-10 w-auto transition-[filter] md:h-[55px]",
+        invert && "[filter:brightness(0)]"
+      )}
       priority
     />
   </Link>

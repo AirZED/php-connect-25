@@ -27,3 +27,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.tiny-clip-triangle {
+  clip-path: path("M 0 29 Q 0 0 30 0 H 110 C 139 1 139 41 173 48 H 0 Z");
+}

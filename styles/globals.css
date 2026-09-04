@@ -120,6 +120,19 @@ body::-webkit-scrollbar-thumb {
   display: none;
 }
 
+.dash-divider {
+  background-image: repeating-linear-gradient(
+    to right,
+  #616161,
+    #616161 18px,
+    transparent 18px,
+    transparent 32px
+  );
+  background-repeat: repeat-x;
+  background-size: 32px 1px;
+  background-position: left bottom;
+}
+
 .schedule-tab::after {
   content: "";
   position: absolute;
