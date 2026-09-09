@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { speakers } from "@/data";
@@ -89,7 +90,7 @@ export default function Speakers() {
   }, []);
 
   return (
-    <section className="bg-paper py-16 md:py-[10rem] ">
+    <section id="speakers" className="bg-paper py-16 md:py-[10rem] ">
       <Container className="space-y-10 md:space-y-16">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <Reveal>
@@ -123,38 +124,59 @@ export default function Speakers() {
   );
 }
 
+export const initialsOf = (name: string) =>
+  name
+    .replace(/['"\u2019]/g, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join("");
+
 const SpeakerCard = ({
+  slug,
   name,
   designation,
   image,
   "aria-hidden": ariaHidden,
 }: {
+  slug: string;
   name: string;
   designation: string;
-  image: string;
+  image?: string;
   "aria-hidden"?: boolean;
 }) => {
   return (
-    <div
+    <Link
+      href={`/speakers/${slug}`}
       aria-hidden={ariaHidden}
-      className="flex w-[38vw] shrink-0 flex-col gap-4 sm:w-[220px]"
+      tabIndex={ariaHidden ? -1 : undefined}
+      className="group flex w-[38vw] shrink-0 flex-col gap-4 sm:w-[220px]"
     >
       <div className="relative aspect-[9/16] w-full overflow-hidden bg-ink/5">
-        <Image
-          src={`/images/${image}`}
-          fill
-          alt={name}
-          className="duotone-photo object-cover"
-          sizes="(min-width: 768px) 25vw, 50vw"
-          quality={70}
-        />
+        {image ? (
+          <Image
+            src={`/images/${image}`}
+            fill
+            alt={name}
+            className="duotone-photo object-cover"
+            sizes="(min-width: 768px) 25vw, 50vw"
+            quality={70}
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-ink/10">
+            <span className="font-display text-4xl font-bold text-ink/40">
+              {initialsOf(name)}
+            </span>
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-1">
-        <span className="font-heading text-lg font-medium text-ink md:text-xl">
+        <span className="font-heading text-lg font-medium text-ink transition-colors group-hover:text-accent md:text-xl">
           {name}
         </span>
         <span className="text-sm text-ink/50">{designation}</span>
       </div>
-    </div>
+    </Link>
   );
 };

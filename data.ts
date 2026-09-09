@@ -1,65 +1,119 @@
-export const speakers: {
+export type Speaker = {
+  /** URL segment for /speakers/[slug] — keep stable once published. */
+  slug: string;
   name: string;
   designation: string;
-  image: string;
-}[] = [
-  {
-    name: "Derick Rethan",
-    designation: "Creator, Xdebug",
-    image: "speakers/Bosun.jpeg",
-  },
-  {
-    name: "Stephen Jude",
-    designation: "CT0, Pay4Me",
-    image: "speakers/Stephen.jpeg",
-  },
-  // {
-  //   name: "Daniel Mabadeje",
-  //   designation: "Co-Founder PHP Talks, Software Engineer",
-  //   image: "hosts/Cleophas.jpg",
-  // },
-  {
-    name: "David Inyang-Etoh",
-    designation: "Senior Software Engineer, Receeve GmBH, Germany",
-    image: "speakers/David2.jpeg",
-  },
+  /** Headshot under public/images/. Falls back to an initials tile when absent. */
+  image?: string;
+  bio?: string;
+  talk?: { title: string; overview?: string };
+  socials?: {
+    linkedin?: string;
+    twitter?: string;
+    github?: string;
+    instagram?: string;
+    facebook?: string;
+    website?: string;
+  };
+};
 
+export const speakers: Speaker[] = [
   {
-    name: "Edidiong Udoh",
-    designation: "Fullstack Developer, Tuzapay",
-    image: "speakers/Edidiong.jpeg",
+    slug: "derick-rethans",
+    name: "Derick Rethans",
+    designation: "Creator, Xdebug",
+    image: "speakers/Derick.jpg",
+    bio: "Derick Rethans is a PHP internals expert and author of Xdebug. He works as an independent contractor with the PHP Foundation to improve PHP, by contributing to the project in numerous forms, such as the Date/Time Extension, Xdebug, and managing its server set-up.\n\nHe is a frequent lecturer at conferences, the author of php|architect's Guide to Date and Time Programming, and the co-author of PHP 5 Power Programming. Derick also hosted the weekly-ish PHP Internals News podcast.\n\nIn his spare time, he likes to travel, hike, and photography.",
+    talk: {
+      title: "PHP Internals Deep Dive",
+      overview:
+        "We will start by looking at how the language parser and scanner work, which convert scripts into an Abstract Syntax Tree. When then look at how PHP internal byte code is generated from this AST, and how the engine runs byte code.",
+    },
+    socials: {
+      linkedin: "https://www.linkedin.com/in/derickrethans/",
+      twitter: "https://x.com/derickr",
+    },
   },
   {
-    name: "Favour Akpan",
+    slug: "bosun-egberinde",
+    name: "Bosun Egberinde",
     designation: "Software Engineer",
-    image: "speakers/Favour.jpg",
+    image: "speakers/Bosun.jpeg",
+    talk: { title: "The Engineer and the Loop." },
+    socials: {
+      linkedin: "https://www.linkedin.com/in/bosunski/",
+      twitter: "https://x.com/bosunski",
+    },
   },
   {
-    name: "Solomon Eseme",
+    slug: "elizabeth-barron",
+    name: "Elizabeth Barron",
+    designation: "CEO, PHPFoundation",
+    image: "speakers/Elizabeth.jpeg",
+    bio: "Elizabeth Barron is the Executive Director of The PHP Foundation, an organization focused on the long term sustainability of the PHP language and ecosystem. She is a long time open source contributor and advocate with almost 30 years of experience at organizations like GitHub, Pivotal/VMWare, Sourceforge, and CHAOSS (Community Health Analytics in Open Source Software). She is also a published author, public speaker, community organizer, and award winning nature photographer. She is currently working toward achieving her MBA and she lives in Cincinnati, Ohio.",
+    talk: {
+      title: "PHPFoundation: Communities, Contribution & Opportunity",
+      overview:
+        "I'd be delighted to talk a little about the Foundation's work and how we can involve more folks from the region!",
+    },
+    socials: { linkedin: "https://www.linkedin.com/in/elizabethn/" },
+  },
+  {
+    slug: "shane-rosenthal",
+    name: "Shane Rosenthal",
+    designation: "Co Founder, NativePHP",
+    socials: { twitter: "https://x.com/ShaneDRosenthal" },
+  },
+  {
+    slug: "paul-adams-ohiani",
+    name: "Paul Adams Ohiani",
+    designation: "Senior Software Engineer, involve.me",
+    image: "speakers/Paul.png",
+    talk: {
+      title:
+        "Building an AI-Powered E2E Testing Platform: Real Bugs, Real Trade-offs, Real Lessons",
+      overview:
+        "Testsnag is an AI-powered platform that runs autonomous end-to-end tests across web, mobile, API, messaging, and SEO. You describe a user flow in plain English, and AI agents run it against your product on every release or on a schedule, catching bugs before your users do. This talk walks through what it actually took to build it: the architecture trade-offs, where AI genuinely helped (and where it didn't), and what broke in production. Practical, real-world lessons for PHP developers.",
+    },
+    socials: {
+      linkedin: "https://www.linkedin.com/in/paul-adams-ohiani/",
+      twitter: "https://x.com/ohpauladams",
+    },
+  },
+  {
+    slug: "jesutomiwa-salam",
+    name: "Jesutomiwa 'JT' Salam",
+    designation: "Senior Software Engineer, Avelis Health",
+    image: "speakers/Jesutomiwa.jpg",
+    talk: {
+      title: "Engineering in the Age of Abstraction",
+      overview:
+        "The goal of this talk is to build on Matt Stauffer's talk at Laracon 2026 by introducing a new paradigm I call Research-Oriented Engineering. It explores what it takes to build effectively in unfamiliar product domains without outsourcing the process of learning and reasoning entirely to AI. At its core, the talk is a return to what it means to be an engineer, not merely a developer or builder, and an exploration of foundational engineering principles and why they matter even more in the age of AI.",
+    },
+    socials: {
+      linkedin: "https://linkedin.com/in/jesutomiwa",
+      twitter: "https://x.com/jesutomiwajs",
+    },
+  },
+  {
+    slug: "alexander-garuba",
+    name: "Alexander Garuba",
     designation: "Software Engineer",
-    image: "speakers/Solomon.jpeg",
-  },
-  {
-    name: "Kyrian Obikwelu",
-    designation: "Software Engineer, Transformers PHP",
-    image: "speakers/Kyrian.jpeg",
-  },
-  {
-    name: "Joseph Chimezie",
-    designation: "Senior Software, Startease",
-    image: "speakers/Joseph.jpeg",
-  },
-  {
-    name: "Harry Zahavi",
-    designation: "CEO, Coderigi",
-    image: "speakers/Zahavi.jpg",
-  },
-  {
-    name: "Tobi Anifowose",
-    designation: "Senior Software, Internet Brand",
-    image: "speakers/tobi.png",
+    image: "speakers/Alexander.jpg",
+    talk: {
+      title: "From Prompt to Production: Building Better Software with AI",
+      overview:
+        "AI can help developers build faster, but writing code is only one part of building good software. This session will explore practical ways to use AI for development, debugging, testing, and problem-solving while still making sound engineering decisions. It will also cover where AI helps, where it falls short, and why developers still need to understand the code they ship.",
+    },
+    socials: {
+      linkedin: "https://www.linkedin.com/in/iamahless",
+      twitter: "https://x.com/iamahless",
+    },
   },
 ];
+
+export const getSpeakerBySlug = (slug: string) =>
+  speakers.find((speaker) => speaker.slug === slug);
 
 export const hosts: {
   name: string;
