@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { PlusIcon } from "../ui/Icons";
@@ -48,7 +48,7 @@ export default function FAQ() {
                   >
                     <div className="overflow-hidden">
                       <p className="max-w-2xl text-sm text-ink/60 md:text-base">
-                        {faq.answer}
+                        {renderAnswer(faq.answer)}
                       </p>
                     </div>
                   </div>
@@ -61,3 +61,33 @@ export default function FAQ() {
     </section>
   );
 }
+
+// Answers may embed links as [label](href); everything else is plain text.
+const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+const renderAnswer = (answer: string) => {
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  LINK_PATTERN.lastIndex = 0;
+  while ((match = LINK_PATTERN.exec(answer)) !== null) {
+    const [full, label, href] = match;
+    if (match.index > lastIndex) parts.push(answer.slice(lastIndex, match.index));
+    parts.push(
+      <a
+        key={match.index}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-accent underline underline-offset-2 transition hover:text-accent-dark"
+      >
+        {label}
+      </a>
+    );
+    lastIndex = match.index + full.length;
+  }
+
+  if (lastIndex < answer.length) parts.push(answer.slice(lastIndex));
+  return parts;
+};

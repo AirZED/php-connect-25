@@ -4,8 +4,8 @@ export const speakers: {
   image: string;
 }[] = [
   {
-    name: "Bosun Egberinde",
-    designation: "Software Engineer",
+    name: "Derick Rethan",
+    designation: "Creator, Xdebug",
     image: "speakers/Bosun.jpeg",
   },
   {
@@ -153,6 +153,8 @@ export const coreTeamMembers: {
   },
 ];
 
+export const REGISTRATION_URL = "https://luma.com/h2w3bies";
+
 export const faqs: {
   question: string;
   answer: string;
@@ -160,17 +162,23 @@ export const faqs: {
   {
     question: "When and where does PHP Connect take place?",
     answer:
-      "PHP Connect brings the community together for a full day of talks, workshops, and networking. Keep an eye on the countdown and event details on this site for the exact date, venue, and how to find us.",
+      "PHP Connect '26 takes place virtually on October 3, 2026. [Register on this site](https://luma.com/h2w3bies) to receive your access link and join us online for a full day of talks, workshops, and networking.",
   },
   {
     question: "How do I get a ticket?",
     answer:
-      "Tickets can be reserved directly from this site. Once registration opens, you'll find a link to grab your seat before spots run out.",
+      "Registration is now open and free. [Reserve your spot](https://luma.com/h2w3bies) directly from this site. You'll receive your virtual access link by email ahead of the event.",
   },
   {
     question: "Will the talks and workshops be recorded?",
     answer:
       "Yes, sessions will be recorded and shared with attendees after the event, so you won't miss a thing even if you can't catch every talk live.",
+  },
+  {
+    question:
+      "What platform will PHP Connect be hosted on, and do I need anything special to join?",
+    answer:
+      "The full day streams online, and your access link arrives by email after you [register](https://luma.com/h2w3bies). All you need is a modern web browser and a stable internet connection — there's nothing to install, and you can join from a laptop, tablet, or phone.",
   },
   {
     question: "How can my company become a sponsor or partner?",

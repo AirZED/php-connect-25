@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 import Container from "../layout/Container";
 import { Bars3, CalendarIcon } from "../ui/Icons";
 import { cn } from "@/lib/utils";
+import { REGISTRATION_URL } from "@/data";
 
-// TODO: confirm the real PHP Connect '26 date and swap it in here.
-const EVENT_DATE = "2026-11-20T09:00:00";
+const EVENT_DATE = "2026-10-03T09:00:00";
 
 const NAV_LINKS: { href: string; text: string }[] = [
   { href: "/team#speakers", text: "Speakers" },
@@ -97,8 +97,8 @@ export default function Hero() {
                 <div className="flex items-center justify-between mt-[.3rem]">
                   <p className="mt-4 max-w-md text-[1.3rem] text-white">
                     Join 1,500+ developers, engineers, and tech leaders from
-                    around the globe for three days of learning, networking, and
-                    innovation.
+                    around the globe for a day of learning, networking, and
+                    innovation, online.
                   </p>
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <RegisterButton />
@@ -143,13 +143,15 @@ const LogoMark = ({
 );
 
 export const RegisterButton = ({ className = "" }: { className?: string }) => (
-  <Link
-    href="/#register"
+  <a
+    href={REGISTRATION_URL}
+    target="_blank"
+    rel="noopener noreferrer"
     className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-accent-dark ${className}`}
   >
     <Image src="/images/icons/register.png" alt="" width={16} height={16} />
     Register Now
-  </Link>
+  </a>
 );
 
 const pad = (n: number) => n.toString().padStart(2, "0");

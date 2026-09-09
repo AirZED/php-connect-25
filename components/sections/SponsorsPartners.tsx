@@ -60,27 +60,39 @@ const TabButton = ({
 const SponsorsPanel = () => (
   <div className="space-y-10 md:space-y-14">
     <SponsorTier name="Diamond Sponsors">
-      <Image src="/images/sponsors/Diamond/wkd.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Diamond/AGNimble.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Diamond/reggie.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Diamond/Venhoot.png" width={290} height={290} alt="" />
+      <SponsorLogo src="/images/sponsors/Diamond/wkd.png" />
+      <SponsorLogo src="/images/sponsors/Diamond/AGNimble.png" />
+      <SponsorLogo src="/images/sponsors/Diamond/reggie.png" />
+      <SponsorLogo src="/images/sponsors/Diamond/Venhoot.png" />
     </SponsorTier>
 
     <SponsorTier name="Gold Sponsors">
-      <Image src="/images/sponsors/Gold/notion.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Gold/marvy.png" width={290} height={290} alt="" />
+      <SponsorLogo src="/images/sponsors/Gold/notion.png" />
+      <SponsorLogo src="/images/sponsors/Gold/marvy.png" />
     </SponsorTier>
 
     <SponsorTier name="Silver Sponsors">
-      <Image src="/images/sponsors/Silver/Middey.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/Litehost.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/teller.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/Viction.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/phpsandbox.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/Frontier.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/DigitalNERD.png" width={290} height={290} alt="" />
-      <Image src="/images/sponsors/Silver/coderigi.png" width={290} height={290} alt="" />
+      <SponsorLogo src="/images/sponsors/Silver/Middey.png" />
+      <SponsorLogo src="/images/sponsors/Silver/Litehost.png" />
+      <SponsorLogo src="/images/sponsors/Silver/teller.png" />
+      <SponsorLogo src="/images/sponsors/Silver/Viction.png" />
+      <SponsorLogo src="/images/sponsors/Silver/phpsandbox.png" />
+      <SponsorLogo src="/images/sponsors/Silver/Frontier.png" />
+      <SponsorLogo src="/images/sponsors/Silver/DigitalNERD.png" />
+      <SponsorLogo src="/images/sponsors/Silver/coderigi.png" />
     </SponsorTier>
+  </div>
+);
+
+const SponsorLogo = ({ src }: { src: string }) => (
+  <div className="relative h-16 w-full md:h-20">
+    <Image
+      src={src}
+      alt=""
+      fill
+      sizes="(min-width: 1024px) 20vw, 50vw"
+      className="object-contain object-center"
+    />
   </div>
 );
 
@@ -103,8 +115,8 @@ const SponsorTier = ({
 
 const PartnersPanel = () => (
   <SponsorTier name="Partners">
-    <Image src="/images/sponsors/Partners/aces.png" width={290} height={290} alt="" />
-    <Image src="/images/sponsors/Partners/GDSC.png" width={290} height={290} alt="" />
-    <Image src="/images/sponsors/Partners/unschooled.png" width={290} height={290} alt="" />
+    <SponsorLogo src="/images/sponsors/Partners/aces.png" />
+    <SponsorLogo src="/images/sponsors/Partners/GDSC.png" />
+    <SponsorLogo src="/images/sponsors/Partners/unschooled.png" />
   </SponsorTier>
 );
