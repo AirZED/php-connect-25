@@ -10,7 +10,7 @@ function Sponsor() {
   return (
     <Page>
       <Head>
-        <title>Sponsor - PHPConnect - A PHP Talks Conference 2024 </title>
+        <title>Sponsor - PHPConnect - A PHP Talks Conference 2026 </title>
       </Head>
       <main className="my-20 lg:my-40">
         <Container className="py-10 flex flex-col gap-y-[15px]">

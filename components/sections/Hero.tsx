@@ -9,22 +9,26 @@ import { REGISTRATION_URL } from "@/data";
 const EVENT_DATE = "2026-10-03T09:00:00";
 
 const NAV_LINKS: { href: string; text: string }[] = [
-  { href: "/team#speakers", text: "Speakers" },
-  { href: "/agenda", text: "Schedule" },
-  { href: "/#sponsors", text: "Sponsors" },
-  { href: "/#partners", text: "Partners" },
+  { href: "#speakers", text: "Speakers" },
+  { href: "#schedule", text: "Schedule" },
+  { href: "#sponsors", text: "Sponsors" },
+  { href: "#partners", text: "Partners" },
 ];
 
 export default function Hero() {
   const [isNavOpen, setNavOpen] = useState(false);
   const [isOverDark, setIsOverDark] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!cardRef.current) return;
-      const cardBottom = cardRef.current.getBoundingClientRect().bottom;
-      setIsOverDark(cardBottom > 120);
+      setIsAtTop(window.scrollY <= 4);
+
+      const probeY = 155; // just below the fixed nav's own box (top-[30px] + h-[7.5rem])
+      const el = document.elementFromPoint(window.innerWidth / 2, probeY);
+      const themed = el?.closest<HTMLElement>("[data-nav-theme]");
+      setIsOverDark(themed ? themed.dataset.navTheme === "dark" : true);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -36,20 +40,34 @@ export default function Hero() {
       <Container className="!px-3 md:!px-8">
         <div
           ref={cardRef}
+          data-nav-theme="dark"
           className="relative overflow-hidden rounded-t-[32px] md:rounded-t-[56px]"
         >
           <div className="fixed left-0 right-0 top-[30px] z-30 mx-auto flex h-[7.5rem] w-full max-w-[1440px] justify-between gap-4 px-3 md:px-8 xl:px-16">
             <LogoMark className="self-center" invert={!isOverDark} />
 
             <div className="flex gap-[2rem] item-buttom self-start">
-              <nav className="hidden lg:flex items-center gap-x-10">
+              <nav
+                className={cn(
+                  "hidden items-center gap-x-10 rounded-full transition-colors lg:flex",
+                  !isAtTop &&
+                    cn(
+                      "border px-6 py-2.5 backdrop-blur-md",
+                      isOverDark
+                        ? "border-white/10 bg-black/30"
+                        : "border-ink/10 bg-white/60"
+                    )
+                )}
+              >
                 {NAV_LINKS.map(({ href, text }) => (
                   <Link
                     key={text}
                     href={href}
                     className={cn(
-                      "text-sm font-medium tracking-wide transition-colors",
-                      isOverDark
+                      "text-base font-bold tracking-wide transition-colors",
+                      isAtTop
+                        ? "text-ink hover:text-ink"
+                        : isOverDark
                         ? "text-white hover:text-white"
                         : "text-ink hover:text-ink",
                     )}
@@ -86,7 +104,7 @@ export default function Hero() {
               className=" absolute right-0 left-0 z-1"
             />
 
-            <div className="z-2 relative inset-0 z-10 flex h-full flex-col gap-8 overflow-hidden flex pt-[10rem] px-[2rem] pb-[7rem]">
+            <div className="z-2 relative inset-0 z-10 flex h-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 md:px-[2rem] md:pb-[7rem] md:pt-[10rem]">
               <div className="w-fit self-end">
                 <CountdownWidget />
               </div>
@@ -94,8 +112,8 @@ export default function Hero() {
                 <h1 className="font-display text-[11vw] font-bold uppercase leading-[0.85] text-white sm:text-[56px] md:text-[76px] lg:text-[92px] xl:text-[140px]">
                   PHPConnect &apos;26
                 </h1>
-                <div className="flex items-center justify-between mt-[.3rem]">
-                  <p className="mt-4 max-w-md text-[1.3rem] text-white">
+                <div className="flex flex-col gap-4 mt-[.3rem] sm:flex-row sm:items-center sm:justify-between">
+                  <p className="mt-4 max-w-md text-base text-white sm:text-[1.3rem]">
                     Join 1,500+ developers, engineers, and tech leaders from
                     around the globe for a day of learning, networking, and
                     innovation, online.
@@ -191,7 +209,7 @@ const CountdownWidget = () => {
     <div className="flex items-end gap-2 rounded-[28px] border border-white/10 bg-white/[0.06] p-2 backdrop-blur-sm">
       {units.map(({ label, value }) => (
         <div key={label} className="flex flex-col items-center">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full font-display text-sm font-semibold text-white md:h-14 md:w-14 md:text-[2rem]">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black/40 font-display text-sm font-semibold text-white md:h-14 md:w-14 md:text-[2rem]">
             {pad(value)}
           </div>
           <span className="text-[1rem] tracking-wide text-white">{label}</span>

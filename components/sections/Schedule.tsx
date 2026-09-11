@@ -1,25 +1,29 @@
 import Image from "next/image";
+import Link from "next/link";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { schedule } from "@/data";
 
 export default function Schedule() {
   return (
-    <section className="bg-paper py-16 md:py-24">
+    <section id="schedule" data-nav-theme="light" className="scroll-mt-[170px] bg-paper py-16 md:py-24">
       <Container className="space-y-2">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <Link
+          href="/agenda"
+          className="group flex flex-col gap-6 md:flex-row md:items-start md:justify-between"
+        >
           <Reveal>
-            <span className="font-secondary text-[1.5rem] font-normal uppercase leading-none tracking-[1px] text-ink/50">
+            <span className="font-secondary text-[1.5rem] font-normal uppercase leading-none tracking-[1px] text-ink/50 transition-colors group-hover:text-ink">
               Event Schedule
             </span>
           </Reveal>
           <Reveal className="md:max-w-4xl">
-            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-[32px]">
+            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink transition-colors group-hover:text-accent md:text-[32px]">
               From core contributors to industry innovators, showcasing the best
               of the PHP ecosystem.
             </h2>
           </Reveal>
-        </div>
+        </Link>
 
         <Reveal width="100%">
           <div className="relative pt-10 md:pt-12">

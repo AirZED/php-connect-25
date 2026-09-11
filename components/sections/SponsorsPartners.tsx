@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "../layout/Container";
 import { cn } from "@/lib/utils";
@@ -8,15 +8,49 @@ type Tab = "sponsors" | "partners";
 export default function SponsorsPartners() {
   const [tab, setTab] = useState<Tab>("sponsors");
 
+  useEffect(() => {
+    const syncFromHash = (hash: string) => {
+      if (hash === "#partners") setTab("partners");
+      else if (hash === "#sponsors") setTab("sponsors");
+    };
+
+    syncFromHash(window.location.hash);
+    window.addEventListener("hashchange", () => syncFromHash(window.location.hash));
+
+    // Next.js Link doesn't fire a native hashchange for same-page hash
+    // navigation, so catch the click directly too.
+    const handleClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement)?.closest("a[href*='#sponsors'], a[href*='#partners']");
+      const href = anchor?.getAttribute("href");
+      if (!href) return;
+      syncFromHash(href.slice(href.indexOf("#")));
+    };
+    document.addEventListener("click", handleClick);
+
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   return (
-    <section className="bg-[#0B081B] py-16 md:py-24">
+    <section
+      id="sponsors"
+      data-nav-theme="dark"
+      className="scroll-mt-[170px] bg-[#0B081B] py-16 md:py-24"
+    >
       <Container className="space-y-10 md:space-y-14">
         <div className="flex flex-wrap items-center justify-between gap-6 border-b border-white/10 pb-6">
           <div className="flex gap-8 md:gap-10">
-            <TabButton active={tab === "sponsors"} onClick={() => setTab("sponsors")}>
+            <TabButton
+              id="sponsors-tab"
+              active={tab === "sponsors"}
+              onClick={() => setTab("sponsors")}
+            >
               Sponsors
             </TabButton>
-            <TabButton active={tab === "partners"} onClick={() => setTab("partners")}>
+            <TabButton
+              id="partners"
+              active={tab === "partners"}
+              onClick={() => setTab("partners")}
+            >
               Partners
             </TabButton>
           </div>
@@ -36,18 +70,21 @@ export default function SponsorsPartners() {
 }
 
 const TabButton = ({
+  id,
   active,
   onClick,
   children,
 }: {
+  id?: string;
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
 }) => (
   <button
+    id={id}
     onClick={onClick}
     className={cn(
-      "font-heading text-xl uppercase tracking-wide pb-1 transition md:text-2xl",
+      "scroll-mt-[170px] font-heading text-xl uppercase tracking-wide pb-1 transition md:text-2xl",
       active
         ? "border-b-2 border-accent text-white"
         : "border-b-2 border-transparent text-white/40 hover:text-white/70"

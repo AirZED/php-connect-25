@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export default function Gallery() {
   return (
-    <section className="bg-paper py-16 md:py-24">
+    <section data-nav-theme="light" className="bg-paper py-16 md:py-24">
       <Container>
         <Reveal width="100%">
           <div className="flex flex-wrap items-center justify-between gap-6">
@@ -34,7 +34,9 @@ export default function Gallery() {
                   </p>
 
                   <Link
-                    href="#"
+                    href={group.albumUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-mono text-sm text-ink/60 transition-colors hover:text-ink md:w-[80px] md:shrink-0"
                   >
                     viewAll()
