@@ -150,7 +150,7 @@ export const SpeakerCarousel = ({
     <div ref={containerRef} className="group/carousel relative">
       <div
         ref={trackRef}
-        className="no-scrollbar flex gap-6 overflow-x-auto pb-2 md:gap-16"
+        className="no-scrollbar flex gap-1 overflow-x-auto pb-2 md:gap-2"
       >
         {people.map((person, k) => (
           <SpeakerCard key={k} {...person} />
@@ -204,7 +204,7 @@ const SpeakerCard = ({
   image?: string;
 }) => (
   <PersonCard
-    className="w-[38vw] shrink-0 sm:w-[220px]"
+    className="w-[70vw] shrink-0 sm:w-[420px]"
     slug={slug}
     name={name}
     designation={designation}
@@ -227,14 +227,14 @@ export const PersonCard = ({
 }) => {
   const content = (
     <>
-      <div className="relative aspect-[9/16] w-full overflow-hidden bg-ink/5">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink/5">
         {image ? (
           <Image
             src={`/images/${image}`}
             fill
             alt={name}
             className="duotone-photo object-cover"
-            sizes="(min-width: 768px) 25vw, 50vw"
+            sizes="(min-width: 768px) 40vw, 70vw"
             quality={70}
           />
         ) : (
@@ -245,7 +245,7 @@ export const PersonCard = ({
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 px-2">
         <span className="font-heading text-lg font-medium text-ink transition-colors group-hover:text-accent md:text-xl">
           {name}
         </span>
