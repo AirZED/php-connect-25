@@ -104,7 +104,7 @@ export default function Hero() {
               className=" absolute right-0 left-0 z-1"
             />
 
-            <div className="z-2 relative inset-0 z-10 flex h-full flex-col gap-8 overflow-hidden flex pt-[10rem] px-[2rem] pb-[7rem]">
+            <div className="z-2 relative inset-0 z-10 flex h-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 md:px-[2rem] md:pb-[7rem] md:pt-[10rem]">
               <div className="w-fit self-end">
                 <CountdownWidget />
               </div>
@@ -112,8 +112,8 @@ export default function Hero() {
                 <h1 className="font-display text-[11vw] font-bold uppercase leading-[0.85] text-white sm:text-[56px] md:text-[76px] lg:text-[92px] xl:text-[140px]">
                   PHPConnect &apos;26
                 </h1>
-                <div className="flex items-center justify-between mt-[.3rem]">
-                  <p className="mt-4 max-w-md text-[1.3rem] text-white">
+                <div className="flex flex-col gap-4 mt-[.3rem] sm:flex-row sm:items-center sm:justify-between">
+                  <p className="mt-4 max-w-md text-base text-white sm:text-[1.3rem]">
                     Join 1,500+ developers, engineers, and tech leaders from
                     around the globe for a day of learning, networking, and
                     innovation, online.
@@ -209,7 +209,7 @@ const CountdownWidget = () => {
     <div className="flex items-end gap-2 rounded-[28px] border border-white/10 bg-white/[0.06] p-2 backdrop-blur-sm">
       {units.map(({ label, value }) => (
         <div key={label} className="flex flex-col items-center">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full font-display text-sm font-semibold text-white md:h-14 md:w-14 md:text-[2rem]">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black/40 font-display text-sm font-semibold text-white md:h-14 md:w-14 md:text-[2rem]">
             {pad(value)}
           </div>
           <span className="text-[1rem] tracking-wide text-white">{label}</span>
