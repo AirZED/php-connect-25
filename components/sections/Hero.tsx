@@ -43,7 +43,7 @@ export default function Hero() {
           data-nav-theme="dark"
           className="relative overflow-hidden rounded-t-[32px] md:rounded-t-[56px]"
         >
-          <div className="fixed left-0 right-0 top-[30px] z-30 mx-auto flex h-[7.5rem] w-full max-w-[1440px] justify-between gap-4 px-3 md:px-8 xl:px-16">
+          <div className="fixed left-0 right-0 top-[30px] z-30 mx-auto flex h-[4rem] md:h-[7.5rem] w-full max-w-[1440px] justify-between gap-4 px-5 md:px-8 xl:px-16">
             <LogoMark className="self-center" invert={!isOverDark} />
 
             <div className="flex gap-[2rem] item-buttom self-start">
@@ -55,8 +55,8 @@ export default function Hero() {
                       "border px-6 py-2.5 backdrop-blur-md",
                       isOverDark
                         ? "border-white/10 bg-black/30"
-                        : "border-ink/10 bg-white/60"
-                    )
+                        : "border-ink/10 bg-white/60",
+                    ),
                 )}
               >
                 {NAV_LINKS.map(({ href, text }) => (
@@ -68,8 +68,8 @@ export default function Hero() {
                       isAtTop
                         ? "text-ink hover:text-ink"
                         : isOverDark
-                        ? "text-white hover:text-white"
-                        : "text-ink hover:text-ink",
+                          ? "text-white hover:text-white"
+                          : "text-ink hover:text-ink",
                     )}
                   >
                     {text}
@@ -83,8 +83,10 @@ export default function Hero() {
                   onClick={() => setNavOpen(true)}
                   aria-label="Open menu"
                   className={cn(
-                    "lg:hidden transition-colors",
-                    isOverDark ? "text-white" : "text-ink",
+                    "flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-md transition-colors lg:hidden",
+                    isOverDark
+                      ? "border-white/10 bg-black/30 text-white"
+                      : "border-ink/10 bg-white/60 text-ink",
                   )}
                 >
                   <Bars3 />
@@ -101,14 +103,14 @@ export default function Hero() {
               alt="PHP Connect attendees networking, The Builder's Edition"
               fill
               priority
-              className=" absolute right-0 left-0 z-1"
+              className="absolute right-0 left-0 z-1 object-cover md:object-fill"
             />
 
             <div className="z-2 relative inset-0 z-10 flex h-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 md:px-[2rem] md:pb-[7rem] md:pt-[10rem]">
               <div className="w-fit self-end">
                 <CountdownWidget />
               </div>
-              <div className="mt-auto w-full item-buttom self-start">
+              <div className="mt-auto w-full md:item-buttom self-start">
                 <h1 className="font-display text-[11vw] font-bold uppercase leading-[0.85] text-white sm:text-[56px] md:text-[76px] lg:text-[92px] xl:text-[140px]">
                   PHPConnect &apos;26
                 </h1>
