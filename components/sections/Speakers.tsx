@@ -4,6 +4,8 @@ import Link from "next/link";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { speakers } from "@/data";
+import { cn } from "@/lib/utils";
+import { ArrowLeftIcon } from "../ui/Icons";
 
 const SCROLL_INTERVAL = 1200;
 const SCROLL_DURATION = 1200;
@@ -12,43 +14,98 @@ const easeInOutCubic = (t: number) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
 export default function Speakers() {
+  return (
+    <section id="speakers" data-nav-theme="light" className="scroll-mt-[170px] bg-paper py-16 md:py-[10rem] ">
+      <Container className="space-y-10 md:space-y-16">
+        <Link
+          href="/team"
+          className="group flex flex-col gap-6 md:flex-row md:items-start md:justify-between"
+        >
+          <Reveal>
+            <span className="font-secondary text-[1.5rem] font-normal uppercase leading-none tracking-[1px] text-ink/50 transition-colors group-hover:text-ink">
+              Speakers
+            </span>
+          </Reveal>
+          <Reveal className="md:max-w-4xl">
+            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink transition-colors group-hover:text-accent md:text-[32px]">
+              From core contributors to industry innovators, showcasing the best
+              of the PHP ecosystem.
+            </h2>
+          </Reveal>
+        </Link>
+
+        <Reveal width="100%">
+          <SpeakerCarousel people={speakers} />
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
+
+export const SpeakerCarousel = ({
+  people,
+}: {
+  people: {
+    slug?: string;
+    name: string;
+    designation: string;
+    image?: string;
+  }[];
+}) => {
   const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
+
+  // Shared with the manual prev/next buttons below.
+  const stepSize = () => {
+    const track = trackRef.current;
+    const first = track?.firstElementChild as HTMLElement | null;
+    if (!track || !first) return 0;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
+    return first.offsetWidth + gap;
+  };
+
+  const scrollByStep = (direction: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    let target = track.scrollLeft + direction * stepSize();
+    if (target < 0) target = maxScroll; // prev from the start wraps to the end
+    if (target > maxScroll) target = 0; // next from the end wraps to the start
+    track.scrollTo({ left: target, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    const container = containerRef.current;
+    if (!track || !container) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let frame = 0;
     let timer = 0;
 
-    // The list is rendered twice, so one loop is half the scrollable width.
-    const loopWidth = () => track.scrollWidth / 2;
-
-    const stepSize = () => {
-      const first = track.firstElementChild as HTMLElement | null;
-      if (!first) return track.clientWidth;
-      const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
-      return first.offsetWidth + gap;
-    };
+    const maxScroll = () => track.scrollWidth - track.clientWidth;
 
     const schedule = () => {
       timer = window.setTimeout(advance, SCROLL_INTERVAL);
     };
 
     const advance = () => {
-      if (loopWidth() <= 0) return schedule();
+      const distance = stepSize();
+      if (distance <= 0 || maxScroll() <= 0) return schedule();
 
       const from = track.scrollLeft;
-      const distance = stepSize();
+      // Once the last card is in view, glide back to the start instead of
+      // rendering a duplicated list to fake an infinite loop — with only a
+      // handful of speakers, the duplicate would be visible on screen at
+      // the same time as the originals.
+      const atEnd = from >= maxScroll() - 1;
+      const target = atEnd ? 0 : Math.min(from + distance, maxScroll());
       const start = performance.now();
 
       const tick = (now: number) => {
         const t = Math.min((now - start) / SCROLL_DURATION, 1);
-        // Wrapping through the duplicated half is invisible: the content
-        // at `loopWidth` is identical to the content at 0.
-        track.scrollLeft = (from + distance * easeInOutCubic(t)) % loopWidth();
+        track.scrollLeft = from + (target - from) * easeInOutCubic(t);
         if (t < 1) {
           frame = requestAnimationFrame(tick);
         } else if (!pausedRef.current) {
@@ -74,55 +131,57 @@ export default function Speakers() {
 
     schedule();
 
-    track.addEventListener("pointerenter", pause);
-    track.addEventListener("pointerleave", resume);
-    track.addEventListener("touchstart", pause, { passive: true });
-    track.addEventListener("touchend", resume, { passive: true });
+    container.addEventListener("pointerenter", pause);
+    container.addEventListener("pointerleave", resume);
+    container.addEventListener("touchstart", pause, { passive: true });
+    container.addEventListener("touchend", resume, { passive: true });
 
     return () => {
       window.clearTimeout(timer);
       cancelAnimationFrame(frame);
-      track.removeEventListener("pointerenter", pause);
-      track.removeEventListener("pointerleave", resume);
-      track.removeEventListener("touchstart", pause);
-      track.removeEventListener("touchend", resume);
+      container.removeEventListener("pointerenter", pause);
+      container.removeEventListener("pointerleave", resume);
+      container.removeEventListener("touchstart", pause);
+      container.removeEventListener("touchend", resume);
     };
   }, []);
 
   return (
-    <section id="speakers" className="bg-paper py-16 md:py-[10rem] ">
-      <Container className="space-y-10 md:space-y-16">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-          <Reveal>
-            <span className="font-secondary text-[1.5rem] font-normal uppercase leading-none tracking-[1px] text-ink/50">
-              Speakers
-            </span>
-          </Reveal>
-          <Reveal className="md:max-w-4xl">
-            <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-[32px]">
-              From core contributors to industry innovators, showcasing the best
-              of the PHP ecosystem.
-            </h2>
-          </Reveal>
-        </div>
+    <div ref={containerRef} className="group/carousel relative">
+      <div
+        ref={trackRef}
+        className="no-scrollbar flex gap-6 overflow-x-auto pb-2 md:gap-16"
+      >
+        {people.map((person, k) => (
+          <SpeakerCard key={k} {...person} />
+        ))}
+      </div>
 
-        <Reveal width="100%">
-          <div
-            ref={trackRef}
-            className="no-scrollbar flex gap-6 overflow-x-auto pb-2 md:gap-16"
-          >
-            {speakers.map((speaker, k) => (
-              <SpeakerCard key={k} {...speaker} />
-            ))}
-            {speakers.map((speaker, k) => (
-              <SpeakerCard key={`clone-${k}`} aria-hidden {...speaker} />
-            ))}
-          </div>
-        </Reveal>
-      </Container>
-    </section>
+      <CarouselArrow direction="left" onClick={() => scrollByStep(-1)} />
+      <CarouselArrow direction="right" onClick={() => scrollByStep(1)} />
+    </div>
   );
-}
+};
+
+const CarouselArrow = ({
+  direction,
+  onClick,
+}: {
+  direction: "left" | "right";
+  onClick: () => void;
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    aria-label={direction === "left" ? "Previous speaker" : "Next speaker"}
+    className={cn(
+      "absolute top-[43%] hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-[0_8px_24px_-8px_rgba(23,15,54,0.4)] transition-opacity duration-200 group-hover/carousel:opacity-100 hover:bg-white sm:flex",
+      direction === "left" ? "left-2" : "right-2"
+    )}
+  >
+    <ArrowLeftIcon className={direction === "right" ? "rotate-180" : undefined} />
+  </button>
+);
 
 export const initialsOf = (name: string) =>
   name
@@ -138,21 +197,36 @@ const SpeakerCard = ({
   name,
   designation,
   image,
-  "aria-hidden": ariaHidden,
 }: {
-  slug: string;
+  slug?: string;
   name: string;
   designation: string;
   image?: string;
-  "aria-hidden"?: boolean;
+}) => (
+  <PersonCard
+    className="w-[38vw] shrink-0 sm:w-[220px]"
+    slug={slug}
+    name={name}
+    designation={designation}
+    image={image}
+  />
+);
+
+export const PersonCard = ({
+  slug,
+  name,
+  designation,
+  image,
+  className = "",
+}: {
+  slug?: string;
+  name: string;
+  designation: string;
+  image?: string;
+  className?: string;
 }) => {
-  return (
-    <Link
-      href={`/speakers/${slug}`}
-      aria-hidden={ariaHidden}
-      tabIndex={ariaHidden ? -1 : undefined}
-      className="group flex w-[38vw] shrink-0 flex-col gap-4 sm:w-[220px]"
-    >
+  const content = (
+    <>
       <div className="relative aspect-[9/16] w-full overflow-hidden bg-ink/5">
         {image ? (
           <Image
@@ -177,6 +251,19 @@ const SpeakerCard = ({
         </span>
         <span className="text-sm text-ink/50">{designation}</span>
       </div>
+    </>
+  );
+
+  if (!slug) {
+    return <div className={cn("flex flex-col gap-4", className)}>{content}</div>;
+  }
+
+  return (
+    <Link
+      href={`/speakers/${slug}`}
+      className={cn("group flex flex-col gap-4", className)}
+    >
+      {content}
     </Link>
   );
 };

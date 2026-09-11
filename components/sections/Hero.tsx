@@ -9,22 +9,26 @@ import { REGISTRATION_URL } from "@/data";
 const EVENT_DATE = "2026-10-03T09:00:00";
 
 const NAV_LINKS: { href: string; text: string }[] = [
-  { href: "/team#speakers", text: "Speakers" },
-  { href: "/agenda", text: "Schedule" },
-  { href: "/#sponsors", text: "Sponsors" },
-  { href: "/#partners", text: "Partners" },
+  { href: "#speakers", text: "Speakers" },
+  { href: "#schedule", text: "Schedule" },
+  { href: "#sponsors", text: "Sponsors" },
+  { href: "#partners", text: "Partners" },
 ];
 
 export default function Hero() {
   const [isNavOpen, setNavOpen] = useState(false);
   const [isOverDark, setIsOverDark] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!cardRef.current) return;
-      const cardBottom = cardRef.current.getBoundingClientRect().bottom;
-      setIsOverDark(cardBottom > 120);
+      setIsAtTop(window.scrollY <= 4);
+
+      const probeY = 155; // just below the fixed nav's own box (top-[30px] + h-[7.5rem])
+      const el = document.elementFromPoint(window.innerWidth / 2, probeY);
+      const themed = el?.closest<HTMLElement>("[data-nav-theme]");
+      setIsOverDark(themed ? themed.dataset.navTheme === "dark" : true);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -36,20 +40,34 @@ export default function Hero() {
       <Container className="!px-3 md:!px-8">
         <div
           ref={cardRef}
+          data-nav-theme="dark"
           className="relative overflow-hidden rounded-t-[32px] md:rounded-t-[56px]"
         >
           <div className="fixed left-0 right-0 top-[30px] z-30 mx-auto flex h-[7.5rem] w-full max-w-[1440px] justify-between gap-4 px-3 md:px-8 xl:px-16">
             <LogoMark className="self-center" invert={!isOverDark} />
 
             <div className="flex gap-[2rem] item-buttom self-start">
-              <nav className="hidden lg:flex items-center gap-x-10">
+              <nav
+                className={cn(
+                  "hidden items-center gap-x-10 rounded-full transition-colors lg:flex",
+                  !isAtTop &&
+                    cn(
+                      "border px-6 py-2.5 backdrop-blur-md",
+                      isOverDark
+                        ? "border-white/10 bg-black/30"
+                        : "border-ink/10 bg-white/60"
+                    )
+                )}
+              >
                 {NAV_LINKS.map(({ href, text }) => (
                   <Link
                     key={text}
                     href={href}
                     className={cn(
-                      "text-sm font-medium tracking-wide transition-colors",
-                      isOverDark
+                      "text-base font-bold tracking-wide transition-colors",
+                      isAtTop
+                        ? "text-ink hover:text-ink"
+                        : isOverDark
                         ? "text-white hover:text-white"
                         : "text-ink hover:text-ink",
                     )}

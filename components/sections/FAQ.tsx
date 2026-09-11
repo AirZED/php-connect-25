@@ -9,7 +9,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-paper py-16 md:py-24">
+    <section data-nav-theme="light" className="bg-paper py-16 md:py-24">
       <Container className="mx-auto max-w-3xl px-6">
         <Reveal>
           <h2 className="font-primary text-2xl font-normal uppercase leading-[1.2] tracking-normal text-ink md:text-4xl">

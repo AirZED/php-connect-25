@@ -3,14 +3,14 @@ import Container from "./Container";
 
 const SOCIAL_LINKS: { href: string; text: string }[] = [
   { href: "https://twitter.com/PHPTalks", text: "Twitter" },
-  { href: "#", text: "LinkedIn" },
-  { href: "#", text: "Facebook" },
+  { href: "https://www.linkedin.com/company/phptalks/", text: "LinkedIn" },
+  { href: "https://www.facebook.com/phptalks", text: "Facebook" },
   { href: "https://chat.whatsapp.com/BygvFuDVOCO3zEtfNRbkuc", text: "Whatsapp" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-paper">
+    <footer data-nav-theme="light" className="bg-paper">
       <Container className="flex flex-wrap items-center justify-between gap-4 py-8">
         <nav className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[14px] font-normal leading-none tracking-normal text-ink">
           {SOCIAL_LINKS.map((link) => (
