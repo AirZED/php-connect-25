@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import Container from "../layout/Container";
+import FitOneLine from "../ui/FitOneLine";
 import { Bars3, CalendarIcon } from "../ui/Icons";
 import { cn } from "@/lib/utils";
 import { REGISTRATION_URL } from "@/data";
@@ -111,8 +112,10 @@ export default function Hero() {
                 <CountdownWidget />
               </div>
               <div className="mt-auto w-full md:item-buttom self-start">
-                <h1 className="font-display text-[11vw] font-bold uppercase leading-[0.85] text-white sm:text-[56px] md:text-[76px] lg:text-[92px] xl:text-[140px]">
-                  PHPConnect &apos;26
+                <h1>
+                  <FitOneLine className="font-display text-[11vw] font-bold uppercase leading-[0.85] text-white sm:text-[56px] md:text-[76px] lg:text-[92px] xl:text-[140px]">
+                    PHPConnect &apos;26
+                  </FitOneLine>
                 </h1>
                 <div className="flex flex-col gap-4 mt-[.3rem] sm:flex-row sm:items-center sm:justify-between">
                   <p className="mt-4 max-w-md text-base text-white sm:text-[1.3rem]">
