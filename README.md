@@ -28,6 +28,7 @@ cd php-connect
 
 3. Install the dependencies:
 npm install
+<!---haq -->
 
 
 4. Start the development server:
