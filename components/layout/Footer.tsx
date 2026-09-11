@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "./Container";
+import FitOneLine from "../ui/FitOneLine";
 
 const SOCIAL_LINKS: { href: string; text: string }[] = [
   { href: "https://twitter.com/PHPTalks", text: "Twitter" },
@@ -10,7 +11,7 @@ const SOCIAL_LINKS: { href: string; text: string }[] = [
 
 export default function Footer() {
   return (
-    <footer data-nav-theme="light" className="bg-paper">
+    <footer data-nav-theme="light" className="overflow-x-hidden bg-paper">
       <Container className="flex flex-wrap items-center justify-between gap-4 py-8">
         <nav className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[14px] font-normal leading-none tracking-normal text-ink">
           {SOCIAL_LINKS.map((link) => (
@@ -31,8 +32,10 @@ export default function Footer() {
       </Container>
 
       <Container>
-        <h2 className="font-secondary text-[15vw] font-bold uppercase leading-none tracking-normal text-ink md:text-[9vw] lg:text-[130px]">
-          PHPConnect &lsquo;26
+        <h2>
+          <FitOneLine className="font-secondary text-[12vw] font-bold uppercase leading-none tracking-normal text-ink md:text-[9vw] lg:text-[130px]">
+            PHPConnect &lsquo;26
+          </FitOneLine>
         </h2>
       </Container>
 
