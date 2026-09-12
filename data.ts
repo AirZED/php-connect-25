@@ -213,6 +213,179 @@ export const coreTeamMembers: {
 
 export const REGISTRATION_URL = "https://luma.com/h2w3bies";
 
+export type SponsorTierId = "diamond" | "silver" | "media" | "meal" | "general";
+
+export const SPONSOR_TIERS: { id: SponsorTierId; label: string }[] = [
+  { id: "diamond", label: "Diamond Sponsors" },
+  { id: "silver", label: "Silver Sponsors" },
+  { id: "media", label: "Media Sponsor" },
+  { id: "meal", label: "Meal Sponsor" },
+  { id: "general", label: "Sponsors" },
+];
+
+/**
+ * How a logo is treated on the dark sponsors background:
+ * "invert" flips monochrome black artwork to white, "chip" sits multi-colour
+ * dark artwork on a light tile. Omit when the logo already reads on dark.
+ */
+export type LogoOnDark = "invert" | "chip";
+
+export type Sponsor = {
+  name: string;
+  tier: SponsorTierId;
+  /** Logo under public/images/. Falls back to a wordmark until artwork lands. */
+  logo?: string;
+  logoOnDark?: LogoOnDark;
+  website?: string;
+  twitter?: string;
+  instagram?: string;
+  description?: string;
+};
+
+export const sponsors: Sponsor[] = [
+  {
+    name: "PHPSandbox",
+    tier: "diamond",
+    logo: "sponsors/phpsandbox.png",
+    website: "https://phpsandbox.io/",
+    twitter: "https://x.com/phpsandboxio",
+    description:
+      "PHPSandbox is an instant, browser-based online development environment that enables developers to write, prototype, share, and test PHP and Laravel applications without local installations. It serves as a comprehensive cloud runtime environment supporting diverse frameworks and package dependencies directly within a browser interface.",
+  },
+  {
+    name: "Helfer.dev",
+    tier: "silver",
+    logo: "sponsors/helfer.png",
+    website: "https://helfer.dev/",
+    twitter: "https://x.com/helferdev",
+    description:
+      "Helfer.dev is an AI-powered development companion designed to help developers and product teams scaffold, iterate, and ship Laravel and modern web applications faster.",
+  },
+  {
+    name: "Litehost",
+    tier: "silver",
+    logo: "sponsors/litehost.png",
+    website: "https://getlitehost.com/",
+    twitter: "https://x.com/litehostng",
+    description:
+      "A web hosting company that runs PHP, Laravel, WordPress and Node.js sites on isolated, SSH-accessible servers.",
+  },
+  {
+    name: "Wckd Studio",
+    tier: "media",
+    logo: "sponsors/wckd.svg",
+    website: "https://www.wckd.studio/",
+    twitter: "https://x.com/WCKDStudio",
+    instagram: "https://www.instagram.com/wckd_studio/",
+    description:
+      "WCKD Studio is a professional media, production, and creative agency that specializes in premium event coverage, professional photography, high-quality videography, and real-time live streaming services.",
+  },
+  {
+    name: "Lunchpark",
+    tier: "meal",
+    logo: "sponsors/lunchpark.png",
+    website: "https://lunchpark.ng/",
+    instagram: "https://instagram.com/lunchpark",
+    description:
+      "Lunchpark is a Food-as-a-Service lifestyle brand using proprietary technology and cloud kitchens to make healthy, personalized meals accessible and on-demand.",
+  },
+  {
+    name: "MTN Cloud",
+    tier: "general",
+    website: "https://cloud.mtn.ng/",
+    twitter: "https://x.com/MTNNGBusiness",
+    instagram: "https://www.instagram.com/mtnngbusiness/",
+    description:
+      "MTN Cloud is a next-generation cloud infrastructure platform built by MTN Nigeria as the anchor of its evolution from a telecommunications company into a digital technology group.",
+  },
+  {
+    name: "AGNimble",
+    tier: "general",
+    logo: "sponsors/agnimble.png",
+    website: "https://agnimble.com/",
+  },
+  {
+    name: "ServiceMe",
+    tier: "general",
+  },
+];
+
+export type Partner = {
+  name: string;
+  /** Partnership type as submitted, e.g. "Organising Partner". */
+  type?: string;
+  /** Logo under public/images/. Falls back to a wordmark until artwork lands. */
+  logo?: string;
+  logoOnDark?: LogoOnDark;
+  website?: string;
+  twitter?: string;
+  linkedin?: string;
+  description?: string;
+};
+
+export const partners: Partner[] = [
+  {
+    name: "Kovo Labs",
+    type: "Organising Partner",
+    logo: "partners/kovo-labs.png",
+    logoOnDark: "invert",
+    twitter: "https://x.com/KovoLabsHQ",
+    linkedin: "https://www.linkedin.com/company/kovo-labs/",
+    description:
+      "Kovo Labs is an end-to-end digital studio based in Nigeria that specializes in building digital products, delivering full-suite design, and providing event services.",
+  },
+  {
+    name: "PHP Foundation",
+    type: "Community Partner",
+    logo: "partners/php-foundation.svg",
+    website: "https://thephp.foundation/",
+    twitter: "https://x.com/ThePHPF",
+    linkedin: "https://www.linkedin.com/company/phpfoundation/",
+    description:
+      "The PHP Foundation is a collective of people and organizations relying on the PHP language. Its mission is to ensure the long-term prosperity of the PHP language.",
+  },
+  {
+    name: "NativePHP",
+    type: "Partner",
+    logo: "partners/nativephp.svg",
+    website: "https://nativephp.com/",
+    twitter: "https://x.com/nativephp",
+    linkedin: "https://www.linkedin.com/company/nativephp",
+    description:
+      "NativePHP is a modern toolkit that makes it possible to build truly native desktop and mobile applications directly with PHP — no need to learn a new language or framework.",
+  },
+  {
+    name: "JetBrains",
+    type: "Community Partner",
+    logo: "partners/jetbrains.svg",
+    website: "https://www.jetbrains.com",
+    twitter: "https://x.com/jetbrains",
+    linkedin: "https://www.linkedin.com/company/jetbrains",
+    description:
+      "JetBrains is a software vendor specializing in intelligent development tools, helping programmers write, test, and fix code faster.",
+  },
+  {
+    name: "Hinexa",
+    type: "Hosting Partner",
+    logo: "partners/hinexa.png",
+    logoOnDark: "chip",
+    website: "https://ap.hinexa.com",
+    twitter: "https://x.com/usehinexa",
+    linkedin: "https://www.linkedin.com/company/hinexa/",
+    description:
+      "Hinexa is a modern web hosting platform providing domains, hosting, deployment and website management infrastructure for individuals, businesses and developers.",
+  },
+  {
+    name: "Nsa",
+    type: "Games Partner",
+    website: "http://playnsa.xyz/",
+  },
+  {
+    name: "Utibe Udoma",
+    type: "Media Partner",
+  },
+];
+
 export const faqs: {
   question: string;
   answer: string;
