@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "../layout/Container";
 import { cn } from "@/lib/utils";
+import { SPONSOR_TIERS, partners, sponsors, type LogoOnDark } from "@/data";
 
 type Tab = "sponsors" | "partners";
 
@@ -96,42 +97,81 @@ const TabButton = ({
 
 const SponsorsPanel = () => (
   <div className="space-y-10 md:space-y-14">
-    <SponsorTier name="Diamond Sponsors">
-      <SponsorLogo src="/images/sponsors/Diamond/wkd.png" />
-      <SponsorLogo src="/images/sponsors/Diamond/AGNimble.png" />
-      <SponsorLogo src="/images/sponsors/Diamond/reggie.png" />
-      <SponsorLogo src="/images/sponsors/Diamond/Venhoot.png" />
-    </SponsorTier>
-
-    <SponsorTier name="Gold Sponsors">
-      <SponsorLogo src="/images/sponsors/Gold/notion.png" />
-      <SponsorLogo src="/images/sponsors/Gold/marvy.png" />
-    </SponsorTier>
-
-    <SponsorTier name="Silver Sponsors">
-      <SponsorLogo src="/images/sponsors/Silver/Middey.png" />
-      <SponsorLogo src="/images/sponsors/Silver/Litehost.png" />
-      <SponsorLogo src="/images/sponsors/Silver/teller.png" />
-      <SponsorLogo src="/images/sponsors/Silver/Viction.png" />
-      <SponsorLogo src="/images/sponsors/Silver/phpsandbox.png" />
-      <SponsorLogo src="/images/sponsors/Silver/Frontier.png" />
-      <SponsorLogo src="/images/sponsors/Silver/DigitalNERD.png" />
-      <SponsorLogo src="/images/sponsors/Silver/coderigi.png" />
-    </SponsorTier>
+    {SPONSOR_TIERS.map(({ id, label }) => {
+      const tierSponsors = sponsors.filter((sponsor) => sponsor.tier === id);
+      if (tierSponsors.length === 0) return null;
+      return (
+        <SponsorTier key={id} name={label}>
+          {tierSponsors.map((sponsor) => (
+            <SponsorLogo key={sponsor.name} {...sponsor} />
+          ))}
+        </SponsorTier>
+      );
+    })}
   </div>
 );
 
-const SponsorLogo = ({ src }: { src: string }) => (
-  <div className="relative h-16 w-full md:h-20">
+const PartnersPanel = () => (
+  <SponsorTier name="Partners">
+    {partners.map((partner) => (
+      <SponsorLogo key={partner.name} {...partner} />
+    ))}
+  </SponsorTier>
+);
+
+const SponsorLogo = ({
+  name,
+  logo,
+  logoOnDark,
+  website,
+}: {
+  name: string;
+  logo?: string;
+  logoOnDark?: LogoOnDark;
+  website?: string;
+}) => {
+  const content = logo ? (
     <Image
-      src={src}
-      alt=""
+      src={`/images/${logo}`}
+      alt={name}
       fill
       sizes="(min-width: 1024px) 20vw, 50vw"
-      className="object-contain object-center"
+      // The optimizer rejects SVG unless dangerouslyAllowSVG is set; serve it as-is.
+      unoptimized={logo.endsWith(".svg")}
+      className={cn(
+        "object-contain object-center",
+        // Black monochrome artwork would vanish on the dark section.
+        logoOnDark === "invert" && "invert",
+        logoOnDark === "chip" && "p-2"
+      )}
     />
-  </div>
-);
+  ) : (
+    // Placeholder until the brand supplies artwork.
+    <span className="px-2 text-center font-heading text-base font-medium text-white/70 md:text-lg">
+      {name}
+    </span>
+  );
+
+  const className = cn(
+    "relative flex h-16 w-full items-center justify-center md:h-20",
+    // Multi-colour dark artwork needs a light tile to sit on.
+    logoOnDark === "chip" && "rounded-lg bg-white"
+  );
+
+  return website ? (
+    <a
+      href={website}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={name}
+      className={cn(className, "transition hover:opacity-80")}
+    >
+      {content}
+    </a>
+  ) : (
+    <div className={className}>{content}</div>
+  );
+};
 
 const SponsorTier = ({
   name,
@@ -148,12 +188,4 @@ const SponsorTier = ({
       {children}
     </div>
   </div>
-);
-
-const PartnersPanel = () => (
-  <SponsorTier name="Partners">
-    <SponsorLogo src="/images/sponsors/Partners/aces.png" />
-    <SponsorLogo src="/images/sponsors/Partners/GDSC.png" />
-    <SponsorLogo src="/images/sponsors/Partners/unschooled.png" />
-  </SponsorTier>
 );
