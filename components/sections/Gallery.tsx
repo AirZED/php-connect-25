@@ -1,14 +1,51 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { RegisterButton } from "./Hero";
 import { galleryGroups } from "@/data";
-import { cn } from "@/lib/utils";
+import { useState, useRef } from "react";
 
 export default function Gallery() {
+  const [expandedGalleries, setExpandedGalleries] = useState<string[]>([]);
+  const scrollContainerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const toggleGallery = (edition: string) => {
+    setExpandedGalleries((prev) =>
+      prev.includes(edition)
+        ? prev.filter((item) => item !== edition)
+        : [...prev, edition]
+    );
+  };
+
+  // Mouse Drag
+  const handleMouseDown = (e: React.MouseEvent, edition: string) => {
+    const container = scrollContainerRefs.current[edition];
+    if (!container) return;
+    isDragging.current = true;
+    startX.current = e.pageX - container.offsetLeft;
+    scrollLeft.current = container.scrollLeft;
+  };
+
+  const handleMouseLeaveOrUp = () => {
+    isDragging.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent, edition: string) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const container = scrollContainerRefs.current[edition];
+    if (!container) return;
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX.current) * 1.5; 
+    container.scrollLeft = scrollLeft.current - walk;
+  };
+
   return (
-    <section data-nav-theme="light" className="bg-paper py-16 md:py-24">
+    <section data-nav-theme="light" className="bg-paper py-16 md:py-24 overflow-hidden">
       <Container>
         <Reveal width="100%">
           <div className="flex flex-wrap items-center justify-between gap-6">
@@ -20,50 +57,118 @@ export default function Gallery() {
         </Reveal>
 
         <div className="mt-10 md:mt-14">
-          {galleryGroups.map((group, index) => (
-            <div key={group.edition}>
-              {index > 0 && <Divider />}
-              <Reveal width="100%">
-                <div className="flex flex-col gap-5 py-8 md:flex-row md:items-center md:gap-8">
-                  <span className="font-secondary text-lg font-normal uppercase leading-[1.8] tracking-normal align-middle text-ink/50 md:w-[170px] md:shrink-0">
-                    {group.edition}
-                  </span>
+          {galleryGroups.map((group, index) => {
+            const isExpanded = expandedGalleries.includes(group.edition);
 
-                  <p className="font-secondary text-lg font-normal leading-none tracking-normal text-ink md:w-[360px] md:shrink-0 md:text-xl">
-                    {group.caption}
-                  </p>
+            return (
+              <div key={group.edition} className="w-full">
+                {index > 0 && <Divider />}
 
-                  <Link
-                    href={group.albumUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-sm text-ink/60 transition-colors hover:text-ink md:w-[80px] md:shrink-0"
-                  >
-                    viewAll()
-                  </Link>
+                <Reveal width="100%">
+                  <div className="py-8">
+                    <div className="flex flex-col gap-5 md:flex-row md:items-center md:gap-8">
+                      <span className="font-secondary text-lg font-normal uppercase leading-[1.8] tracking-normal text-ink/50 md:w-[170px] md:shrink-0">
+                        {group.edition}
+                      </span>
 
-                  <div className="flex flex-1 gap-3">
-                    {group.images.map((image, i) => (
-                      <div
-                        key={i}
-                        className={cn(
-                          "relative h-[150px] shrink-0 overflow-hidden bg-ink/10",
-                          i < 2 ? "w-[210px]" : "w-[70px]"
-                        )}
+                      <p className="font-secondary text-lg font-normal leading-none tracking-normal text-ink md:w-[360px] md:shrink-0 md:text-xl">
+                        {group.caption}
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={() => toggleGallery(group.edition)}
+                        className="font-mono text-sm text-ink/60 transition-colors hover:text-ink md:w-[100px] md:shrink-0 text-left"
                       >
-                        <Image
-                          src={`/images/${image}`}
-                          alt=""
-                          fill
-                          className="object-cover"
-                        />
+                        {isExpanded ? "viewLess()" : "viewAll()"}
+                      </button>
+
+                      <div
+                        className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                          !isExpanded
+                            ? "flex flex-1 gap-3 overflow-hidden opacity-100"
+                            : "max-w-0 opacity-0 overflow-hidden pointer-events-none"
+                        }`}
+                      >
+                        {group.images.slice(0, 2).map((image, i) => (
+                          <div
+                            key={i}
+                            className="relative h-[150px] w-[210px] shrink-0 overflow-hidden bg-ink/10"
+                          >
+                            <Image
+                              src={`/images/${image}`}
+                              alt=""
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        ))}
                       </div>
-                    ))}
+
+                      {isExpanded && (
+                        <button
+                          type="button"
+                          onClick={() => toggleGallery(group.edition)}
+                          aria-label="Close gallery"
+                          className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/30 text-xl text-ink transition-colors hover:bg-ink hover:text-paper"
+                        >
+                          ×
+                        </button>
+                      )}
+                    </div>
+
+                    {/*Swipeable Gallery */}
+                    <div
+                      className={`grid w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        isExpanded
+                          ? "grid-rows-[1fr] mt-8 opacity-100"
+                          : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <div className="overflow-hidden w-full">
+                        <div
+                          ref={(el) => {
+                            scrollContainerRefs.current[group.edition] = el;
+                          }}
+                          onMouseDown={(e) => handleMouseDown(e, group.edition)}
+                          onMouseLeave={handleMouseLeaveOrUp}
+                          onMouseUp={handleMouseLeaveOrUp}
+                          onMouseMove={(e) => handleMouseMove(e, group.edition)}
+                          className={`flex w-full gap-5 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing select-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
+                            isExpanded ? "translate-x-0" : "translate-x-12"
+                          }`}
+                        >
+                          {group.images.map((image, i) => (
+                            <div
+                              key={i}
+                              style={{
+                                transitionDelay: isExpanded ? `${i * 70}ms` : "0ms",
+                              }}
+                              className={`relative h-[350px] w-[70vw] shrink-0 overflow-hidden bg-ink/10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:h-[450px] md:w-[55vw] lg:h-[500px] lg:w-[50vw] ${
+                                isExpanded
+                                  ? "translate-x-0 opacity-100"
+                                  : "translate-x-16 opacity-0"
+                              }`}
+                            >
+                              <Image
+                                src={`/images/${image}`}
+                                alt=""
+                                fill
+                                draggable={false}
+                                className="object-cover pointer-events-none"
+                                sizes="(max-width: 768px) 70vw, 50vw"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Reveal>
-            </div>
-          ))}
+                </Reveal>
+              </div>
+            );
+          })}
+
           <Divider />
         </div>
       </Container>
