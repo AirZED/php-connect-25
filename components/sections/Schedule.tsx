@@ -2,9 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
-import { schedule } from "@/data";
+import { useEffect, useState } from "react";
+import { schedule, type ScheduleLinks } from "@/data";
 
 export default function Schedule() {
+  const [links, setLinks] = useState<Record<string, ScheduleLinks>>({});
+
+  useEffect(() => {
+    fetch("/api/schedule-links")
+      .then((res) => (res.ok ? res.json() : {}))
+      .then(setLinks)
+      .catch(() => {});
+  }, []);
+
   return (
     <section id="schedule" data-nav-theme="light" className="scroll-mt-[170px] bg-paper py-16 md:py-24">
       <Container className="space-y-2">
@@ -41,6 +51,7 @@ export default function Schedule() {
                   <ScheduleRow
                     key={session.title}
                     session={session}
+                    links={links[session.id]}
                     isLast={index === schedule.length - 1}
                   />
                 ))}
@@ -55,9 +66,11 @@ export default function Schedule() {
 
 const ScheduleRow = ({
   session,
+  links,
   isLast,
 }: {
   session: (typeof schedule)[number];
+  links?: ScheduleLinks;
   isLast: boolean;
 }) => {
   return (
@@ -67,7 +80,7 @@ const ScheduleRow = ({
         (isLast ? "" : " dash-divider")
       }
     >
-      <div className="md:col-span-7">
+      <div className="md:col-span-6">
         <h3 className="font-secondary text-base font-medium leading-snug text-[#0B081B] md:text-[1.3rem]">
           {session.title}
         </h3>
@@ -76,9 +89,10 @@ const ScheduleRow = ({
             {session.description}
           </p>
         )}
+        {!!session.speakers?.length && <SessionLinks links={links} />}
       </div>
 
-      <div className="flex flex-col gap-2 md:col-span-4">
+      <div className="flex flex-col gap-2 md:col-span-3">
         {session.speakers?.map((speaker, i) => (
           <div key={i} className="flex items-center gap-2">
             <div className="relative h-5 w-5 shrink-0 overflow-hidden rounded-full bg-ink/10">
@@ -104,9 +118,79 @@ const ScheduleRow = ({
         ))}
       </div>
 
-      <span className="font-secondary text-xs uppercase tracking-[0.5px] text-[#0B081B] md:col-span-1 md:text-right md:text-[1.2rem]">
-        {session.time}
-      </span>
+      <div className="font-secondary uppercase tracking-[0.5px] text-[#0B081B] md:col-span-3 md:text-right">
+        <span className="block text-xs md:text-[1.1rem]">{session.time} WAT</span>
+        <span className="block text-xs text-[#616161] md:text-[0.9rem]">
+          {session.timeEdt} EDT
+        </span>
+      </div>
     </div>
   );
 };
+
+const linkClass = "inline-flex items-center gap-1.5 text-xs underline md:text-sm";
+
+const SessionLink = ({
+  href,
+  icon,
+  children,
+}: {
+  href?: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) =>
+  href ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${linkClass} text-[#2A1A9E] hover:text-accent`}
+    >
+      {icon}
+      {children}
+    </a>
+  ) : (
+    <span aria-disabled className={`${linkClass} cursor-default text-[#2A1A9E]/40`}>
+      {icon}
+      {children}
+    </span>
+  );
+
+// Recorded sessions only offer the recording; upcoming ones offer the calendar
+// and live links, greyed out until the organisers add them in /admin.
+const SessionLinks = ({ links }: { links?: ScheduleLinks }) => (
+  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+    {links?.recordingUrl ? (
+      <SessionLink href={links.recordingUrl} icon={<RecordingIcon />}>
+        Watch recording
+      </SessionLink>
+    ) : (
+      <>
+        <SessionLink href={links?.calendarUrl} icon={<CalendarIcon />}>
+          Add to calendar
+        </SessionLink>
+        <SessionLink href={links?.liveUrl} icon={<LiveIcon />}>
+          Watch live
+        </SessionLink>
+      </>
+    )}
+  </div>
+);
+
+const CalendarIcon = () => (
+  <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9Z" />
+  </svg>
+);
+
+const LiveIcon = () => (
+  <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10 15V9l5 3-5 3Z" />
+  </svg>
+);
+
+const RecordingIcon = () => (
+  <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-1.6l4.4 2.5A1 1 0 0 0 22 16.9V7.1a1 1 0 0 0-1.6-.9L16 8.6V8a3 3 0 0 0-3-3H4Zm4 4.5 4 2.5-4 2.5v-5Z" />
+  </svg>
+);

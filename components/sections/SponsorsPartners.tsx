@@ -4,10 +4,10 @@ import Container from "../layout/Container";
 import { cn } from "@/lib/utils";
 import { SPONSOR_TIERS, partners, sponsors, type LogoOnDark } from "@/data";
 
-type Tab = "sponsors" | "partners";
+type Tab = "all" | "sponsors" | "partners";
 
 export default function SponsorsPartners() {
-  const [tab, setTab] = useState<Tab>("sponsors");
+  const [tab, setTab] = useState<Tab>("all");
 
   useEffect(() => {
     const syncFromHash = (hash: string) => {
@@ -40,6 +40,9 @@ export default function SponsorsPartners() {
       <Container className="space-y-10 md:space-y-14">
         <div className="flex flex-wrap items-center justify-between gap-6 border-b border-white/10 pb-6">
           <div className="flex gap-8 md:gap-10">
+            <TabButton active={tab === "all"} onClick={() => setTab("all")}>
+              All
+            </TabButton>
             <TabButton
               id="sponsors-tab"
               active={tab === "sponsors"}
@@ -64,7 +67,16 @@ export default function SponsorsPartners() {
           </a>
         </div>
 
-        {tab === "sponsors" ? <SponsorsPanel /> : <PartnersPanel />}
+        {tab === "all" ? (
+          <div className="space-y-10 md:space-y-14">
+            <SponsorsPanel />
+            <PartnersPanel />
+          </div>
+        ) : tab === "sponsors" ? (
+          <SponsorsPanel />
+        ) : (
+          <PartnersPanel />
+        )}
       </Container>
     </section>
   );
