@@ -396,15 +396,6 @@ export const partners: Partner[] = [
     description:
       "Hinexa is a modern web hosting platform providing domains, hosting, deployment and website management infrastructure for individuals, businesses and developers.",
   },
-  {
-    name: "Nsa",
-    type: "Games Partner",
-    website: "http://playnsa.xyz/",
-  },
-  {
-    name: "Utibe Udoma",
-    type: "Media Partner",
-  },
 ];
 
 export const faqs: {
@@ -446,112 +437,119 @@ export type ScheduleSpeaker = {
 };
 
 export type ScheduleSession = {
+  id: string;
   title: string;
   description?: string;
   time: string;
+  timeEdt: string;
   speakers?: ScheduleSpeaker[];
 };
 
 export const schedule: ScheduleSession[] = [
   {
-    title: "Opening",
-    description: "Registrations and arrival of guests.",
-    time: "10:00 AM",
+    id: "opening-welcome",
+    title: "Opening / Welcome",
+    time: "12:00 – 12:10 PM",
+    timeEdt: "7:00 – 7:10 AM",
   },
   {
-    title: "Introduction of the Host",
-    description: "Meet the voices guiding you through the day.",
-    time: "11:00 AM",
-    speakers: [
-      { name: "Cleophas Success", image: "hosts/Cleophas.jpg" },
-      { name: "Chris Eminence", image: "hosts/ChrisEminence.jpg" },
-    ],
+    id: "phpfoundation-communities-contribution-opportunity",
+    title: "PHPFoundation: Communities, Contribution & Opportunity",
+    time: "12:10 – 12:40 PM",
+    timeEdt: "7:10 – 7:40 AM",
+    speakers: [{ name: "Elizabeth Barron", image: "speakers/Elizabeth.jpeg" }],
   },
   {
-    title: "Organizer's Welcome Speech",
-    description:
-      "Brief introduction to the event, overview of the day's program, goals, and expectations.",
-    time: "11:15 AM",
+    id: "ad-break-1",
+    title: "Ad Break #1",
+    time: "12:40 – 12:43 PM",
+    timeEdt: "7:40 – 7:43 AM",
   },
   {
-    title: "Keynote Address",
-    description: "Mastering your Craft.",
-    time: "11:30 AM",
-    speakers: [{ name: "Bosun Egberinde", affiliation: "Software Engineer", image: "speakers/Bosun.jpeg" }],
+    id: "the-engineer-and-the-loop",
+    title: "The Engineer and the Loop",
+    time: "12:43 – 1:08 PM",
+    timeEdt: "7:43 – 8:08 AM",
+    speakers: [{ name: "Bosun Egberinde", image: "speakers/Bosun.jpeg" }],
   },
   {
-    title: "PHP, the Unsung Hero of the Modern Web",
-    description: "Why PHP still powers a huge share of the modern internet.",
-    time: "12:00 PM",
-    speakers: [{ name: "James John" }],
+    id: "sponsor-shoutout-1",
+    title: "Sponsor Shoutout #1",
+    time: "1:08 – 1:13 PM",
+    timeEdt: "8:08 – 8:13 AM",
   },
   {
-    title: "Test-Driven Development in PHP",
-    description: "Writing cleaner, more reliable code.",
-    time: "12:30 PM",
-    speakers: [{ name: "Solomon Eseme", affiliation: "Software Engineer", image: "speakers/Solomon.jpeg" }],
+    id: "keynote-php-internals-deep-dive",
+    title: "Keynote: PHP Internals Deep Dive",
+    time: "1:13 – 1:38 PM",
+    timeEdt: "8:13 – 8:38 AM",
+    speakers: [{ name: "Derick Rethans", image: "speakers/Derick.jpg" }],
   },
   {
-    title: "Building Cross-Platform Mobile Apps",
-    description: "Flutter with a PHP backend.",
-    time: "1:00 PM",
-    speakers: [{ name: "Utibe Etim" }],
+    id: "icebreaker-game-break",
+    title: "Icebreaker / Game Break",
+    description: "Play along at playnsa.xyz.",
+    time: "1:38 – 1:55 PM",
+    timeEdt: "8:38 – 8:55 AM",
   },
   {
-    title: "Integration Testing with Docker",
-    description: "Containerized workflows for reliable, repeatable test runs.",
-    time: "1:30 PM",
-    speakers: [{ name: "Rufai Mustapha" }],
+    id: "ad-break-2",
+    title: "Ad Break #2",
+    time: "1:55 – 1:58 PM",
+    timeEdt: "8:55 – 8:58 AM",
   },
   {
-    title: "Mastering PHP",
-    description: "Deliberate practice in a rapidly evolving landscape.",
-    time: "2:00 PM",
-    speakers: [{ name: "Harry Zahavi", affiliation: "CEO, Coderigi", image: "speakers/Zahavi.jpg" }],
+    id: "nativephp",
+    title: "NativePHP",
+    time: "1:58 – 2:23 PM",
+    timeEdt: "8:58 – 9:23 AM",
+    speakers: [{ name: "Shane Rosenthal" }],
   },
   {
-    title: "Becoming a Lifelong Apprentice of Bugs",
-    description: "Why the best engineers never stop learning from what breaks.",
-    time: "2:30 PM",
-    speakers: [
-      {
-        name: "David Inyang-Etoh",
-        affiliation: "Senior Software Engineer, Receeve GmBH",
-        image: "speakers/David2.jpeg",
-      },
-    ],
+    id: "sponsor-shoutout-2",
+    title: "Sponsor Shoutout #2",
+    time: "2:23 – 2:28 PM",
+    timeEdt: "9:23 – 9:28 AM",
   },
   {
-    title: "Games! Games!! Games!!!",
-    description: "A short, high-energy break before the breakout sessions.",
-    time: "2:30 PM",
+    id: "engineering-in-the-age-of-abstraction",
+    title: "Engineering in the Age of Abstraction",
+    time: "2:28 – 2:53 PM",
+    timeEdt: "9:28 – 9:53 AM",
+    speakers: [{ name: "Jesutomiwa 'JT' Salam", image: "speakers/Jesutomiwa.jpg" }],
   },
   {
-    title: "Showcase",
-    description: "Attendees and sponsors demo what they've been building.",
-    time: "2:45 PM",
+    id: "ad-break-3",
+    title: "Ad Break #3",
+    time: "2:53 – 2:56 PM",
+    timeEdt: "9:53 – 9:56 AM",
   },
   {
-    title: "Breakout Sessions",
-    description: "Three parallel tracks running side by side.",
-    time: "3:00 PM",
-    speakers: [
-      { name: "Favour Akpan", affiliation: "Introduction to PHP (Beginner)", image: "speakers/Favour.jpg" },
-      { name: "Edidiong Udoh", affiliation: "Building APIs with Laravel", image: "speakers/Edidiong.jpeg" },
-      { name: "Tobi Anifowose", affiliation: "CI/CD for Zero-Downtime PHP", image: "speakers/tobi.png" },
-    ],
+    id: "from-prompt-to-production",
+    title: "From Prompt to Production",
+    time: "2:56 – 3:21 PM",
+    timeEdt: "9:56 – 10:21 AM",
+    speakers: [{ name: "Alexander Garuba", image: "speakers/Alexander.jpg" }],
   },
   {
-    title: "Sponsors Session",
-    description: "A word from the sponsors making PHP Connect possible.",
-    time: "3:45 PM",
-  },
-  {
-    title: "Closing",
-    description: "Photo session, connect and network.",
-    time: "4:15 PM",
+    id: "closing-remarks",
+    title: "Closing Remarks",
+    description: "Leaderboard and sponsor thank-yous.",
+    time: "3:21 – 3:30 PM",
+    timeEdt: "10:21 – 10:30 AM",
   },
 ];
+
+export type ScheduleLinks = {
+  calendarUrl?: string;
+  liveUrl?: string;
+  recordingUrl?: string;
+};
+
+// Google Sheet > File > Share > Publish to web > pick the sheet + "CSV", then paste the link here.
+// Columns: id | title | calendar | live | recording (see schedule-links-template.csv).
+export const SCHEDULE_LINKS_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRWt-Q54Lxl8DLTKPPuYs60LsVy9A7d3hj5ZE2KIkxtzXlh1ge6mbVH0dpbNNbBWZbS1VIZn3Snd52E/pub?gid=1123181300&single=true&output=csv";
 
 export const volunteers: {
   name: string;
