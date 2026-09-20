@@ -104,7 +104,7 @@ export default function Hero() {
               alt="PHP Connect attendees networking, The Builder's Edition"
               fill
               priority
-              className="absolute right-0 left-0 z-1 object-cover md:object-fill"
+              className="absolute right-0 left-0 z-1 object-cover md:landscape:object-fill"
             />
 
             <div className="z-2 relative inset-0 z-10 flex h-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 md:px-[2rem] md:pb-[7rem] md:pt-[10rem]">
