@@ -4,7 +4,7 @@ import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
 import { RegisterButton } from "./Hero";
 import { galleryGroups } from "@/data";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Gallery() {
   const [expandedGalleries, setExpandedGalleries] = useState<string[]>([]);
@@ -13,24 +13,54 @@ export default function Gallery() {
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
-  const toggleGallery = (edition: string) => {
-    setExpandedGalleries((prev) =>
-      prev.includes(edition)
-        ? prev.filter((item) => item !== edition)
-        : [...prev, edition]
-    );
+  // Autoscroll backs off for a few seconds after the visitor interacts, but a
+  // resting mouse pointer does not stop it.
+  const pausedUntil = useRef(0);
+  const pauseAutoScroll = (ms = 4000) => {
+    pausedUntil.current = Date.now() + ms;
   };
+  const openEdition = expandedGalleries[0];
+
+  // Only one year stays open: opening another closes the previous one.
+  const toggleGallery = (edition: string) => {
+    setExpandedGalleries((prev) => (prev.includes(edition) ? [] : [edition]));
+  };
+
+  // Slowly advance the open gallery, looping back to the start at the end.
+  useEffect(() => {
+    if (!openEdition) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const behavior = reduceMotion ? "auto" : "smooth";
+
+    const timer = setInterval(() => {
+      const container = scrollContainerRefs.current[openEdition];
+      if (!container || Date.now() < pausedUntil.current || isDragging.current) return;
+
+      const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 4;
+      if (atEnd) {
+        container.scrollTo({ left: 0, behavior });
+        return;
+      }
+      const first = container.firstElementChild as HTMLElement | null;
+      const step = first ? first.offsetWidth + 20 : container.clientWidth * 0.5;
+      container.scrollBy({ left: step, behavior });
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [openEdition]);
 
   // Mouse Drag
   const handleMouseDown = (e: React.MouseEvent, edition: string) => {
     const container = scrollContainerRefs.current[edition];
     if (!container) return;
     isDragging.current = true;
+    pauseAutoScroll();
     startX.current = e.pageX - container.offsetLeft;
     scrollLeft.current = container.scrollLeft;
   };
 
   const handleMouseLeaveOrUp = () => {
+    if (isDragging.current) pauseAutoScroll();
     isDragging.current = false;
   };
 
@@ -132,6 +162,9 @@ export default function Gallery() {
                           }}
                           onMouseDown={(e) => handleMouseDown(e, group.edition)}
                           onMouseLeave={handleMouseLeaveOrUp}
+                          onTouchStart={() => pauseAutoScroll()}
+                          onTouchEnd={() => pauseAutoScroll()}
+                          onWheel={() => pauseAutoScroll()}
                           onMouseUp={handleMouseLeaveOrUp}
                           onMouseMove={(e) => handleMouseMove(e, group.edition)}
                           className={`flex w-full gap-5 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing select-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${

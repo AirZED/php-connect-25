@@ -234,22 +234,22 @@ export const coreTeamMembers: {
 
 export const REGISTRATION_URL = "https://luma.com/h2w3bies";
 
-export type SponsorTierId = "diamond" | "silver" | "media" | "meal" | "general";
+export type SponsorTierId = "diamond" | "silver" | "media" | "meal";
 
 export const SPONSOR_TIERS: { id: SponsorTierId; label: string }[] = [
-  { id: "diamond", label: "Diamond Sponsors" },
-  { id: "silver", label: "Silver Sponsors" },
-  { id: "media", label: "Media Sponsor" },
-  { id: "meal", label: "Meal Sponsor" },
-  { id: "general", label: "Sponsors" },
+  { id: "diamond", label: "Diamond Partner" },
+  { id: "silver", label: "Silver Partner" },
+  { id: "media", label: "Media Partner" },
+  { id: "meal", label: "Meal Partner" },
 ];
 
 /**
  * How a logo is treated on the dark sponsors background:
- * "invert" flips monochrome black artwork to white, "chip" sits multi-colour
+ * "invert" flips monochrome black artwork to white, "white" turns any coloured
+ * artwork into a white silhouette, "chip" sits multi-colour
  * dark artwork on a light tile. Omit when the logo already reads on dark.
  */
-export type LogoOnDark = "invert" | "chip";
+export type LogoOnDark = "invert" | "white" | "chip";
 
 export type Sponsor = {
   name: string;
@@ -305,29 +305,11 @@ export const sponsors: Sponsor[] = [
     name: "Lunchpark",
     tier: "meal",
     logo: "sponsors/lunchpark.png",
+    logoOnDark: "white",
     website: "https://lunchpark.ng/",
     instagram: "https://instagram.com/lunchpark",
     description:
       "Lunchpark is a Food-as-a-Service lifestyle brand using proprietary technology and cloud kitchens to make healthy, personalized meals accessible and on-demand.",
-  },
-  {
-    name: "MTN Cloud",
-    tier: "general",
-    website: "https://cloud.mtn.ng/",
-    twitter: "https://x.com/MTNNGBusiness",
-    instagram: "https://www.instagram.com/mtnngbusiness/",
-    description:
-      "MTN Cloud is a next-generation cloud infrastructure platform built by MTN Nigeria as the anchor of its evolution from a telecommunications company into a digital technology group.",
-  },
-  {
-    name: "AGNimble",
-    tier: "general",
-    logo: "sponsors/agnimble.png",
-    website: "https://agnimble.com/",
-  },
-  {
-    name: "ServiceMe",
-    tier: "general",
   },
 ];
 
@@ -347,7 +329,7 @@ export type Partner = {
 export const partners: Partner[] = [
   {
     name: "Kovo Labs",
-    type: "Organising Partner",
+    type: "Organizing Partner",
     logo: "partners/kovo-labs.png",
     logoOnDark: "invert",
     twitter: "https://x.com/KovoLabsHQ",
@@ -386,15 +368,25 @@ export const partners: Partner[] = [
       "JetBrains is a software vendor specializing in intelligent development tools, helping programmers write, test, and fix code faster.",
   },
   {
-    name: "Hinexa",
-    type: "Hosting Partner",
-    logo: "partners/hinexa.png",
-    logoOnDark: "chip",
-    website: "https://ap.hinexa.com",
-    twitter: "https://x.com/usehinexa",
-    linkedin: "https://www.linkedin.com/company/hinexa/",
-    description:
-      "Hinexa is a modern web hosting platform providing domains, hosting, deployment and website management infrastructure for individuals, businesses and developers.",
+    name: "Nsa",
+    type: "Partner",
+    logo: "sponsors/nsa_logo.png",
+    website: "http://playnsa.xyz/",
+  },
+  {
+    name: "Notion UNIUYO Community",
+    type: "Community Partner",
+    logo: "partners/notion_logo.png",
+  },
+  {
+    name: "AWS Student Builders Group UNIUYO",
+    type: "Community Partner",
+    logo: "partners/aws_uniuyo.png",
+  },
+  {
+    name: "Karfé Nnyin",
+    type: "Partner",
+    logo: "sponsors/karfe_nnyin.png",
   },
 ];
 
