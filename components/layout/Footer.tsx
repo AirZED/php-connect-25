@@ -39,7 +39,7 @@ export default function Footer() {
         </h2>
       </Container>
 
-      <div className="h-[12.5vw] max-h-[180px] w-full bg-[#EF8510]" />
+      <div className="h-[12.5vw] max-h-[180px] w-full bg-accent" />
     </footer>
   );
 }
