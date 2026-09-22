@@ -62,6 +62,14 @@ export const speakers: Speaker[] = [
     slug: "shane-rosenthal",
     name: "Shane Rosenthal",
     designation: "Co Founder, NativePHP",
+    image: "speakers/shane-rosenthal.png",
+    bio: "Shane Rosenthal is a Laravel developer, open-source creator, and founder of NativePHP. He has been building with Laravel since 2013 and is passionate about pushing PHP beyond the traditional web. NativePHP enables developers to build fully native desktop and mobile applications using PHP and Laravel.",
+    talk: {
+      title:
+        "Building Native Apps with PHP: From Hot Reloading to the App Store with SuperNative & Bifrost",
+      overview:
+        "Shane will introduce SuperNative and Bifrost by building a demo app from scratch. We will walk through developing with hot reloading, syncing the app to Bifrost, and deploying it all the way to the App Store.",
+    },
     socials: { twitter: "https://x.com/ShaneDRosenthal" },
   },
   {
@@ -492,10 +500,10 @@ export const schedule: ScheduleSession[] = [
   },
   {
     id: "nativephp",
-    title: "NativePHP",
+    title: "Building Native Apps with PHP: From Hot Reloading to the App Store with SuperNative & Bifrost",
     time: "1:58 – 2:23 PM",
     timeEdt: "8:58 – 9:23 AM",
-    speakers: [{ name: "Shane Rosenthal" }],
+    speakers: [{ name: "Shane Rosenthal", image: "speakers/shane-rosenthal.png" }],
   },
   {
     id: "sponsor-shoutout-2",
