@@ -245,10 +245,10 @@ export const REGISTRATION_URL = "https://luma.com/h2w3bies";
 export type SponsorTierId = "diamond" | "silver" | "media" | "meal";
 
 export const SPONSOR_TIERS: { id: SponsorTierId; label: string }[] = [
-  { id: "diamond", label: "Diamond Partner" },
-  { id: "silver", label: "Silver Partner" },
-  { id: "media", label: "Media Partner" },
-  { id: "meal", label: "Meal Partner" },
+  { id: "diamond", label: "Diamond Sponsor" },
+  { id: "silver", label: "Silver Sponsor" },
+  { id: "media", label: "Media Sponsor" },
+  { id: "meal", label: "Meal Sponsor" },
 ];
 
 /**
@@ -298,6 +298,26 @@ export const sponsors: Sponsor[] = [
     twitter: "https://x.com/litehostng",
     description:
       "A web hosting company that runs PHP, Laravel, WordPress and Node.js sites on isolated, SSH-accessible servers.",
+  },
+  {
+    name: "AGNimble",
+    tier: "silver",
+    logo: "sponsors/agnimble.png",
+    website: "https://agnimble.com/",
+  },
+  {
+    name: "ServiceMe",
+    tier: "silver",
+    logo: "sponsors/service-me.png",
+    logoOnDark: "chip",
+    website: "https://servicemepro.com/",
+  },
+  {
+    name: "Sling",
+    tier: "silver",
+    logo: "sponsors/sling.png",
+    logoOnDark: "chip",
+    website: "https://sling.africa/",
   },
   {
     name: "Wckd Studio",
@@ -395,6 +415,11 @@ export const partners: Partner[] = [
     name: "Karfé Nnyin",
     type: "Partner",
     logo: "sponsors/karfe_nnyin.png",
+  },
+  {
+    name: "tsh.ink",
+    type: "Partner",
+    logo: "partners/tsh-ink.jpg",
   },
 ];
 

@@ -14,6 +14,10 @@ const u = (px: number) => `${(px * 0.15625).toFixed(3)}cqw`;
 const t = (px: number, min: number) => `max(${min}px, ${u(px)})`;
 
 const tier = (id: string) => sponsors.filter((sponsor) => sponsor.tier === id);
+// Silver logo widths, in design px — Sling's mark includes a tagline that
+// makes it much squarer than the others' wordmarks, so it needs a smaller
+// width to land at the same rendered height as its row-mates.
+const SILVER_WIDTH: Record<string, number> = { Litehost: 172, Sling: 85 };
 const tierLabel = (id: string) => SPONSOR_TIERS.find((item) => item.id === id)?.label ?? "";
 
 const organizers = partners.filter((partner) => partner.type === "Organizing Partner");
@@ -22,7 +26,7 @@ const otherPartners = partners.filter((partner) => partner.type !== "Organizing 
 export default function SponsorsPartners() {
   const [diamond] = tier("diamond");
   const featuredRow = [
-    ...organizers.map((item) => ({ label: "Organizing Partner", item })),
+    ...organizers.map((item) => ({ label: "Organizing Sponsor", item })),
     ...tier("media").map((item) => ({ label: tierLabel("media"), item })),
     ...tier("meal").map((item) => ({ label: tierLabel("meal"), item })),
   ];
@@ -61,7 +65,7 @@ export default function SponsorsPartners() {
                 style={{ marginTop: u(10), columnGap: u(34), rowGap: u(16) }}
               >
                 {tier("silver").map((sponsor) => (
-                  <Logo key={sponsor.name} {...sponsor} width={sponsor.name === "Litehost" ? 172 : 160} />
+                  <Logo key={sponsor.name} {...sponsor} width={SILVER_WIDTH[sponsor.name] ?? 160} />
                 ))}
               </div>
             </Row>
