@@ -163,17 +163,37 @@ const LogoMark = ({
   </Link>
 );
 
-export const RegisterButton = ({ className = "" }: { className?: string }) => (
-  <a
-    href={REGISTRATION_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-accent-dark ${className}`}
-  >
-    <Image src="/images/icons/register.png" alt="" width={16} height={16} />
-    Register Now
-  </a>
-);
+// Shared by the nav, hero, gallery and speaker pages, so this one switch
+// updates every "Register Now" button on the site at once.
+const useIsLive = () => {
+  const [isLive, setIsLive] = useState(false);
+
+  useEffect(() => {
+    const targetTime = new Date(EVENT_START).getTime();
+    const check = () => setIsLive(Date.now() >= targetTime);
+    check();
+    const id = setInterval(check, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return isLive;
+};
+
+export const RegisterButton = ({ className = "" }: { className?: string }) => {
+  const isLive = useIsLive();
+
+  return (
+    <a
+      href={isLive ? LIVE_STREAM_URL : REGISTRATION_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-accent-dark ${className}`}
+    >
+      <Image src="/images/icons/register.png" alt="" width={16} height={16} />
+      {isLive ? "View Live" : "Register Now"}
+    </a>
+  );
+};
 
 const pad = (n: number) => n.toString().padStart(2, "0");
 
