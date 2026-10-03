@@ -154,7 +154,7 @@ const ScheduleRow = ({
             {session.description}
           </p>
         )}
-        <SessionLinks links={links} />
+        <SessionLinks links={links} isTalk={!!session.speakers?.length} />
       </div>
 
       <div className="flex flex-col gap-2 md:col-span-3">
@@ -231,11 +231,17 @@ const SessionLink = ({
     </span>
   );
 
-// Recorded sessions only offer the recording; upcoming ones offer the calendar
-// and live links, greyed out until the organisers add them in /admin.
-const SessionLinks = ({ links }: { links?: ScheduleLinks }) => (
+// Breaks, shoutouts and other non-talk segments (no speaker) only ever get
+// a "Watch live" link — nobody adds an ad break to their calendar. Recorded
+// talks offer just the recording; upcoming talks offer the calendar and
+// live links, greyed out until the organisers add them in /admin.
+const SessionLinks = ({ links, isTalk }: { links?: ScheduleLinks; isTalk: boolean }) => (
   <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-    {links?.recordingUrl ? (
+    {!isTalk ? (
+      <SessionLink href={links?.liveUrl} icon={<LiveIcon />}>
+        Watch live
+      </SessionLink>
+    ) : links?.recordingUrl ? (
       <SessionLink href={links.recordingUrl} icon={<RecordingIcon />}>
         Watch recording
       </SessionLink>
