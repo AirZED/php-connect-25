@@ -5,7 +5,7 @@ import Container from "../layout/Container";
 import FitOneLine from "../ui/FitOneLine";
 import { Bars3, CalendarIcon } from "../ui/Icons";
 import { cn } from "@/lib/utils";
-import { EVENT_START, REGISTRATION_URL } from "@/data";
+import { EVENT_START, LIVE_STREAM_URL, REGISTRATION_URL } from "@/data";
 
 const NAV_LINKS: { href: string; text: string }[] = [
   { href: "#speakers", text: "Speakers" },
@@ -178,17 +178,22 @@ export const RegisterButton = ({ className = "" }: { className?: string }) => (
 const pad = (n: number) => n.toString().padStart(2, "0");
 
 const useCountdown = (target: string) => {
-  const [time, setTime] = useState({ days: 0, hrs: 0, mins: 0, secs: 0 });
+  const [state, setState] = useState({ days: 0, hrs: 0, mins: 0, secs: 0, isLive: false });
 
   useEffect(() => {
     const targetTime = new Date(target).getTime();
     const tick = () => {
-      const diff = Math.max(targetTime - Date.now(), 0);
-      setTime({
+      const diff = targetTime - Date.now();
+      if (diff <= 0) {
+        setState({ days: 0, hrs: 0, mins: 0, secs: 0, isLive: true });
+        return;
+      }
+      setState({
         days: Math.floor(diff / 86400000),
         hrs: Math.floor((diff / 3600000) % 24),
         mins: Math.floor((diff / 60000) % 60),
         secs: Math.floor((diff / 1000) % 60),
+        isLive: false,
       });
     };
     tick();
@@ -196,11 +201,36 @@ const useCountdown = (target: string) => {
     return () => clearInterval(id);
   }, [target]);
 
-  return time;
+  return state;
 };
 
 const CountdownWidget = () => {
-  const { days, hrs, mins, secs } = useCountdown(EVENT_START);
+  const { days, hrs, mins, secs, isLive } = useCountdown(EVENT_START);
+
+  if (isLive) {
+    return (
+      <a
+        href={LIVE_STREAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-3 rounded-[28px] border border-white/10 bg-white/[0.06] p-2 pr-5 backdrop-blur-sm transition hover:bg-white/[0.1]"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red-600 md:h-14 md:w-14">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white" />
+          </span>
+        </span>
+        <span className="flex flex-col">
+          <span className="font-display text-sm font-semibold uppercase tracking-wide text-white md:text-base">
+            We&apos;re Live
+          </span>
+          <span className="text-xs text-white/70 md:text-sm">Watch on YouTube</span>
+        </span>
+      </a>
+    );
+  }
+
   const units = [
     { label: "Days", value: days },
     { label: "Hrs", value: hrs },

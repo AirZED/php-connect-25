@@ -248,6 +248,7 @@ export const REGISTRATION_URL = "https://luma.com/h2w3bies";
 // apart.
 export const EVENT_START = "2026-10-03T11:00:00+01:00";
 export const EVENT_DAY = "2026-10-03";
+export const LIVE_STREAM_URL = "https://www.youtube.com/watch?v=-OwKO_-bHEc";
 
 export type SponsorTierId = "diamond" | "silver" | "media" | "meal";
 
