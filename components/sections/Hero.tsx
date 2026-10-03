@@ -7,7 +7,9 @@ import { Bars3, CalendarIcon } from "../ui/Icons";
 import { cn } from "@/lib/utils";
 import { REGISTRATION_URL } from "@/data";
 
-const EVENT_DATE = "2026-10-03T09:00:00";
+// WAT is a fixed UTC+1 offset (no DST), so this reads correctly for every
+// visitor regardless of their own device's timezone.
+const EVENT_DATE = "2026-10-03T11:00:00+01:00";
 
 const NAV_LINKS: { href: string; text: string }[] = [
   { href: "#speakers", text: "Speakers" },
