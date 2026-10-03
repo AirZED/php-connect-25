@@ -309,7 +309,7 @@ export const sponsors: Sponsor[] = [
     name: "ServiceMe",
     tier: "silver",
     logo: "sponsors/service-me.png",
-    logoOnDark: "chip",
+    logoOnDark: "white",
     website: "https://servicemepro.com/",
   },
   {
