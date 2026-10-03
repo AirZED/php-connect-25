@@ -316,7 +316,6 @@ export const sponsors: Sponsor[] = [
     name: "Sling",
     tier: "silver",
     logo: "sponsors/sling.png",
-    logoOnDark: "chip",
     website: "https://sling.africa/",
   },
   {
