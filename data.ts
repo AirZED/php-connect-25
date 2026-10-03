@@ -242,6 +242,13 @@ export const coreTeamMembers: {
 
 export const REGISTRATION_URL = "https://luma.com/h2w3bies";
 
+// WAT is a fixed UTC+1 offset (no DST), so this reads correctly for every
+// visitor regardless of their own device's timezone. Shared by the hero
+// countdown and the schedule's "live now" detection, so they can't drift
+// apart.
+export const EVENT_START = "2026-10-03T11:00:00+01:00";
+export const EVENT_DAY = "2026-10-03";
+
 export type SponsorTierId = "diamond" | "silver" | "media" | "meal";
 
 export const SPONSOR_TIERS: { id: SponsorTierId; label: string }[] = [

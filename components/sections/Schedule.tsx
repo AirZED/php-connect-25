@@ -2,11 +2,72 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "../layout/Container";
 import Reveal from "../animation/Reveal";
-import { useEffect, useState } from "react";
-import { schedule, type ScheduleLinks } from "@/data";
+import { useEffect, useMemo, useState } from "react";
+import { EVENT_DAY, schedule, type ScheduleLinks } from "@/data";
+
+// Parses one WAT time string against the event's date, so "now" can be
+// compared against it. Handles both a range ("12:10 – 12:40 PM") and a
+// single point in time ("11:00 AM"), and a first time that omits its own
+// AM/PM when it matches the second ("11:40 AM – 12:10 PM" stays explicit,
+// "12:10 – 12:40 PM" infers PM for 12:10 from 12:40 PM).
+const parseWatTime = (time: string): { start: Date; end: Date | null } => {
+  const parts = time.split(" – ");
+  const parse = (text: string, fallbackAp?: string) => {
+    const m = text.trim().match(/(\d{1,2}):(\d{2})\s*(AM|PM)?$/);
+    if (!m) return null;
+    const [, hStr, mStr, ap] = m;
+    const period = ap ?? fallbackAp;
+    let hours = parseInt(hStr, 10) % 12;
+    if (period === "PM") hours += 12;
+    return { hours, minutes: parseInt(mStr, 10) };
+  };
+
+  const endMatch = parts[1] ? parts[1].trim().match(/(AM|PM)$/) : null;
+  const startParsed = parse(parts[0], endMatch?.[1]);
+  const endParsed = parts[1] ? parse(parts[1]) : null;
+
+  const toDate = (p: { hours: number; minutes: number }) =>
+    new Date(`${EVENT_DAY}T${String(p.hours).padStart(2, "0")}:${String(p.minutes).padStart(2, "0")}:00+01:00`);
+
+  return {
+    start: startParsed ? toDate(startParsed) : new Date(NaN),
+    end: endParsed ? toDate(endParsed) : null,
+  };
+};
+
+// A row with no end time (just "Pre PHPConnect — 11:00 AM") runs until the
+// next row starts.
+const useLiveSessionId = () => {
+  const windows = useMemo(() => {
+    const parsed = schedule.map((session) => parseWatTime(session.time));
+    return schedule.map((session, i) => ({
+      id: session.id,
+      start: parsed[i].start,
+      end: parsed[i].end ?? parsed[i + 1]?.start ?? null,
+    }));
+  }, []);
+
+  const [liveId, setLiveId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const check = () => {
+      const now = Date.now();
+      const current = windows.find(
+        (w) => now >= w.start.getTime() && (w.end ? now < w.end.getTime() : true)
+      );
+      setLiveId(current?.id ?? null);
+    };
+    check();
+    const id = setInterval(check, 15000);
+    return () => clearInterval(id);
+  }, [windows]);
+
+  return liveId;
+};
 
 export default function Schedule() {
   const [links, setLinks] = useState<Record<string, ScheduleLinks>>({});
+  const liveId = useLiveSessionId();
 
   useEffect(() => {
     fetch("/api/schedule-links")
@@ -52,6 +113,7 @@ export default function Schedule() {
                     key={session.title}
                     session={session}
                     links={links[session.id]}
+                    isLive={session.id === liveId}
                     isLast={index === schedule.length - 1}
                   />
                 ))}
@@ -67,10 +129,12 @@ export default function Schedule() {
 const ScheduleRow = ({
   session,
   links,
+  isLive,
   isLast,
 }: {
   session: (typeof schedule)[number];
   links?: ScheduleLinks;
+  isLive: boolean;
   isLast: boolean;
 }) => {
   return (
@@ -81,6 +145,7 @@ const ScheduleRow = ({
       }
     >
       <div className="md:col-span-6">
+        {isLive && <LiveBadge />}
         <h3 className="font-secondary text-base font-medium leading-snug text-[#0B081B] md:text-[1.3rem]">
           {session.title}
         </h3>
@@ -89,7 +154,7 @@ const ScheduleRow = ({
             {session.description}
           </p>
         )}
-        {!!session.speakers?.length && <SessionLinks links={links} />}
+        <SessionLinks links={links} />
       </div>
 
       <div className="flex flex-col gap-2 md:col-span-3">
@@ -127,6 +192,16 @@ const ScheduleRow = ({
     </div>
   );
 };
+
+const LiveBadge = () => (
+  <span className="mb-1.5 inline-flex items-center gap-1.5 rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">
+    <span className="relative flex h-2 w-2">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+      <span className="relative inline-flex h-2 w-2 rounded-full bg-green-600" />
+    </span>
+    Live
+  </span>
+);
 
 const linkClass = "inline-flex items-center gap-1.5 text-xs underline md:text-sm";
 
