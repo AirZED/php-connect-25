@@ -5,11 +5,7 @@ import Container from "../layout/Container";
 import FitOneLine from "../ui/FitOneLine";
 import { Bars3, CalendarIcon } from "../ui/Icons";
 import { cn } from "@/lib/utils";
-import { REGISTRATION_URL } from "@/data";
-
-// WAT is a fixed UTC+1 offset (no DST), so this reads correctly for every
-// visitor regardless of their own device's timezone.
-const EVENT_DATE = "2026-10-03T11:00:00+01:00";
+import { EVENT_START, REGISTRATION_URL } from "@/data";
 
 const NAV_LINKS: { href: string; text: string }[] = [
   { href: "#speakers", text: "Speakers" },
@@ -204,7 +200,7 @@ const useCountdown = (target: string) => {
 };
 
 const CountdownWidget = () => {
-  const { days, hrs, mins, secs } = useCountdown(EVENT_DATE);
+  const { days, hrs, mins, secs } = useCountdown(EVENT_START);
   const units = [
     { label: "Days", value: days },
     { label: "Hrs", value: hrs },
