@@ -247,6 +247,8 @@ export const REGISTRATION_URL = "https://luma.com/h2w3bies";
 // countdown and the schedule's "live now" detection, so they can't drift
 // apart.
 export const EVENT_START = "2026-10-03T11:00:00+01:00";
+// Matches the schedule's last row (Closing Remarks, 4:16 - 4:25 PM WAT).
+export const EVENT_END = "2026-10-03T16:25:00+01:00";
 export const EVENT_DAY = "2026-10-03";
 export const LIVE_STREAM_URL = "https://www.youtube.com/watch?v=-OwKO_-bHEc";
 

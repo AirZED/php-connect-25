@@ -5,7 +5,7 @@ import Container from "../layout/Container";
 import FitOneLine from "../ui/FitOneLine";
 import { Bars3, CalendarIcon } from "../ui/Icons";
 import { cn } from "@/lib/utils";
-import { EVENT_START, LIVE_STREAM_URL, REGISTRATION_URL } from "@/data";
+import { EVENT_END, EVENT_START, LIVE_STREAM_URL, REGISTRATION_URL } from "@/data";
 
 const NAV_LINKS: { href: string; text: string }[] = [
   { href: "#speakers", text: "Speakers" },
@@ -163,71 +163,99 @@ const LogoMark = ({
   </Link>
 );
 
-// Shared by the nav, hero, gallery and speaker pages, so this one switch
-// updates every "Register Now" button on the site at once.
-const useIsLive = () => {
-  const [isLive, setIsLive] = useState(false);
+type EventPhase = "upcoming" | "live" | "ended";
+
+type EventPhaseState = {
+  phase: EventPhase;
+  days: number;
+  hrs: number;
+  mins: number;
+  secs: number;
+};
+
+const computeEventPhase = (): EventPhaseState => {
+  const now = Date.now();
+  const start = new Date(EVENT_START).getTime();
+  const end = new Date(EVENT_END).getTime();
+
+  if (now >= end) return { phase: "ended", days: 0, hrs: 0, mins: 0, secs: 0 };
+  if (now >= start) return { phase: "live", days: 0, hrs: 0, mins: 0, secs: 0 };
+
+  const diff = start - now;
+  return {
+    phase: "upcoming",
+    days: Math.floor(diff / 86400000),
+    hrs: Math.floor((diff / 3600000) % 24),
+    mins: Math.floor((diff / 60000) % 60),
+    secs: Math.floor((diff / 1000) % 60),
+  };
+};
+
+// Shared by the countdown widget and every "Register Now" button (nav, hero,
+// gallery, speaker pages), so this one clock drives all of them at once.
+const useEventPhase = (): EventPhaseState => {
+  const [state, setState] = useState(computeEventPhase);
 
   useEffect(() => {
-    const targetTime = new Date(EVENT_START).getTime();
-    const check = () => setIsLive(Date.now() >= targetTime);
-    check();
-    const id = setInterval(check, 1000);
+    const id = setInterval(() => setState(computeEventPhase()), 1000);
     return () => clearInterval(id);
   }, []);
 
-  return isLive;
+  return state;
 };
 
 export const RegisterButton = ({ className = "" }: { className?: string }) => {
-  const isLive = useIsLive();
+  const { phase } = useEventPhase();
+  const href = phase === "upcoming" ? REGISTRATION_URL : LIVE_STREAM_URL;
+  const label =
+    phase === "upcoming" ? "Register Now" : phase === "live" ? "View Live" : "Watch Recording";
 
   return (
     <a
-      href={isLive ? LIVE_STREAM_URL : REGISTRATION_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-accent-dark ${className}`}
     >
       <Image src="/images/icons/register.png" alt="" width={16} height={16} />
-      {isLive ? "View Live" : "Register Now"}
+      {label}
     </a>
   );
 };
 
 const pad = (n: number) => n.toString().padStart(2, "0");
 
-const useCountdown = (target: string) => {
-  const [state, setState] = useState({ days: 0, hrs: 0, mins: 0, secs: 0, isLive: false });
-
-  useEffect(() => {
-    const targetTime = new Date(target).getTime();
-    const tick = () => {
-      const diff = targetTime - Date.now();
-      if (diff <= 0) {
-        setState({ days: 0, hrs: 0, mins: 0, secs: 0, isLive: true });
-        return;
-      }
-      setState({
-        days: Math.floor(diff / 86400000),
-        hrs: Math.floor((diff / 3600000) % 24),
-        mins: Math.floor((diff / 60000) % 60),
-        secs: Math.floor((diff / 1000) % 60),
-        isLive: false,
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  return state;
-};
+const RecordingPlayIcon = () => (
+  <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="white">
+    <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+  </svg>
+);
 
 const CountdownWidget = () => {
-  const { days, hrs, mins, secs, isLive } = useCountdown(EVENT_START);
+  const { phase, days, hrs, mins, secs } = useEventPhase();
 
-  if (isLive) {
+  if (phase === "ended") {
+    return (
+      <a
+        href={LIVE_STREAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-3 rounded-[28px] border border-white/10 bg-white/[0.06] p-2 pr-5 backdrop-blur-sm transition hover:bg-white/[0.1]"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black/40 md:h-14 md:w-14">
+          <RecordingPlayIcon />
+        </span>
+        <span className="flex flex-col">
+          <span className="font-display text-sm font-semibold uppercase tracking-wide text-white md:text-base">
+            Event Ended
+          </span>
+          <span className="text-xs text-white/70 md:text-sm">Watch the Recording</span>
+        </span>
+      </a>
+    );
+  }
+
+  if (phase === "live") {
     return (
       <a
         href={LIVE_STREAM_URL}
