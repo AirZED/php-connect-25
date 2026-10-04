@@ -232,31 +232,37 @@ const SessionLink = ({
   );
 
 // Breaks, shoutouts and other non-talk segments (no speaker) only ever get
-// a "Watch live" link — nobody adds an ad break to their calendar. Recorded
-// talks offer just the recording; upcoming talks offer the calendar and
-// live links, greyed out until the organisers add them in /admin.
-const SessionLinks = ({ links, isTalk }: { links?: ScheduleLinks; isTalk: boolean }) => (
-  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-    {!isTalk ? (
-      <SessionLink href={links?.liveUrl} icon={<LiveIcon />}>
-        Watch live
-      </SessionLink>
-    ) : links?.recordingUrl ? (
-      <SessionLink href={links.recordingUrl} icon={<RecordingIcon />}>
-        Watch recording
-      </SessionLink>
-    ) : (
-      <>
-        <SessionLink href={links?.calendarUrl} icon={<CalendarIcon />}>
-          Add to calendar
-        </SessionLink>
+// a "Watch live" link — nobody adds an ad break to their calendar — and it's
+// hidden entirely once that link is gone, rather than sitting there greyed
+// out. Recorded talks offer just the recording; upcoming talks offer the
+// calendar and live links, greyed out until the organisers add them in
+// /admin.
+const SessionLinks = ({ links, isTalk }: { links?: ScheduleLinks; isTalk: boolean }) => {
+  if (!isTalk && !links?.liveUrl) return null;
+
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+      {!isTalk ? (
         <SessionLink href={links?.liveUrl} icon={<LiveIcon />}>
           Watch live
         </SessionLink>
-      </>
-    )}
-  </div>
-);
+      ) : links?.recordingUrl ? (
+        <SessionLink href={links.recordingUrl} icon={<RecordingIcon />}>
+          Watch recording
+        </SessionLink>
+      ) : (
+        <>
+          <SessionLink href={links?.calendarUrl} icon={<CalendarIcon />}>
+            Add to calendar
+          </SessionLink>
+          <SessionLink href={links?.liveUrl} icon={<LiveIcon />}>
+            Watch live
+          </SessionLink>
+        </>
+      )}
+    </div>
+  );
+};
 
 const CalendarIcon = () => (
   <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
